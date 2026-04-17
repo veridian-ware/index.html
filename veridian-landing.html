@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veridian — Software que trabaja para vos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1e1e1e;
+      --accent: #c8f542;
+      --accent2: #42f5c8;
+      --text: #f0ede6;
+      --muted: #6b6b6b;
+      --card: #141414;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s ease, width 0.2s, height 0.2s;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform 0.35s ease;
+      opacity: 0.5;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.9);
+      backdrop-filter: blur(12px);
+      border-color: var(--border);
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.12em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #0a0a0a;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left {
+      padding: 160px 48px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 7vw, 120px);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+    .hero-title em {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 56px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0a0a;
+      padding: 16px 36px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(200,245,66,0.25);
+    }
+    .btn-ghost {
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--text); }
+    .btn-ghost::after { content: '→'; }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0f1a0a 0%, #0a0f1a 50%, #0a0a0a 100%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200,245,66,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,245,66,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      animation: gridMove 20s linear infinite;
+    }
+    @keyframes gridMove {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(48px, 48px); }
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,245,66,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    }
+    .hero-card {
+      position: absolute;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 24px 28px;
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+    .hero-card:nth-child(3) {
+      top: 25%; left: 10%;
+      animation-delay: 1s;
+    }
+    .hero-card:nth-child(4) {
+      top: 50%; right: 8%;
+      animation-delay: 1.3s;
+    }
+    .hero-card:nth-child(5) {
+      bottom: 20%; left: 20%;
+      animation-delay: 1.6s;
+    }
+    .card-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .card-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+    .card-value.teal { color: var(--accent2); }
+    .card-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .hero-badge {
+      position: absolute;
+      top: 32%; right: -20px;
+      width: 120px; height: 120px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: spin 20s linear infinite;
+    }
+    .hero-badge span {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      position: absolute;
+      transform-origin: center;
+      animation: spin 20s linear infinite reverse;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 16px 0;
+      background: var(--surface);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-track span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      padding: 0 40px;
+      white-space: nowrap;
+    }
+    .marquee-track span.accent { color: var(--accent); }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* PRODUCTS */
+    .section { padding: 120px 48px; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 5vw, 80px);
+      line-height: 0.95;
+      margin-bottom: 80px;
+    }
+    .section-title em {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .product-card {
+      background: var(--card);
+      padding: 56px 48px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .product-card:hover { border-color: var(--accent); }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover::before { transform: scaleX(1); }
+    .product-card.teal::before { background: var(--accent2); }
+    .product-card.teal:hover { border-color: var(--accent2); }
+    .product-card.coming {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .product-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 96px;
+      color: var(--border);
+      position: absolute;
+      top: -10px; right: 32px;
+      line-height: 1;
+      transition: color 0.3s;
+    }
+    .product-card:hover .product-number { color: #1e1e1e; }
+    .product-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(200,245,66,0.3);
+      padding: 4px 12px;
+      margin-bottom: 28px;
+    }
+    .product-tag.teal { color: var(--accent2); border-color: rgba(66,245,200,0.3); }
+    .product-tag.muted { color: var(--muted); border-color: var(--border); }
+    .product-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 0.03em;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    .product-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 40px;
+      max-width: 400px;
+    }
+    .product-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .product-features li {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .product-features li::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .product-card.teal .product-features li::before { background: var(--accent2); }
+    .product-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      color: var(--text);
+      letter-spacing: 0.05em;
+    }
+    .product-price span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0;
+    }
+    .product-arrow {
+      position: absolute;
+      bottom: 48px; right: 48px;
+      font-size: 28px;
+      color: var(--muted);
+      transition: color 0.3s, transform 0.3s;
+    }
+    .product-card:hover .product-arrow {
+      color: var(--accent);
+      transform: translate(4px, -4px);
+    }
+    .product-card.teal:hover .product-arrow { color: var(--accent2); }
+
+    /* ABOUT */
+    .about-section {
+      padding: 120px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 120px;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+    .about-left .big-stat {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 180px;
+      line-height: 0.85;
+      color: var(--border);
+      margin-bottom: -20px;
+    }
+    .about-left .big-stat span { color: var(--accent); }
+    .about-quote {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.5;
+      color: var(--text);
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+      margin-bottom: 32px;
+    }
+    .about-body {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .about-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+    }
+    .stack-pill {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 120px 48px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(200,245,66,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+    .cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(56px, 7vw, 100px);
+      line-height: 0.95;
+      margin-bottom: 32px;
+    }
+    .cta-title em {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--accent);
+    }
+    .cta-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 56px;
+      line-height: 1.7;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .products-grid { grid-template-columns: 1fr; }
+      .about-section { grid-template-columns: 1fr; gap: 48px; }
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .section { padding: 80px 24px; }
+      .hero-left { padding: 120px 24px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="logo">VERIDIAN<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://veridianware.gumroad.com/l/ojfbww" class="nav-cta" target="_blank">Ver productos →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Software empresarial · Buenos Aires · 2025</p>
+      <h1 class="hero-title">
+        Software que<br>
+        <em>trabaja</em><br>
+        para vos.
+      </h1>
+      <p class="hero-sub">
+        Construimos herramientas de gestión B2B para empresas que necesitan crecer sin depender de sistemas complicados o costosos.
+      </p>
+      <div class="hero-actions">
+        <a href="https://veridianware.gumroad.com/l/ojfbww" class="btn-primary" target="_blank">Ver AuthKit Express →</a>
+        <a href="#productos" class="btn-ghost">Conocer Veridian</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-visual">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-card">
+          <div class="card-label">Módulos activos</div>
+          <div class="card-value">12+</div>
+          <div class="card-desc">en Veridian ERP</div>
+        </div>
+        <div class="hero-card">
+          <div class="card-label">Stack probado</div>
+          <div class="card-value teal">100%</div>
+          <div class="card-desc">en producción real</div>
+        </div>
+        <div class="hero-card">
+          <div class="card-label">Disponible ahora</div>
+          <div class="card-value">JWT</div>
+          <div class="card-desc">AuthKit Express</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Veridian ERP</span>
+      <span class="accent">·</span>
+      <span>AuthKit Express</span>
+      <span class="accent">·</span>
+      <span>React 18</span>
+      <span class="accent">·</span>
+      <span>Node.js</span>
+      <span class="accent">·</span>
+      <span>PostgreSQL</span>
+      <span class="accent">·</span>
+      <span>Docker</span>
+      <span class="accent">·</span>
+      <span>Railway</span>
+      <span class="accent">·</span>
+      <span>Software B2B</span>
+      <span class="accent">·</span>
+      <span>Veridian ERP</span>
+      <span class="accent">·</span>
+      <span>AuthKit Express</span>
+      <span class="accent">·</span>
+      <span>React 18</span>
+      <span class="accent">·</span>
+      <span>Node.js</span>
+      <span class="accent">·</span>
+      <span>PostgreSQL</span>
+      <span class="accent">·</span>
+      <span>Docker</span>
+      <span class="accent">·</span>
+      <span>Railway</span>
+      <span class="accent">·</span>
+      <span>Software B2B</span>
+      <span class="accent">·</span>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="productos">
+    <p class="section-label reveal">Productos</p>
+    <h2 class="section-title reveal">Nuestras<br><em>herramientas</em></h2>
+    <div class="products-grid">
+
+      <!-- ERP -->
+      <a class="product-card reveal" href="https://tally.so/r/veridian" target="_blank">
+        <span class="product-number">01</span>
+        <div class="product-tag">En desarrollo</div>
+        <h3 class="product-name">Veridian ERP</h3>
+        <p class="product-desc">Sistema de gestión empresarial completo. Control de stock, finanzas, órdenes de trabajo, RRHH y más — todo en una sola plataforma.</p>
+        <ul class="product-features">
+          <li>Control de inventario y mercadería</li>
+          <li>Balances financieros automáticos</li>
+          <li>Órdenes de trabajo y mantenimiento</li>
+          <li>Panel de gestión en tiempo real</li>
+          <li>Multi-empresa / multi-usuario</li>
+        </ul>
+        <div class="product-price">Próximamente <span>— Sumate a la lista de espera</span></div>
+        <div class="product-arrow">↗</div>
+      </a>
+
+      <!-- AuthKit -->
+      <a class="product-card teal reveal" href="https://veridianware.gumroad.com/l/ojfbww" target="_blank">
+        <span class="product-number">02</span>
+        <div class="product-tag teal">Disponible ahora</div>
+        <h3 class="product-name">AuthKit Express</h3>
+        <p class="product-desc">Boilerplate de autenticación JWT con control de roles para Express.js. Extraído de un ERP real en producción. Listo para usar en minutos.</p>
+        <ul class="product-features">
+          <li>JWT access + refresh tokens</li>
+          <li>4 roles personalizables (RBAC)</li>
+          <li>Audit logging automático</li>
+          <li>Multi-tenant con settings por empresa</li>
+          <li>PostgreSQL · Sequelize · Redis · Docker</li>
+        </ul>
+        <div class="product-price">$79 <span>— pago único</span></div>
+        <div class="product-arrow">↗</div>
+      </a>
+
+      <!-- Futuros -->
+      <div class="product-card coming reveal">
+        <span class="product-number">03</span>
+        <div class="product-tag muted">Próximamente</div>
+        <h3 class="product-name">Veridian HR</h3>
+        <p class="product-desc">Módulo de Recursos Humanos. Gestión de empleados, liquidaciones, asistencia y legajos digitales.</p>
+        <div class="product-price">— <span>En roadmap</span></div>
+      </div>
+
+      <div class="product-card coming reveal">
+        <span class="product-number">04</span>
+        <div class="product-tag muted">Próximamente</div>
+        <h3 class="product-name">WorkKit Express</h3>
+        <p class="product-desc">Boilerplate de órdenes de trabajo y gestión de mantenimiento para Express.js.</p>
+        <div class="product-price">— <span>En roadmap</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="nosotros">
+    <div class="about-left reveal">
+      <div class="big-stat"><span>V</span>ERI<br>DIAN</div>
+    </div>
+    <div class="about-right">
+      <p class="section-label reveal">Nosotros</p>
+      <blockquote class="about-quote reveal">
+        "Construimos el software que necesitábamos y que no encontramos en el mercado."
+      </blockquote>
+      <p class="about-body reveal">
+        Veridian nació de la necesidad real de gestionar una empresa sin depender de sistemas costosos, inflexibles o pensados para otro mercado. Desarrollamos cada herramienta en producción real antes de publicarla.
+      </p>
+      <p class="about-body reveal">
+        Nuestro modelo es simple: publicamos los avances mientras construimos el producto completo. Cada módulo que lanzamos es funcional, documentado y probado en un entorno real.
+      </p>
+      <div class="about-stack reveal">
+        <span class="stack-pill">React 18</span>
+        <span class="stack-pill">Node.js</span>
+        <span class="stack-pill">Express</span>
+        <span class="stack-pill">PostgreSQL</span>
+        <span class="stack-pill">Redis</span>
+        <span class="stack-pill">Docker</span>
+        <span class="stack-pill">Railway</span>
+        <span class="stack-pill">GitHub</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contacto">
+    <div class="cta-bg"></div>
+    <p class="cta-eyebrow reveal">¿Listo para empezar?</p>
+    <h2 class="cta-title reveal">Sumate<br>a <em>Veridian</em></h2>
+    <p class="cta-sub reveal">Conseguí acceso anticipado al ERP o comprá AuthKit Express hoy y empezá a construir sin reinventar la rueda.</p>
+    <div class="cta-buttons reveal">
+      <a href="https://tally.so/r/veridian" class="btn-primary" target="_blank">Sumarme a la lista de espera</a>
+      <a href="https://veridianware.gumroad.com/l/ojfbww" class="btn-ghost" target="_blank">Ver AuthKit Express</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">VERIDIAN<span>.</span></div>
+    <div class="footer-copy">© 2026 Veridian. Buenos Aires, Argentina.</div>
+    <div class="footer-links">
+      <a href="https://veridianware.gumroad.com/l/ojfbww" target="_blank">Gumroad</a>
+      <a href="https://github.com/veridian-ware" target="_blank">GitHub</a>
+      <a href="mailto:veridianware@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+    });
+    function animateRing() {
+      rx += (mx - rx - 18) * 0.12;
+      ry += (my - ry - 18) * 0.12;
+      ring.style.transform = `translate(${rx}px, ${ry}px)`;
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
