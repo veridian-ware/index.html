@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap');
+      .logo-text {
+        font-family: 'Bebas Neue', Impact, 'Oswald', sans-serif;
+        font-size: 92px;
+        letter-spacing: 11px;
+      }
+      .word { fill: #f0ede6; }
+      .dot  { fill: #c8f542; }
+    </style>
+  </defs>
+  <rect width="512" height="512" fill="#0a0a0a"/>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" class="logo-text">
+    <tspan class="word">VERIDIAN</tspan><tspan class="dot">.</tspan>
+  </text>
+</svg>
