@@ -4,6 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Veridian — Software que trabaja para vos</title>
+  <meta name="description" content="Veridian construye software de gestión B2B para PYMEs argentinas: un ERP on-premise con facturación electrónica AFIP y boilerplates Node/Express extraídos de producción real." />
+  <link rel="canonical" href="https://veridian-ware.com/" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Veridian" />
+  <meta property="og:title" content="Veridian — Software que trabaja para vos" />
+  <meta property="og:description" content="Software de gestión B2B para PYMEs argentinas. ERP on-premise con facturación AFIP + boilerplates Node/Express listos para producción." />
+  <meta property="og:url" content="https://veridian-ware.com/" />
+  <meta property="og:image" content="https://veridian-ware.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Veridian — Software que trabaja para vos" />
+  <meta property="og:locale" content="es_AR" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Veridian — Software que trabaja para vos" />
+  <meta name="twitter:description" content="Software de gestión B2B para PYMEs argentinas. ERP on-premise con facturación AFIP + boilerplates Node/Express listos para producción." />
+  <meta name="twitter:image" content="https://veridian-ware.com/assets/og-image.png" />
+
+  <!-- Mejora progresiva: revela el contenido sólo si hay JS (sin JS, todo queda visible) -->
+  <script>document.documentElement.classList.add('js-reveal');</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -599,12 +629,12 @@
       to { opacity: 1; }
     }
 
-    .reveal {
+    .js-reveal .reveal {
       opacity: 0;
       transform: translateY(32px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .reveal.visible {
+    .js-reveal .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -619,6 +649,18 @@
       .nav-links { display: none; }
       .section { padding: 80px 24px; }
       .hero-left { padding: 120px 24px 60px; }
+    }
+
+    /* ACCESIBILIDAD — respeta la preferencia "reducir movimiento" del sistema */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .js-reveal .reveal { opacity: 1 !important; transform: none !important; }
+      .hero-eyebrow, .hero-title, .hero-sub, .hero-actions, .hero-card { opacity: 1 !important; }
     }
   </style>
 </head>
