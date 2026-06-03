@@ -641,7 +641,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow">Software empresarial · Buenos Aires · 2025</p>
+      <p class="hero-eyebrow">Software empresarial · Buenos Aires · <span class="current-year">2026</span></p>
       <h1 class="hero-title">
         Software que<br>
         <em>trabaja</em><br>
@@ -691,9 +691,9 @@
       <span class="accent">·</span>
       <span>PostgreSQL</span>
       <span class="accent">·</span>
-      <span>Docker</span>
+      <span>On-premise</span>
       <span class="accent">·</span>
-      <span>Railway</span>
+      <span>Facturación AFIP</span>
       <span class="accent">·</span>
       <span>Software B2B</span>
       <span class="accent">·</span>
@@ -707,9 +707,9 @@
       <span class="accent">·</span>
       <span>PostgreSQL</span>
       <span class="accent">·</span>
-      <span>Docker</span>
+      <span>On-premise</span>
       <span class="accent">·</span>
-      <span>Railway</span>
+      <span>Facturación AFIP</span>
       <span class="accent">·</span>
       <span>Software B2B</span>
       <span class="accent">·</span>
@@ -725,17 +725,17 @@
       <!-- ERP -->
       <a class="product-card reveal" href="https://tally.so/r/veridian" target="_blank">
         <span class="product-number">01</span>
-        <div class="product-tag">En desarrollo</div>
+        <div class="product-tag">Acceso anticipado</div>
         <h3 class="product-name">Veridian ERP</h3>
-        <p class="product-desc">Sistema de gestión empresarial completo. Control de stock, finanzas, órdenes de trabajo, RRHH y más — todo en una sola plataforma.</p>
+        <p class="product-desc">Sistema de gestión para PYMEs argentinas. On-premise, una instalación por empresa: tus datos viven en tu propio servidor. Facturación AFIP, contabilidad, ventas, compras, producción y RRHH en un solo sistema.</p>
         <ul class="product-features">
-          <li>Control de inventario y mercadería</li>
-          <li>Balances financieros automáticos</li>
-          <li>Órdenes de trabajo y mantenimiento</li>
-          <li>Panel de gestión en tiempo real</li>
-          <li>Multi-empresa / multi-usuario</li>
+          <li>Facturación electrónica AFIP — WSFEv1 (A/B/C + NC/ND)</li>
+          <li>Contabilidad, tesorería y finanzas</li>
+          <li>Inventario + QR · Compras · Producción (BOM)</li>
+          <li>Ventas: cotización → pedido → remito → factura</li>
+          <li>Instalador Windows con PostgreSQL incluido</li>
         </ul>
-        <div class="product-price">Próximamente <span>— Sumate a la lista de espera</span></div>
+        <div class="product-price">Acceso anticipado <span>— Sumate a la lista de espera</span></div>
         <div class="product-arrow">↗</div>
       </a>
 
@@ -798,8 +798,8 @@
         <span class="stack-pill">Express</span>
         <span class="stack-pill">PostgreSQL</span>
         <span class="stack-pill">Redis</span>
-        <span class="stack-pill">Docker</span>
-        <span class="stack-pill">Railway</span>
+        <span class="stack-pill">Vite</span>
+        <span class="stack-pill">Sequelize</span>
         <span class="stack-pill">GitHub</span>
       </div>
     </div>
@@ -820,11 +820,11 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">VERIDIAN<span>.</span></div>
-    <div class="footer-copy">© 2026 Veridian. Buenos Aires, Argentina.</div>
+    <div class="footer-copy">© <span class="current-year">2026</span> Veridian. Buenos Aires, Argentina.</div>
     <div class="footer-links">
       <a href="https://veridianware.gumroad.com/l/ojfbww" target="_blank">Gumroad</a>
       <a href="https://github.com/veridian-ware" target="_blank">GitHub</a>
-      <a href="mailto:veridianware@gmail.com">Email</a>
+      <a href="mailto:contacto@veridian-ware.com">Email</a>
     </div>
   </footer>
 
@@ -861,6 +861,11 @@
       });
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
+
+    // Año automático — se actualiza solo cada 1 de enero, sin tocar el código
+    document.querySelectorAll('.current-year').forEach(el => {
+      el.textContent = new Date().getFullYear();
+    });
   </script>
 </body>
 </html>
