@@ -47,8 +47,8 @@
       --accent: #c8f542;
       --accent2: #42f5c8;
       --text: #f0ede6;
-      --muted: #6b6b6b;
-      --card: #141414;
+      --muted: #8f8f8f;
+      --card: #1a1a1a;
     }
 
     html { scroll-behavior: smooth; }
@@ -406,7 +406,7 @@
     .product-card.teal::before { background: var(--accent2); }
     .product-card.teal:hover { border-color: var(--accent2); }
     .product-card.coming {
-      opacity: 0.4;
+      opacity: 0.62;
       pointer-events: none;
     }
     .product-number {
@@ -619,6 +619,17 @@
     }
     .footer-links a:hover { color: var(--accent); }
 
+    /* ATMÓSFERA — glows sutiles para romper el negro plano entre secciones */
+    #productos {
+      background: radial-gradient(60% 50% at 88% 12%, rgba(200,245,66,0.05), transparent 70%);
+    }
+    .about-section {
+      background: radial-gradient(55% 60% at 8% 50%, rgba(66,245,200,0.045), transparent 70%);
+    }
+
+    /* Stats compactas sólo para mobile (reemplazan al visual del hero, que se oculta) */
+    .hero-stats-mobile { display: none; }
+
     /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -649,6 +660,30 @@
       .nav-links { display: none; }
       .section { padding: 80px 24px; }
       .hero-left { padding: 120px 24px 60px; }
+      .hero-stats-mobile {
+        display: flex;
+        gap: 28px;
+        margin-top: 44px;
+        padding-top: 28px;
+        border-top: 1px solid var(--border);
+      }
+      .hero-stats-mobile strong {
+        display: block;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+        letter-spacing: 0.04em;
+        line-height: 1;
+        color: var(--accent);
+        margin-bottom: 6px;
+      }
+      .hero-stats-mobile .teal { color: var(--accent2); }
+      .hero-stats-mobile span {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
     }
 
     /* ACCESIBILIDAD — respeta la preferencia "reducir movimiento" del sistema */
@@ -695,6 +730,11 @@
       <div class="hero-actions">
         <a href="https://veridianware.gumroad.com/l/ojfbww" class="btn-primary" target="_blank">Ver AuthKit Express →</a>
         <a href="#productos" class="btn-ghost">Conocer Veridian</a>
+      </div>
+      <div class="hero-stats-mobile">
+        <div><strong>12+</strong><span>módulos ERP</span></div>
+        <div><strong class="teal">AFIP</strong><span>facturación</span></div>
+        <div><strong>100%</strong><span>on-premise</span></div>
       </div>
     </div>
     <div class="hero-right">
