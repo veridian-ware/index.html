@@ -492,6 +492,116 @@
     }
     .product-card.teal:hover .product-arrow { color: var(--accent2); }
 
+    /* TRUST / POR QUÉ */
+    .trust { border-top: 1px solid var(--border); }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .trust-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 44px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .trust-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .trust-card:hover { border-color: var(--accent); }
+    .trust-card:hover::before { transform: scaleX(1); }
+    .trust-card:nth-child(even)::before { background: var(--accent2); }
+    .trust-card:nth-child(even):hover { border-color: var(--accent2); }
+    .trust-icon {
+      width: 30px; height: 30px;
+      fill: none;
+      stroke: var(--accent);
+      margin-bottom: 26px;
+    }
+    .trust-card:nth-child(even) .trust-icon { stroke: var(--accent2); }
+    .trust-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 25px;
+      letter-spacing: 0.03em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+    .trust-card p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    @media (max-width: 1100px) {
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+
+    /* SHOWCASE — el ERP por dentro */
+    .showcase { border-top: 1px solid var(--border); }
+    .window {
+      border: 1px solid var(--border);
+      background: var(--card);
+      overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.55);
+    }
+    .window-bar {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .window-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--border); }
+    .window-dot.lime { background: var(--accent); }
+    .window-dot.teal { background: var(--accent2); }
+    .window-url {
+      margin-left: 12px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .window img { display: block; width: 100%; height: auto; }
+    .showcase-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 2px;
+    }
+    .thumb {
+      border: 1px solid var(--border);
+      background: var(--card);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .thumb:hover { border-color: var(--accent); }
+    .thumb img { display: block; width: 100%; height: auto; opacity: 0.82; transition: opacity 0.3s; }
+    .thumb:hover img { opacity: 1; }
+    .thumb figcaption {
+      padding: 16px 20px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 760px) {
+      .showcase-thumbs { grid-template-columns: 1fr; }
+    }
+
     /* ABOUT */
     .about-section {
       padding: 120px 48px;
@@ -855,6 +965,84 @@
         <div class="product-price">— <span>En roadmap</span></div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- POR QUÉ / CONFIANZA -->
+  <section class="section trust" id="confianza">
+    <p class="section-label reveal">Por qué el ERP</p>
+    <h2 class="section-title reveal">Pensado para<br><em>tu tranquilidad</em></h2>
+    <div class="trust-grid">
+
+      <div class="trust-card reveal">
+        <svg class="trust-icon" viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+        <h3>Facturación AFIP homologada</h3>
+        <p>WSFEv1 (A/B/C + NC/ND), F.931 y cargas sociales. Comprobantes con PDF y QR, listos para presentar.</p>
+      </div>
+
+      <div class="trust-card reveal">
+        <svg class="trust-icon" viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="8" x="2" y="2" rx="2"/>
+          <rect width="20" height="8" x="2" y="14" rx="2"/>
+          <path d="M6 6h.01M6 18h.01"/>
+        </svg>
+        <h3>Tus datos, en tu servidor</h3>
+        <p>On-premise, una instalación por empresa. Sin nube de terceros: la información nunca sale de tu infraestructura.</p>
+      </div>
+
+      <div class="trust-card reveal">
+        <svg class="trust-icon" viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+        <h3>Seguridad de extremo a extremo</h3>
+        <p>Cifrado AES-256-GCM en datos sensibles, JWT con lockout, rate-limiting y auditoría de cada acción.</p>
+      </div>
+
+      <div class="trust-card reveal">
+        <svg class="trust-icon" viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="12" cy="5" rx="9" ry="3"/>
+          <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
+          <path d="M3 12A9 3 0 0 0 21 12"/>
+        </svg>
+        <h3>Backups automáticos</h3>
+        <p>Respaldo diario programado con retención configurable. Tu operación protegida sin que tengas que acordarte.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SHOWCASE / EL PRODUCTO -->
+  <section class="section showcase" id="showcase">
+    <p class="section-label reveal">El producto</p>
+    <h2 class="section-title reveal">Mirá el ERP<br><em>por dentro</em></h2>
+
+    <div class="window reveal">
+      <div class="window-bar">
+        <span class="window-dot lime"></span>
+        <span class="window-dot teal"></span>
+        <span class="window-dot"></span>
+        <span class="window-url">veridian-erp — acceso</span>
+      </div>
+      <img src="/assets/erp-login.png" alt="Pantalla de inicio de sesión de Veridian ERP: toda tu empresa en un solo lugar" loading="lazy" />
+    </div>
+
+    <div class="showcase-thumbs">
+      <figure class="thumb reveal">
+        <img src="/assets/erp-dashboard.png" alt="Dashboard de Veridian ERP con KPIs de ingresos, egresos, órdenes de trabajo, stock y producción" loading="lazy" />
+        <figcaption>Dashboard · KPIs en tiempo real</figcaption>
+      </figure>
+      <figure class="thumb reveal">
+        <img src="/assets/erp-produccion.png" alt="Módulo de control de producción de Veridian ERP" loading="lazy" />
+        <figcaption>Producción · órdenes en tiempo real</figcaption>
+      </figure>
+      <figure class="thumb reveal">
+        <img src="/assets/erp-afip.png" alt="Módulo AFIP y cargas sociales F.931 de Veridian ERP" loading="lazy" />
+        <figcaption>AFIP · F.931 y cargas sociales</figcaption>
+      </figure>
     </div>
   </section>
 
