@@ -59,11 +59,11 @@
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
       overflow-x: hidden;
-      cursor: none;
     }
 
     /* Custom cursor */
     .cursor {
+      display: none;
       width: 12px; height: 12px;
       background: var(--accent);
       border-radius: 50%;
@@ -75,6 +75,7 @@
       mix-blend-mode: difference;
     }
     .cursor-ring {
+      display: none;
       width: 36px; height: 36px;
       border: 1px solid var(--accent);
       border-radius: 50%;
@@ -84,6 +85,18 @@
       z-index: 9998;
       transition: transform 0.35s ease;
       opacity: 0.5;
+    }
+
+    /* Cursor custom: sólo con puntero fino (mouse). En touch se usa el cursor del sistema. */
+    @media (pointer: fine) {
+      body { cursor: none; }
+      .cursor, .cursor-ring { display: block; }
+    }
+
+    /* Foco visible para navegación por teclado */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
     }
 
     /* Noise overlay */
@@ -819,6 +832,7 @@
     <a href="#" class="logo">VERIDIAN<span>.</span></a>
     <ul class="nav-links">
       <li><a href="#productos">Productos</a></li>
+      <li><a href="#showcase">ERP</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -917,7 +931,7 @@
       <!-- ERP -->
       <a class="product-card reveal" href="https://tally.so/r/veridian" target="_blank">
         <span class="product-number">01</span>
-        <div class="product-tag">Acceso anticipado</div>
+        <div class="product-tag">Llave en mano</div>
         <h3 class="product-name">Veridian ERP</h3>
         <p class="product-desc">Sistema de gestión para PYMEs argentinas. On-premise, una instalación por empresa: tus datos viven en tu propio servidor. Facturación AFIP, contabilidad, ventas, compras, producción y RRHH en un solo sistema.</p>
         <ul class="product-features">
@@ -927,7 +941,7 @@
           <li>Ventas: cotización → pedido → remito → factura</li>
           <li>Instalador Windows con PostgreSQL incluido</li>
         </ul>
-        <div class="product-price">Acceso anticipado <span>— Sumate a la lista de espera</span></div>
+        <div class="product-price">Obtené tu sistema</div>
         <div class="product-arrow">↗</div>
       </a>
 
@@ -1080,9 +1094,9 @@
     <div class="cta-bg"></div>
     <p class="cta-eyebrow reveal">¿Listo para empezar?</p>
     <h2 class="cta-title reveal">Sumate<br>a <em>Veridian</em></h2>
-    <p class="cta-sub reveal">Conseguí acceso anticipado al ERP o comprá AuthKit Express hoy y empezá a construir sin reinventar la rueda.</p>
+    <p class="cta-sub reveal">Obtené Veridian ERP o comprá AuthKit Express hoy y empezá a construir sin reinventar la rueda.</p>
     <div class="cta-buttons reveal">
-      <a href="https://tally.so/r/veridian" class="btn-primary" target="_blank">Sumarme a la lista de espera</a>
+      <a href="https://tally.so/r/veridian" class="btn-primary" target="_blank">Obtené tu sistema</a>
       <a href="https://veridianware.gumroad.com/l/ojfbww" class="btn-ghost" target="_blank">Ver AuthKit Express</a>
     </div>
   </section>
@@ -1094,26 +1108,28 @@
     <div class="footer-links">
       <a href="https://veridianware.gumroad.com/l/ojfbww" target="_blank">Gumroad</a>
       <a href="https://github.com/veridian-ware" target="_blank">GitHub</a>
-      <a href="mailto:contacto@veridian-ware.com">Email</a>
+      <a href="mailto:contacto@veridian-ware.com">Contacto</a>
+      <a href="mailto:soporte@veridian-ware.com">Soporte</a>
     </div>
   </footer>
 
   <script>
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
-    });
-    function animateRing() {
-      rx += (mx - rx - 18) * 0.12;
-      ry += (my - ry - 18) * 0.12;
-      ring.style.transform = `translate(${rx}px, ${ry}px)`;
-      requestAnimationFrame(animateRing);
+    // Cursor — sólo en dispositivos con puntero fino (mouse), no en touch
+    if (window.matchMedia('(pointer: fine)').matches) {
+      const cursor = document.getElementById('cursor');
+      const ring = document.getElementById('cursorRing');
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+      });
+      (function animateRing() {
+        rx += (mx - rx - 18) * 0.12;
+        ry += (my - ry - 18) * 0.12;
+        ring.style.transform = `translate(${rx}px, ${ry}px)`;
+        requestAnimationFrame(animateRing);
+      })();
     }
-    animateRing();
 
     // Nav scroll
     window.addEventListener('scroll', () => {
