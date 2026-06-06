@@ -5,7 +5,7 @@
 
   Landing page oficial de [Veridianware](https://landing-smoky-one-33.vercel.app/) — software empresarial B2B para PYMEs.
 
-  [🌐 Sitio en vivo](https://landing-smoky-one-33.vercel.app/) · [🛒 Gumroad](https://veridianware.gumroad.com/l/ojfbww) · [📧 Contacto](mailto:contacto@veridian-ware.com)
+  [🌐 Sitio en vivo](https://landing-smoky-one-33.vercel.app/) · [🛒 Gumroad](https://veridianware.gumroad.com/l/ojfbww) · [📧 Contacto](mailto:contacto@veridian-erp.com.ar)
 </div>
 
 ---
