@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Veridian — Software que trabaja para vos</title>
-  <meta name="description" content="Veridian construye software de gestión B2B para PYMEs argentinas: un ERP on-premise con facturación electrónica AFIP y boilerplates Node/Express extraídos de producción real." />
+  <title>Veridian ERP — Gestión para PYMEs con facturación AFIP</title>
+  <meta name="description" content="ERP on-premise para PYMEs argentinas: facturación AFIP, contabilidad, ventas, stock, producción y RRHH en un solo sistema. Más boilerplates Node/Express." />
   <link rel="canonical" href="https://veridian-ware.com/" />
   <meta name="theme-color" content="#0a0a0a" />
 
@@ -16,8 +16,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Veridian" />
-  <meta property="og:title" content="Veridian — Software que trabaja para vos" />
-  <meta property="og:description" content="Software de gestión B2B para PYMEs argentinas. ERP on-premise con facturación AFIP + boilerplates Node/Express listos para producción." />
+  <meta property="og:title" content="Veridian ERP — Gestión para PYMEs con facturación AFIP" />
+  <meta property="og:description" content="ERP on-premise para PYMEs argentinas: facturación AFIP, contabilidad, ventas, stock, producción y RRHH en un solo sistema. Más boilerplates Node/Express." />
   <meta property="og:url" content="https://veridian-ware.com/" />
   <meta property="og:image" content="https://veridian-ware.com/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
@@ -27,9 +27,69 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Veridian — Software que trabaja para vos" />
-  <meta name="twitter:description" content="Software de gestión B2B para PYMEs argentinas. ERP on-premise con facturación AFIP + boilerplates Node/Express listos para producción." />
+  <meta name="twitter:title" content="Veridian ERP — Gestión para PYMEs con facturación AFIP" />
+  <meta name="twitter:description" content="ERP on-premise para PYMEs argentinas: facturación AFIP, contabilidad, ventas, stock, producción y RRHH en un solo sistema. Más boilerplates Node/Express." />
   <meta name="twitter:image" content="https://veridian-ware.com/assets/og-image.png" />
+
+  <!-- Datos estructurados (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://veridian-ware.com/#organization",
+        "name": "Veridian",
+        "url": "https://veridian-ware.com/",
+        "logo": "https://veridian-ware.com/assets/icon-512.png",
+        "email": "contacto@veridian-erp.com.ar",
+        "description": "Software de gestión B2B para PYMEs argentinas: un ERP on-premise con facturación electrónica AFIP y boilerplates Node/Express extraídos de producción real.",
+        "areaServed": "AR",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        "sameAs": [
+          "https://github.com/veridian-ware",
+          "https://veridianware.gumroad.com"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://veridian-ware.com/#website",
+        "url": "https://veridian-ware.com/",
+        "name": "Veridian",
+        "inLanguage": "es-AR",
+        "publisher": { "@id": "https://veridian-ware.com/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Veridian ERP",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Windows",
+        "description": "Sistema de gestión on-premise para PYMEs argentinas con facturación electrónica AFIP (WSFEv1), contabilidad, tesorería, ventas, compras, producción, RRHH y calidad. Una instalación por empresa.",
+        "url": "https://veridian-ware.com/#showcase",
+        "publisher": { "@id": "https://veridian-ware.com/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "AuthKit Express",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Cross-platform",
+        "description": "Boilerplate de autenticación JWT con RBAC, multi-tenant y audit logging para Express.js, extraído de un ERP en producción.",
+        "publisher": { "@id": "https://veridian-ware.com/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "price": "79",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://veridianware.gumroad.com/l/ojfbww"
+        }
+      }
+    ]
+  }
+  </script>
 
   <!-- Mejora progresiva: revela el contenido sólo si hay JS (sin JS, todo queda visible) -->
   <script>document.documentElement.classList.add('js-reveal');</script>
