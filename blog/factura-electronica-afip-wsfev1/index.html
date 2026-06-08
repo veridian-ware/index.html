@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Factura electrónica AFIP (WSFEv1): qué necesitás para emitir | Veridian</title>
+  <meta name="description" content="Checklist para emitir factura electrónica en Argentina: clave fiscal, punto de venta, certificado digital y CAE. Guía AFIP/ARCA (WSFEv1) para PYMEs." />
+  <link rel="canonical" href="https://veridian-ware.com/blog/factura-electronica-afip-wsfev1/" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Veridian" />
+  <meta property="og:title" content="Factura electrónica AFIP (WSFEv1): qué necesitás para emitir" />
+  <meta property="og:description" content="Clave fiscal, punto de venta, certificado digital y CAE: el checklist para emitir factura electrónica en Argentina." />
+  <meta property="og:url" content="https://veridian-ware.com/blog/factura-electronica-afip-wsfev1/" />
+  <meta property="og:image" content="https://veridian-ware.com/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/blog.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Factura electrónica AFIP (WSFEv1): qué necesitás para emitir",
+    "description": "Clave fiscal, punto de venta, certificado digital y CAE: el checklist para emitir factura electrónica en Argentina con WSFEv1.",
+    "inLanguage": "es-AR",
+    "datePublished": "2026-06-08",
+    "dateModified": "2026-06-08",
+    "mainEntityOfPage": "https://veridian-ware.com/blog/factura-electronica-afip-wsfev1/",
+    "image": "https://veridian-ware.com/assets/og-image.png",
+    "author": { "@type": "Organization", "name": "Veridian", "url": "https://veridian-ware.com/" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Veridian",
+      "logo": { "@type": "ImageObject", "url": "https://veridian-ware.com/assets/icon-512.png" }
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">VERIDIAN<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="/#productos">Productos</a></li>
+      <li><a href="/#showcase">ERP</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <article>
+    <div class="article-head">
+      <div class="meta">Guía · 8 jun 2026 · 7 min de lectura</div>
+      <h1>Factura electrónica AFIP <em>(WSFEv1)</em>: qué necesitás para emitir</h1>
+    </div>
+
+    <div class="prose">
+      <p>Si facturás en Argentina, la factura electrónica no es opcional: es el estándar para casi todas las actividades. La buena noticia es que el camino es claro una vez que sabés qué piezas necesitás. Esta guía resume lo que hace falta para empezar a emitir, ya sea desde el portal o integrándolo a tu sistema de gestión.</p>
+
+      <blockquote>Nota: desde fines de 2024, AFIP pasó a llamarse <strong>ARCA</strong>. Los trámites y los web services son los mismos; como en la práctica casi todos siguen diciendo "facturación AFIP", usamos ese término.</blockquote>
+
+      <h2>Los dos caminos para emitir</h2>
+      <p><strong>Comprobantes en línea.</strong> El portal web de AFIP donde cargás cada comprobante a mano. Es gratis, no necesita certificado y sirve si emitís pocas facturas por mes.</p>
+      <p><strong>Web Service (WSFEv1).</strong> Tu sistema —un ERP o software de gestión— se conecta directo a AFIP y emite de forma automática. Requiere un certificado digital, pero es lo que necesitás si facturás volumen o querés que todo quede integrado con ventas, stock y contabilidad.</p>
+
+      <h2>Qué necesitás: el checklist</h2>
+      <ul>
+        <li><strong>CUIT y alta fiscal</strong> — estar inscripto como Responsable Inscripto o Monotributo.</li>
+        <li><strong>Clave fiscal con nivel de seguridad 3</strong> — es el nivel que habilita a operar estos servicios.</li>
+        <li><strong>Punto de venta</strong> dado de alta en AFIP. Importante: si vas por web service, tenés que crear un punto de venta del tipo <em>"Web Services"</em>, distinto del de "Comprobantes en línea".</li>
+        <li><strong>El tipo de comprobante que te corresponde</strong> — un Responsable Inscripto emite <strong>A</strong> (a otros responsables inscriptos) y <strong>B</strong> (a consumidor final o monotributo); un Monotributo emite <strong>C</strong>.</li>
+        <li><strong>(Solo para web service) Certificado digital</strong> — generás una clave privada y un pedido de certificado (CSR) que subís a AFIP para obtener tu certificado (<code>.crt</code>). Ese certificado es lo que autentica a tu sistema ante AFIP.</li>
+      </ul>
+
+      <h2>Cómo funciona la emisión por web service</h2>
+      <p>Cuando emitís con WSFEv1, el flujo es así:</p>
+      <ol>
+        <li>Tu sistema se autentica con <strong>WSAA</strong> (el servicio de autenticación de AFIP) usando el certificado, y obtiene un <em>ticket de acceso</em> temporal.</li>
+        <li>Con ese ticket, llama a <strong>WSFEv1</strong> (método <code>FECAESolicitar</code>) pidiendo autorización del comprobante.</li>
+        <li>AFIP responde con el <strong>CAE</strong> (Código de Autorización Electrónico) y su fecha de vencimiento.</li>
+        <li>El comprobante final debe incluir el CAE, su fecha de vencimiento y un <strong>código QR</strong>.</li>
+      </ol>
+      <p>Todo esto ocurre en segundos y queda transparente para quien factura: cargás la venta y el sistema hace el resto.</p>
+
+      <h2>Fricciones comunes (y cómo evitarlas)</h2>
+      <ul>
+        <li><strong>Certificado vencido o mal asociado</strong> al servicio → la emisión falla. Conviene renovarlo antes de que caduque.</li>
+        <li><strong>Punto de venta equivocado</strong> — usar el de "Comprobantes en línea" para web service es un clásico error.</li>
+        <li><strong>Saltos en la numeración</strong> — AFIP exige que los comprobantes sean correlativos por punto de venta.</li>
+        <li><strong>Homologación vs producción</strong> — AFIP tiene un entorno de prueba (homologación) para validar todo antes de emitir en serio.</li>
+      </ul>
+
+      <h2>Hacerlo desde tu ERP</h2>
+      <p>Toda esta plomería —generar la clave y el CSR, asociar el certificado, autenticarse con WSAA, pedir el CAE y armar el PDF con QR— es justo lo que un buen sistema de gestión resuelve por vos. <strong>Veridian ERP</strong> incluye un asistente de credenciales (genera la clave, el CSR y prueba la conexión) y emite comprobantes A/B/C y notas de crédito/débito con su CAE, PDF y QR, integrados con ventas y contabilidad.</p>
+
+      <p>Para casos puntuales de tu situación fiscal, consultá siempre con tu contador.</p>
+    </div>
+
+    <div class="article-cta">
+      <h3>Facturá AFIP sin dolores de cabeza</h3>
+      <p>Veridian ERP automatiza WSFEv1 de punta a punta: credenciales, CAE, PDF y QR, integrado con tu operación. On-premise, llave en mano.</p>
+      <a class="btn" href="/#showcase">Conocer Veridian ERP →</a>
+    </div>
+
+    <div class="wrap" style="max-width:720px;margin:0 auto;">
+      <a class="back" href="/blog/">← Volver al blog</a>
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-logo">VERIDIAN<span>.</span></div>
+    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  </footer>
+
+  <script>document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+</body>
+</html>
