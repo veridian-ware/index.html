@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Gracias! — Veridian</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/blog.css" />
+  <style>
+    .gracias {
+      min-height: 72vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 80px 24px;
+    }
+    .gracias .check {
+      width: 64px; height: 64px; border: 2px solid var(--accent); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 32px; color: var(--accent); font-size: 28px;
+    }
+    .gracias .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+    .gracias h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(56px, 9vw, 108px); line-height: 0.92; letter-spacing: 0.02em; }
+    .gracias h1 em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--accent); }
+    .gracias p.msg { color: var(--muted); font-size: 17px; line-height: 1.7; max-width: 480px; margin: 26px 0 40px; }
+    .gracias p.msg strong { color: var(--text); font-weight: 500; }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn-ghost { color: var(--muted); font-size: 14px; text-decoration: none; padding: 13px 24px; border: 1px solid var(--border); transition: color .2s, border-color .2s; }
+    .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">VERIDIAN<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="/#productos">Productos</a></li>
+      <li><a href="/#showcase">ERP</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main class="gracias">
+    <div class="check">✓</div>
+    <p class="eyebrow">Solicitud recibida</p>
+    <h1>¡Gracias!</h1>
+    <p class="msg">Recibimos tus datos. Te contactamos dentro de las <strong>24-48 hs hábiles</strong> para mostrarte Veridian ERP y resolver tus dudas.</p>
+    <div class="actions">
+      <a class="btn" href="/">Volver al inicio</a>
+      <a class="btn-ghost" href="/blog/">Leer el blog</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-logo">VERIDIAN<span>.</span></div>
+    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  </footer>
+
+  <script>document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+</body>
+</html>
