@@ -8,9 +8,15 @@
   </url>
   <url>
     <loc>https://veridian-ware.com/blog/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://veridian-ware.com/blog/monotributo-vs-responsable-inscripto-facturacion/</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://veridian-ware.com/blog/erp-on-premise-vs-nube-pyme/</loc>
