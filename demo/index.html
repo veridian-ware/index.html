@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitar una demo — Veridian ERP</title>
+  <meta name="description" content="Pedí una demo de Veridian ERP: contanos cómo trabaja tu empresa y te mostramos el sistema resolviendo tu operación real. Respuesta en 24-48 hs hábiles." />
+  <link rel="canonical" href="https://veridian-ware.com/demo/" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Veridian ERP" />
+  <meta property="og:title" content="Solicitar una demo — Veridian ERP" />
+  <meta property="og:description" content="Contanos cómo trabaja tu empresa y te mostramos Veridian ERP resolviendo tu operación real." />
+  <meta property="og:url" content="https://veridian-ware.com/demo/" />
+  <meta property="og:image" content="https://veridian-ware.com/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --band: #f5f5f4;
+      --card: #ffffff;
+      --border: #e6e6e6;
+      --border-strong: #d1d1d1;
+      --ink: #161616;
+      --muted: #4f4f4f;
+      --blue: #0f52a2;
+      --blue-dark: #0c4283;
+      --link: #0e62ad;
+      --lime: #c8f542; /* lima del logo — no cambiar */
+      --grad: linear-gradient(105deg, #cdee58 0%, #f6d75a 48%, #ffb45e 100%);
+      --sans: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      --ease: cubic-bezier(0.33, 0, 0.1, 1);
+      --shadow-card: 0 1.6px 3.6px rgba(0,0,0,0.10), 0 6px 14px rgba(0,0,0,0.10);
+      --shadow-float: 0 6px 14px rgba(0,0,0,0.10), 0 24px 60px rgba(0,0,0,0.14);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 { font-weight: 600; text-wrap: balance; }
+    ::selection { background: var(--blue); color: #fff; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* nav flotante tipo píldora, como la home */
+    nav {
+      position: fixed;
+      top: 16px; left: 50%;
+      transform: translateX(-50%);
+      width: min(1200px, calc(100% - 32px));
+      z-index: 100;
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 24px;
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 25px;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .logo span { color: var(--lime); }
+    .nav-back {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.15s var(--ease);
+    }
+    .nav-back:hover { color: var(--blue); }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 140px 40px 96px;
+      display: grid;
+      grid-template-columns: minmax(300px, 420px) minmax(360px, 560px);
+      gap: 72px;
+      justify-content: center;
+      align-items: start;
+    }
+
+    .kicker {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6e6e6e;
+      margin-bottom: 14px;
+    }
+    .intro h1 {
+      font-size: clamp(32px, 3.6vw, 46px);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .intro > p { color: var(--muted); margin-bottom: 28px; max-width: 46ch; }
+    .intro ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .intro li { display: flex; gap: 12px; align-items: center; font-size: 15px; }
+    .intro li::before {
+      content: '✓';
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 50%;
+    }
+    .intro .mail { margin-top: 32px; font-size: 14px; color: var(--muted); }
+    .intro .mail a { color: var(--link); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* tarjeta del form con el resplandor sutil detrás, como la home */
+    .form-wrap { position: relative; z-index: 0; }
+    .form-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 24% 6% 1%;
+      background: var(--grad);
+      border-radius: 40px;
+      filter: blur(36px);
+      opacity: 0.32;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .form-card {
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow-float);
+      padding: 40px;
+    }
+    .field { margin-bottom: 20px; }
+    .field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+    .field label small { font-weight: 400; color: var(--muted); }
+    .field input, .field textarea {
+      width: 100%;
+      font-family: var(--sans);
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--card);
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      padding: 12px 14px;
+      transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+    }
+    .field input::placeholder, .field textarea::placeholder { color: #6e6e6e; }
+    .field input:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(15,82,162,0.15);
+    }
+    .field textarea { min-height: 120px; resize: vertical; }
+
+    /* honeypot fuera de la vista (los bots lo completan igual) */
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    .submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      font-family: var(--sans);
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s var(--ease), transform 0.2s var(--ease);
+    }
+    .submit:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .submit[disabled] { opacity: 0.6; cursor: wait; transform: none; }
+
+    .form-note { margin-top: 16px; font-size: 13px; color: var(--muted); text-align: center; }
+    .form-error {
+      display: none;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #8a2f2f;
+      background: #faecec;
+      border: 1px solid #eccfcf;
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+    .form-error.visible { display: block; }
+    .form-error a { color: inherit; font-weight: 600; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--band);
+      padding: 36px 40px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); }
+    .footer-logo span { color: var(--lime); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+
+    @media (max-width: 860px) {
+      main { grid-template-columns: 1fr; gap: 44px; padding: 120px 20px 72px; }
+      .form-card { padding: 28px 22px; }
+      footer { padding: 28px 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.001ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">VERIDIAN<span>.</span></a>
+    <a href="/" class="nav-back">← Volver al sitio</a>
+  </nav>
+
+  <main>
+    <div class="intro">
+      <p class="kicker">Solicitar una demo</p>
+      <h1>Pedí tu demo de Veridian ERP</h1>
+      <p>Contanos cómo trabaja tu empresa y te mostramos el sistema resolviendo tu operación real — no la del vendedor.</p>
+      <ul>
+        <li>Demo en vivo con datos de tu rubro</li>
+        <li>Respuesta en 24-48 hs hábiles</li>
+        <li>Sin compromiso y sin costos ocultos</li>
+      </ul>
+      <p class="mail">¿Preferís escribirnos directo? <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
+    </div>
+
+    <div class="form-wrap">
+      <form class="form-card" id="demoForm" action="/api/demo" method="POST" novalidate>
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required maxlength="120" autocomplete="name" placeholder="Tu nombre" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required maxlength="160" autocomplete="email" placeholder="tu@empresa.com.ar" />
+        </div>
+        <div class="field">
+          <label for="empresa">Empresa <small>· opcional</small></label>
+          <input type="text" id="empresa" name="empresa" maxlength="160" autocomplete="organization" placeholder="Nombre de tu empresa" />
+        </div>
+        <div class="field">
+          <label for="telefono">Teléfono <small>· opcional</small></label>
+          <input type="tel" id="telefono" name="telefono" maxlength="40" autocomplete="tel" placeholder="+54 9 ..." />
+        </div>
+        <div class="field">
+          <label for="mensaje">Contanos tu operación <small>· opcional</small></label>
+          <textarea id="mensaje" name="mensaje" maxlength="2000" placeholder="Qué hace tu empresa, cómo facturan hoy, qué los trae a buscar un ERP..."></textarea>
+        </div>
+
+        <!-- honeypot anti-spam: dejalo vacío -->
+        <div class="hp" aria-hidden="true">
+          <label for="website">Sitio web</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button type="submit" class="submit" id="submitBtn">Solicitar la demo</button>
+        <p class="form-note">Usamos tus datos solo para responderte. Nada de listas ni spam.</p>
+        <p class="form-error" id="formError"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-logo">VERIDIAN<span>.</span></div>
+    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
+
+    // Envío con fetch; sin JS el form hace POST clásico y la API redirige a /gracias/
+    const form = document.getElementById('demoForm');
+    const btn = document.getElementById('submitBtn');
+    const errBox = document.getElementById('formError');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      errBox.classList.remove('visible');
+
+      if (!form.reportValidity()) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      try {
+        const res = await fetch('/api/demo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        });
+        if (res.ok) {
+          window.location.href = '/gracias/';
+          return;
+        }
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'No pudimos registrar tu solicitud.');
+      } catch (err) {
+        errBox.innerHTML = (err.message || 'No pudimos registrar tu solicitud.') +
+          ' También podés escribirnos a <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a>.';
+        errBox.classList.add('visible');
+        btn.disabled = false;
+        btn.textContent = 'Solicitar la demo';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Veridian ERP — Gestión para PYMEs con facturación AFIP</title>
-  <meta name="description" content="ERP on-premise para PYMEs argentinas: facturación AFIP, contabilidad, ventas, stock, producción y RRHH en un solo sistema. Más boilerplates Node/Express." />
+  <meta name="description" content="ERP on-premise para PYMEs argentinas: facturación AFIP, contabilidad, ventas, stock, producción y RRHH en un solo sistema, instalado en tu servidor." />
   <link rel="canonical" href="https://veridian-ware.com/" />
   <meta name="theme-color" content="#0a0a0a" />
   <meta name="google-site-verification" content="nj96HVBIHf4TjwA0uTr1ovN7_jf9CGQLsHtFAtjp7EA" />
@@ -18,7 +18,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Veridian" />
   <meta property="og:title" content="Veridian ERP — Gestión para PYMEs con facturación AFIP" />
-  <meta property="og:description" content="ERP on-premise para PYMEs argentinas: facturación AFIP, contabilidad, ventas, stock, producción y RRHH en un solo sistema. Más boilerplates Node/Express." />
+  <meta property="og:description" content="ERP on-premise para PYMEs argentinas: facturación AFIP, contabilidad, ventas, stock, producción y RRHH en un solo sistema, instalado en tu servidor." />
   <meta property="og:url" content="https://veridian-ware.com/" />
   <meta property="og:image" content="https://veridian-ware.com/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
@@ -29,7 +29,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Veridian ERP — Gestión para PYMEs con facturación AFIP" />
-  <meta name="twitter:description" content="ERP on-premise para PYMEs argentinas: facturación AFIP, contabilidad, ventas, stock, producción y RRHH en un solo sistema. Más boilerplates Node/Express." />
+  <meta name="twitter:description" content="ERP on-premise para PYMEs argentinas: facturación AFIP, contabilidad, ventas, stock, producción y RRHH en un solo sistema, instalado en tu servidor." />
   <meta name="twitter:image" content="https://veridian-ware.com/assets/og-image.png" />
 
   <!-- Datos estructurados (Schema.org) -->
@@ -44,7 +44,7 @@
         "url": "https://veridian-ware.com/",
         "logo": "https://veridian-ware.com/assets/icon-512.png",
         "email": "contacto@veridian-erp.com.ar",
-        "description": "Software de gestión B2B para PYMEs argentinas: un ERP on-premise con facturación electrónica AFIP y boilerplates Node/Express extraídos de producción real.",
+        "description": "Veridian desarrolla Veridian ERP, un sistema de gestión on-premise para PYMEs argentinas con facturación electrónica AFIP.",
         "areaServed": "AR",
         "address": {
           "@type": "PostalAddress",
@@ -52,8 +52,7 @@
           "addressCountry": "AR"
         },
         "sameAs": [
-          "https://github.com/veridian-ware",
-          "https://veridianware.gumroad.com"
+          "https://github.com/veridian-ware"
         ]
       },
       {
@@ -72,21 +71,6 @@
         "description": "Sistema de gestión on-premise para PYMEs argentinas con facturación electrónica AFIP (WSFEv1), contabilidad, tesorería, ventas, compras, producción, RRHH y calidad. Una instalación por empresa.",
         "url": "https://veridian-ware.com/#showcase",
         "publisher": { "@id": "https://veridian-ware.com/#organization" }
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "AuthKit Express",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Cross-platform",
-        "description": "Boilerplate de autenticación JWT con RBAC, multi-tenant y audit logging para Express.js, extraído de un ERP en producción.",
-        "publisher": { "@id": "https://veridian-ware.com/#organization" },
-        "offers": {
-          "@type": "Offer",
-          "price": "79",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://veridianware.gumroad.com/l/ojfbww"
-        }
       }
     ]
   }
@@ -451,7 +435,7 @@
 
     .products-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 2px;
     }
     .product-card {
@@ -477,22 +461,6 @@
       transition: transform 0.4s ease;
     }
     .product-card:hover::before { transform: scaleX(1); }
-    .product-card.teal::before { background: var(--accent2); }
-    .product-card.teal:hover { border-color: var(--accent2); }
-    .product-card.coming {
-      opacity: 0.62;
-      pointer-events: none;
-    }
-    .product-number {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 96px;
-      color: var(--border);
-      position: absolute;
-      top: -10px; right: 32px;
-      line-height: 1;
-      transition: color 0.3s;
-    }
-    .product-card:hover .product-number { color: #1e1e1e; }
     .product-tag {
       display: inline-block;
       font-size: 10px;
@@ -503,8 +471,6 @@
       padding: 4px 12px;
       margin-bottom: 28px;
     }
-    .product-tag.teal { color: var(--accent2); border-color: rgba(66,245,200,0.3); }
-    .product-tag.muted { color: var(--muted); border-color: var(--border); }
     .product-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 48px;
@@ -539,7 +505,6 @@
       background: var(--accent);
       flex-shrink: 0;
     }
-    .product-card.teal .product-features li::before { background: var(--accent2); }
     .product-price {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 40px;
@@ -564,7 +529,6 @@
       color: var(--accent);
       transform: translate(4px, -4px);
     }
-    .product-card.teal:hover .product-arrow { color: var(--accent2); }
 
     /* TRUST / POR QUÉ */
     .trust { border-top: 1px solid var(--border); }
@@ -804,7 +768,7 @@
     .footer-links a:hover { color: var(--accent); }
 
     /* ATMÓSFERA — glows sutiles para romper el negro plano entre secciones */
-    #productos {
+    #erp {
       background: radial-gradient(60% 50% at 88% 12%, rgba(200,245,66,0.05), transparent 70%);
     }
     .about-section {
@@ -838,7 +802,6 @@
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .hero-right { display: none; }
-      .products-grid { grid-template-columns: 1fr; }
       .about-section { grid-template-columns: 1fr; gap: 48px; }
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
@@ -892,30 +855,30 @@
   <nav id="nav">
     <a href="#" class="logo">VERIDIAN<span>.</span></a>
     <ul class="nav-links">
-      <li><a href="#productos">Productos</a></li>
-      <li><a href="#showcase">ERP</a></li>
+      <li><a href="#erp">El sistema</a></li>
+      <li><a href="#showcase">Por dentro</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="/blog/">Blog</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="https://veridianware.gumroad.com/l/ojfbww" class="nav-cta" target="_blank">Ver productos →</a>
+    <a href="https://tally.so/r/MedOWX" class="nav-cta" target="_blank">Obtené tu sistema →</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow">Software empresarial · Buenos Aires · <span class="current-year">2026</span></p>
+      <p class="hero-eyebrow">ERP on-premise · Buenos Aires · <span class="current-year">2026</span></p>
       <h1 class="hero-title">
         Software que<br>
         <em>trabaja</em><br>
         para vos.
       </h1>
       <p class="hero-sub">
-        Construimos herramientas de gestión B2B para empresas que necesitan crecer sin depender de sistemas complicados o costosos.
+        Veridian ERP: facturación electrónica AFIP, ventas, stock, compras, producción, contabilidad y RRHH — instalado en tu propio servidor, con soporte local en español.
       </p>
       <div class="hero-actions">
-        <a href="https://veridianware.gumroad.com/l/ojfbww" class="btn-primary" target="_blank">Ver AuthKit Express →</a>
-        <a href="#productos" class="btn-ghost">Conocer Veridian</a>
+        <a href="https://tally.so/r/MedOWX" class="btn-primary" target="_blank">Obtené tu sistema →</a>
+        <a href="#showcase" class="btn-ghost">Mirá el ERP por dentro</a>
       </div>
       <div class="hero-stats-mobile">
         <div><strong>12+</strong><span>módulos ERP</span></div>
@@ -933,14 +896,14 @@
           <div class="card-desc">en Veridian ERP</div>
         </div>
         <div class="hero-card">
-          <div class="card-label">Stack probado</div>
+          <div class="card-label">On-premise</div>
           <div class="card-value teal">100%</div>
-          <div class="card-desc">en producción real</div>
+          <div class="card-desc">tus datos en tu servidor</div>
         </div>
         <div class="hero-card">
-          <div class="card-label">Disponible ahora</div>
-          <div class="card-value">JWT</div>
-          <div class="card-desc">AuthKit Express</div>
+          <div class="card-label">Facturación electrónica</div>
+          <div class="card-value">AFIP</div>
+          <div class="card-desc">WSFEv1 · CAE · QR</div>
         </div>
       </div>
     </div>
@@ -951,48 +914,47 @@
     <div class="marquee-track">
       <span>Veridian ERP</span>
       <span class="accent">·</span>
-      <span>AuthKit Express</span>
-      <span class="accent">·</span>
-      <span>React 18</span>
-      <span class="accent">·</span>
-      <span>Node.js</span>
-      <span class="accent">·</span>
-      <span>PostgreSQL</span>
+      <span>Facturación AFIP</span>
       <span class="accent">·</span>
       <span>On-premise</span>
       <span class="accent">·</span>
-      <span>Facturación AFIP</span>
+      <span>Ventas</span>
       <span class="accent">·</span>
-      <span>Software B2B</span>
+      <span>Inventario + QR</span>
+      <span class="accent">·</span>
+      <span>Producción (BOM)</span>
+      <span class="accent">·</span>
+      <span>Contabilidad</span>
+      <span class="accent">·</span>
+      <span>RRHH</span>
       <span class="accent">·</span>
       <span>Veridian ERP</span>
       <span class="accent">·</span>
-      <span>AuthKit Express</span>
-      <span class="accent">·</span>
-      <span>React 18</span>
-      <span class="accent">·</span>
-      <span>Node.js</span>
-      <span class="accent">·</span>
-      <span>PostgreSQL</span>
+      <span>Facturación AFIP</span>
       <span class="accent">·</span>
       <span>On-premise</span>
       <span class="accent">·</span>
-      <span>Facturación AFIP</span>
+      <span>Ventas</span>
       <span class="accent">·</span>
-      <span>Software B2B</span>
+      <span>Inventario + QR</span>
+      <span class="accent">·</span>
+      <span>Producción (BOM)</span>
+      <span class="accent">·</span>
+      <span>Contabilidad</span>
+      <span class="accent">·</span>
+      <span>RRHH</span>
       <span class="accent">·</span>
     </div>
   </div>
 
-  <!-- PRODUCTS -->
-  <section class="section" id="productos">
-    <p class="section-label reveal">Productos</p>
-    <h2 class="section-title reveal">Nuestras<br><em>herramientas</em></h2>
+  <!-- EL SISTEMA -->
+  <section class="section" id="erp">
+    <p class="section-label reveal">El sistema</p>
+    <h2 class="section-title reveal">Un sistema<br><em>completo</em></h2>
     <div class="products-grid">
 
       <!-- ERP -->
       <a class="product-card reveal" href="https://tally.so/r/MedOWX" target="_blank">
-        <span class="product-number">01</span>
         <div class="product-tag">Llave en mano</div>
         <h3 class="product-name">Veridian ERP</h3>
         <p class="product-desc">Sistema de gestión para PYMEs argentinas. On-premise, una instalación por empresa: tus datos viven en tu propio servidor. Facturación AFIP, contabilidad, ventas, compras, producción y RRHH en un solo sistema.</p>
@@ -1006,40 +968,6 @@
         <div class="product-price">Obtené tu sistema</div>
         <div class="product-arrow">↗</div>
       </a>
-
-      <!-- AuthKit -->
-      <a class="product-card teal reveal" href="https://veridianware.gumroad.com/l/ojfbww" target="_blank">
-        <span class="product-number">02</span>
-        <div class="product-tag teal">Disponible ahora</div>
-        <h3 class="product-name">AuthKit Express</h3>
-        <p class="product-desc">Boilerplate de autenticación JWT con control de roles para Express.js. Extraído de un ERP real en producción. Listo para usar en minutos.</p>
-        <ul class="product-features">
-          <li>JWT access + refresh tokens</li>
-          <li>4 roles personalizables (RBAC)</li>
-          <li>Audit logging automático</li>
-          <li>Multi-tenant con settings por empresa</li>
-          <li>PostgreSQL · Sequelize · Redis · Docker</li>
-        </ul>
-        <div class="product-price">$79 <span>— pago único</span></div>
-        <div class="product-arrow">↗</div>
-      </a>
-
-      <!-- Futuros -->
-      <div class="product-card coming reveal">
-        <span class="product-number">03</span>
-        <div class="product-tag muted">Próximamente</div>
-        <h3 class="product-name">Veridian HR</h3>
-        <p class="product-desc">Módulo de Recursos Humanos. Gestión de empleados, liquidaciones, asistencia y legajos digitales.</p>
-        <div class="product-price">— <span>En roadmap</span></div>
-      </div>
-
-      <div class="product-card coming reveal">
-        <span class="product-number">04</span>
-        <div class="product-tag muted">Próximamente</div>
-        <h3 class="product-name">WorkKit Express</h3>
-        <p class="product-desc">Boilerplate de órdenes de trabajo y gestión de mantenimiento para Express.js.</p>
-        <div class="product-price">— <span>En roadmap</span></div>
-      </div>
 
     </div>
   </section>
@@ -1133,10 +1061,10 @@
         "Construimos el software que necesitábamos y que no encontramos en el mercado."
       </blockquote>
       <p class="about-body reveal">
-        Veridian nació de la necesidad real de gestionar una empresa sin depender de sistemas costosos, inflexibles o pensados para otro mercado. Desarrollamos cada herramienta en producción real antes de publicarla.
+        Veridian nació de la necesidad real de gestionar una empresa sin depender de sistemas costosos, inflexibles o pensados para otro mercado. Por eso el ERP se desarrolla y se prueba en producción real antes de llegar a tu empresa.
       </p>
       <p class="about-body reveal">
-        Nuestro modelo es simple: publicamos los avances mientras construimos el producto completo. Cada módulo que lanzamos es funcional, documentado y probado en un entorno real.
+        Hacemos una sola cosa: Veridian ERP. Cada módulo que lanzamos es funcional, documentado y probado en un entorno real — y el mismo equipo que lo desarrolla es el que te da soporte.
       </p>
       <div class="about-stack reveal">
         <span class="stack-pill">React 18</span>
@@ -1156,10 +1084,10 @@
     <div class="cta-bg"></div>
     <p class="cta-eyebrow reveal">¿Listo para empezar?</p>
     <h2 class="cta-title reveal">Sumate<br>a <em>Veridian</em></h2>
-    <p class="cta-sub reveal">Obtené Veridian ERP o comprá AuthKit Express hoy y empezá a construir sin reinventar la rueda.</p>
+    <p class="cta-sub reveal">Contanos cómo trabaja tu empresa y te mostramos Veridian ERP resolviendo tu operación real — no la del vendedor.</p>
     <div class="cta-buttons reveal">
       <a href="https://tally.so/r/MedOWX" class="btn-primary" target="_blank">Obtené tu sistema</a>
-      <a href="https://veridianware.gumroad.com/l/ojfbww" class="btn-ghost" target="_blank">Ver AuthKit Express</a>
+      <a href="mailto:contacto@veridian-erp.com.ar" class="btn-ghost">Escribinos</a>
     </div>
   </section>
 
@@ -1168,7 +1096,7 @@
     <div class="footer-logo">VERIDIAN<span>.</span></div>
     <div class="footer-copy">© <span class="current-year">2026</span> Veridian. Buenos Aires, Argentina.</div>
     <div class="footer-links">
-      <a href="https://veridianware.gumroad.com/l/ojfbww" target="_blank">Gumroad</a>
+      <a href="/blog/">Blog</a>
       <a href="https://github.com/veridian-ware" target="_blank">GitHub</a>
       <a href="mailto:contacto@veridian-erp.com.ar">Contacto</a>
     </div>
@@ -1208,6 +1136,8 @@
       });
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
+    // Red de seguridad: todo visible a los 1.6s aunque el observer no dispare
+    setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 1600);
 
     // Año automático — se actualiza solo cada 1 de enero, sin tocar el código
     document.querySelectorAll('.current-year').forEach(el => {
