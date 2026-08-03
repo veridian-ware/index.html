@@ -106,38 +106,6 @@
       overflow-x: hidden;
     }
 
-    /* Custom cursor */
-    .cursor {
-      display: none;
-      width: 12px; height: 12px;
-      background: var(--accent);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.15s ease, width 0.2s, height 0.2s;
-      mix-blend-mode: difference;
-    }
-    .cursor-ring {
-      display: none;
-      width: 36px; height: 36px;
-      border: 1px solid var(--accent);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9998;
-      transition: transform 0.35s ease;
-      opacity: 0.5;
-    }
-
-    /* Cursor custom: sólo con puntero fino (mouse). En touch se usa el cursor del sistema. */
-    @media (pointer: fine) {
-      body { cursor: none; }
-      .cursor, .cursor-ring { display: block; }
-    }
-
     /* Foco visible para navegación por teclado */
     a:focus-visible, button:focus-visible {
       outline: 2px solid var(--accent);
@@ -848,9 +816,6 @@
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
   <!-- NAV -->
   <nav id="nav">
     <a href="#" class="logo">VERIDIAN<span>.</span></a>
@@ -1103,23 +1068,6 @@
   </footer>
 
   <script>
-    // Cursor — sólo en dispositivos con puntero fino (mouse), no en touch
-    if (window.matchMedia('(pointer: fine)').matches) {
-      const cursor = document.getElementById('cursor');
-      const ring = document.getElementById('cursorRing');
-      let mx = 0, my = 0, rx = 0, ry = 0;
-      document.addEventListener('mousemove', e => {
-        mx = e.clientX; my = e.clientY;
-        cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
-      });
-      (function animateRing() {
-        rx += (mx - rx - 18) * 0.12;
-        ry += (my - ry - 18) * 0.12;
-        ring.style.transform = `translate(${rx}px, ${ry}px)`;
-        requestAnimationFrame(animateRing);
-      })();
-    }
-
     // Nav scroll
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);

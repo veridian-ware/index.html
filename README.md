@@ -21,7 +21,7 @@ Incluye un [blog estático](./blog/README.md) con guías SEO sobre ERP, facturac
 Sitio estático, sin build step.
 
 - HTML5 + CSS3 (variables, grid, animaciones nativas)
-- JavaScript vanilla (cursor personalizado, scroll reveal, nav sticky)
+- JavaScript vanilla (scroll reveal, nav sticky)
 - Fuentes: [Bebas Neue](https://fonts.google.com/specimen/Bebas+Neue) · [DM Serif Display](https://fonts.google.com/specimen/DM+Serif+Display) · [DM Sans](https://fonts.google.com/specimen/DM+Sans)
 
 ## Desarrollo local
