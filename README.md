@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/logo-transparent.svg" alt="Veridian ERP" width="400"/>
 
-  **El sistema de gestión para PyMEs argentinas.**
+  **Plataforma de gestión empresarial para empresas argentinas.**
 
   Sitio oficial de [Veridian ERP](https://veridian-ware.com/) — ERP on-premise con facturación electrónica AFIP.
 
@@ -12,7 +12,7 @@
 
 ## Sobre el proyecto
 
-Sitio de presentación de **Veridian ERP**, el único producto de la marca: un sistema de gestión on-premise para PyMEs argentinas con facturación electrónica AFIP (WSFEv1), ventas, stock, compras, producción, contabilidad, RRHH y mantenimiento.
+Sitio de presentación de **Veridian ERP**, el único producto de la marca: una plataforma de gestión empresarial on-premise para empresas argentinas con facturación electrónica AFIP (WSFEv1), ventas, stock, compras, producción, contabilidad, RRHH y mantenimiento.
 
 Incluye un [blog estático](./blog/README.md) con guías SEO sobre ERP, facturación AFIP y gestión.
 

@@ -6,7 +6,7 @@ brand
 
 ## Users
 
-Dueños y responsables de administración de PyMEs argentinas (industria, comercio, servicios) que evalúan su primer ERP o quieren reemplazar planillas. No son técnicos; deciden con criterio de negocio. Llegan desde búsquedas ("cuánto cuesta un ERP", "facturación AFIP") o referidos, y comparan contra Odoo, Tango, Colppy y similares.
+Dueños y responsables de administración de empresas argentinas (industria, comercio, servicios) que evalúan su primer ERP o quieren reemplazar planillas. No son técnicos; deciden con criterio de negocio. Llegan desde búsquedas ("cuánto cuesta un ERP", "facturación AFIP") o referidos, y comparan contra Odoo, Tango, Colppy y similares.
 
 ## Product Purpose
 
