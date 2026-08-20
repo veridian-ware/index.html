@@ -21,8 +21,8 @@ Incluye un [blog estático](./blog/README.md) con guías SEO sobre ERP, facturac
 Sitio estático, sin build step.
 
 - HTML5 + CSS3 (variables, grid, animaciones nativas)
-- JavaScript vanilla (scroll reveal, nav sticky)
-- Fuentes: [Bebas Neue](https://fonts.google.com/specimen/Bebas+Neue) · [DM Serif Display](https://fonts.google.com/specimen/DM+Serif+Display) · [DM Sans](https://fonts.google.com/specimen/DM+Sans)
+- JavaScript vanilla (scroll reveal, nav sticky, acordeón de módulos, tabs de video)
+- Fuentes: Segoe UI (sistema, sin webfonts) · [Bebas Neue](https://fonts.google.com/specimen/Bebas+Neue) solo para el logo
 
 ## Desarrollo local
 
@@ -69,10 +69,12 @@ Sin estas variables la función responde 500 con un mensaje que sugiere escribir
 
 ## Identidad visual
 
-- **Negro:** `#0a0a0a`
-- **Lima (acento):** `#c8f542`
-- **Teal (acento 2):** `#42f5c8`
-- **Texto:** `#f0ede6`
+- **Fondo:** `#ffffff`
+- **Azul (acción):** `#0f52a2`
+- **Lima (punto del logo):** `#c8f542`
+- **Texto:** `#161616`
+
+Ver `DESIGN.md` para el sistema completo.
 
 ---
 

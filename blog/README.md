@@ -32,6 +32,6 @@ Los estilos compartidos están en `/assets/blog.css`.
 ## Buenas prácticas SEO
 
 - Un solo `<h1>` por artículo; subtítulos con `<h2>`/`<h3>`.
-- Enlazá internamente: del artículo al sitio (`/#showcase`) y, cuando tengas varios, entre artículos relacionados.
+- Enlazá internamente: del artículo al sitio (`/#modulos`, `/#contacto`) y entre artículos relacionados.
 - No inventar fechas ni datos en el JSON-LD.
 - Después de publicar, en Google Search Console: **Inspección de URL → Solicitar indexación**.
