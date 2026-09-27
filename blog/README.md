@@ -15,7 +15,7 @@ Los estilos compartidos están en `/assets/blog.css`.
 ## Cómo agregar un artículo nuevo
 
 1. **Crear la carpeta** del artículo con un slug en minúsculas y guiones (con keywords):
-   `blog/como-emitir-factura-afip/index.html`
+   `blog/como-emitir-factura-arca/index.html`
 
 2. **Copiar** `blog/erp-on-premise-vs-nube-pyme/index.html` como base y editar:
    - `<title>` y `<meta name="description">` (apuntá a lo que la gente busca; título ≤ ~60 caracteres).

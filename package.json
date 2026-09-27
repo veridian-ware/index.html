@@ -1,7 +1,7 @@
 {
   "name": "veridian-landing",
   "private": true,
-  "description": "Landing de Veridian ERP — sitio estático + función de contacto",
+  "description": "Landing de SIG — sitio estático + función de contacto",
   "dependencies": {
     "nodemailer": "^7.0.0"
   }

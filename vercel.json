@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/blog/factura-electronica-afip-wsfev1/",
+      "destination": "/blog/factura-electronica-arca-wsfev1/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/factura-electronica-afip-wsfev1",
+      "destination": "/blog/factura-electronica-arca-wsfev1/",
+      "permanent": true
+    }
+  ]
+}

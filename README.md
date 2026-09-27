@@ -1,9 +1,9 @@
 <div align="center">
-  <img src="./assets/logo-transparent.svg" alt="Veridian ERP" width="400"/>
+  <img src="./assets/logo-transparent.svg" alt="Veridian" width="400"/>
 
   **Plataforma de gestión empresarial.**
 
-  Sitio oficial de [Veridian ERP](https://veridian-ware.com/) — ERP on-premise con facturación electrónica AFIP.
+  Sitio oficial de [SIG](https://veridian-ware.com/) — ERP on-premise con facturación electrónica ARCA.
 
   [🌐 Sitio en vivo](https://veridian-ware.com/) · [📧 Contacto](mailto:contacto@veridian-erp.com.ar)
 </div>
@@ -12,9 +12,9 @@
 
 ## Sobre el proyecto
 
-Sitio de presentación de **Veridian ERP**, el único producto de la marca: una plataforma de gestión empresarial on-premise con facturación electrónica AFIP (WSFEv1), ventas, stock, compras, producción, contabilidad, RRHH y mantenimiento.
+Sitio de presentación de **SIG** (Sistema Integrado de Gestión), el único producto de Veridian: una plataforma de gestión empresarial on-premise con facturación electrónica ARCA (WSFEv1), ventas, stock, compras, producción, contabilidad, RRHH y mantenimiento.
 
-Incluye un [blog estático](./blog/README.md) con guías SEO sobre ERP, facturación AFIP y gestión.
+Incluye un [blog estático](./blog/README.md) con guías SEO sobre ERP, facturación ARCA y gestión.
 
 ## Stack
 
