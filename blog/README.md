@@ -5,7 +5,7 @@ Blog estático, sin build step. Cada artículo es una carpeta con un `index.html
 ```
 blog/
 ├── index.html                       # Índice (lista de artículos)
-├── erp-on-premise-vs-nube-pyme/
+├── erp-on-premise-vs-nube/
 │   └── index.html                   # Artículo de ejemplo
 └── README.md                        # Esta guía
 ```
@@ -17,7 +17,7 @@ Los estilos compartidos están en `/assets/blog.css`.
 1. **Crear la carpeta** del artículo con un slug en minúsculas y guiones (con keywords):
    `blog/como-emitir-factura-arca/index.html`
 
-2. **Copiar** `blog/erp-on-premise-vs-nube-pyme/index.html` como base y editar:
+2. **Copiar** `blog/erp-on-premise-vs-nube/index.html` como base y editar:
    - `<title>` y `<meta name="description">` (apuntá a lo que la gente busca; título ≤ ~60 caracteres).
    - `<link rel="canonical">`, `og:url` y `mainEntityOfPage` → la URL nueva (`https://veridian-ware.com/blog/<slug>/`).
    - El bloque JSON-LD: `headline`, `description`, `datePublished`, `dateModified`.

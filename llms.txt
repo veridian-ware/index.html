@@ -1,0 +1,26 @@
+# Veridian — SIG (Sistema Integrado de Gestión)
+
+> Veridian es una empresa argentina de software. Desarrolla SIG, un sistema de gestión (ERP) on-premise para empresas, con facturación electrónica ARCA nativa. Se instala en el servidor del cliente (una instalación por empresa) y tiene soporte local en español.
+
+Datos clave:
+- Producto: SIG (Sistema Integrado de Gestión). Veridian es la empresa, SIG es el producto.
+- Para quién: empresas de industria, comercio y servicios en Argentina, de distintos tamaños: desde pymes que quieren dejar las planillas hasta empresas con varias áreas que buscan reemplazar su sistema actual.
+- Modelo: on-premise. Instalador para Windows con PostgreSQL incluido. Los datos no salen de la infraestructura del cliente.
+- Facturación electrónica ARCA vía WSFEv1: comprobantes A, B y C, notas de crédito y débito, CAE y PDF con código QR. También F.931 y cargas sociales.
+- Módulos: ventas y clientes (cotización, pedido, remito, factura, cuentas corrientes), inventario con etiquetas QR, compras, producción con lista de materiales (BOM), órdenes de trabajo de mantenimiento, contabilidad, tesorería y RRHH.
+- Seguridad: cifrado AES-256-GCM en datos sensibles, sesiones JWT con bloqueo, roles y permisos, registro de auditoría y backups diarios automáticos.
+- Precio: se cotiza por empresa según módulos y alcance.
+- Implementación: llave en mano (relevamiento, instalación y configuración, capacitación y soporte).
+- Contacto: contacto@veridian-erp.com.ar · Demo: https://veridian-ware.com/demo/
+
+## Páginas principales
+- [Inicio](https://veridian-ware.com/): qué es SIG, módulos, seguridad, implementación y preguntas frecuentes.
+- [Solicitar una demo](https://veridian-ware.com/demo/): formulario para ver el sistema con casos de la propia empresa.
+
+## Guías
+- [ERP para empresas en Argentina: comparativa honesta 2026](https://veridian-ware.com/blog/comparativa-erp-empresas-argentina/): Tango, Odoo, Xubio, Colppy, Contabilium y SIG comparados por modelo, facturación ARCA, producción, RRHH y tipo de empresa.
+- [Cuánto cuesta un ERP para una empresa](https://veridian-ware.com/blog/cuanto-cuesta-un-erp/): modelos de precio, costos ocultos y cómo comparar presupuestos a 3 años.
+- [Cómo elegir un ERP para tu empresa: checklist 2026](https://veridian-ware.com/blog/como-elegir-erp-checklist/): módulos, facturación ARCA, on-premise vs nube, costo y soporte.
+- [ERP on-premise vs ERP en la nube](https://veridian-ware.com/blog/erp-on-premise-vs-nube/): dónde viven los datos, cómo se paga y qué pasa con la facturación ARCA.
+- [Factura electrónica ARCA (WSFEv1)](https://veridian-ware.com/blog/factura-electronica-arca-wsfev1/): clave fiscal, punto de venta, certificado digital y CAE, paso a paso.
+- [Monotributo vs Responsable Inscripto](https://veridian-ware.com/blog/monotributo-vs-responsable-inscripto-facturacion/): qué comprobantes se emiten y cómo cambia el IVA.

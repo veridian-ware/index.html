@@ -9,6 +9,36 @@
       "source": "/blog/factura-electronica-afip-wsfev1",
       "destination": "/blog/factura-electronica-arca-wsfev1/",
       "permanent": true
+    },
+    {
+      "source": "/blog/cuanto-cuesta-erp-pyme/",
+      "destination": "/blog/cuanto-cuesta-un-erp/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cuanto-cuesta-erp-pyme",
+      "destination": "/blog/cuanto-cuesta-un-erp/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-elegir-erp-pyme-checklist/",
+      "destination": "/blog/como-elegir-erp-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-elegir-erp-pyme-checklist",
+      "destination": "/blog/como-elegir-erp-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/erp-on-premise-vs-nube-pyme/",
+      "destination": "/blog/erp-on-premise-vs-nube/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/erp-on-premise-vs-nube-pyme",
+      "destination": "/blog/erp-on-premise-vs-nube/",
+      "permanent": true
     }
   ]
 }
