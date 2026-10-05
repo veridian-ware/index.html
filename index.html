@@ -44,6 +44,7 @@
         "url": "https://veridian-ware.com/",
         "logo": "https://veridian-ware.com/assets/icon-512.png",
         "email": "contacto@veridian-erp.com.ar",
+        "sameAs": ["https://github.com/veridian-ware"],
         "description": "Veridian desarrolla SIG (Sistema Integrado de Gestión), un sistema de gestión on-premise para empresas con facturación electrónica ARCA.",
         "areaServed": "AR",
         "address": {
@@ -68,7 +69,65 @@
         "operatingSystem": "Windows",
         "description": "Sistema de gestión on-premise para empresas con facturación electrónica ARCA (WSFEv1), contabilidad, tesorería, ventas, compras, inventario con QR, producción con BOM, RRHH y mantenimiento. Una instalación por empresa.",
         "url": "https://veridian-ware.com/",
+        "inLanguage": "es-AR",
+        "image": "https://veridian-ware.com/assets/og-image.png",
+        "featureList": [
+          "Facturación electrónica ARCA (WSFEv1) con CAE y código QR",
+          "Ventas, cuentas corrientes y cobranzas",
+          "Compras con recepción parcial y devolución a proveedor",
+          "Inventario y depósitos con etiquetas QR",
+          "Producción con listas de materiales y trazabilidad de lotes",
+          "Mantenimiento correctivo y preventivo",
+          "Contabilidad, tesorería y conciliación bancaria",
+          "RRHH, liquidación de sueldos y F.931"
+        ],
         "publisher": { "@id": "https://veridian-ware.com/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://veridian-ware.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Dónde se instala SIG?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "En tu propio servidor, que puede ser una PC dedicada en tu empresa. El instalador para Windows incluye PostgreSQL, así que no necesitás instalar nada por separado. Es una instalación por empresa: tus datos nunca salen de tu infraestructura."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Emite factura electrónica ARCA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí, de forma nativa vía WSFEv1: comprobantes A, B y C, notas de crédito y débito, con CAE y PDF con código QR. Si querés entender cómo funciona por detrás, lo explicamos en esta guía sobre factura electrónica."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto cuesta?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende de los módulos y del alcance de tu implementación, así que lo cotizamos por empresa. Pedí una demo y te armamos una propuesta con todos los componentes explícitos — sin costos \"a cotizar\" después de firmar. Sobre cómo comparar presupuestos de ERP escribimos esta guía de costos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué pasa si mi empresa crece?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "El sistema acompaña: podés sumar usuarios y módulos sobre la misma instalación. Y si cambiás de condición fiscal (por ejemplo de Monotributo a Responsable Inscripto), la facturación se adapta sin rehacer nada."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué incluye el soporte?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Soporte local en español: errores del sistema, consultas de uso y acompañamiento en los cambios normativos de ARCA. Hablás con una persona que conoce tu instalación, no con un chat genérico."
+            }
+          }
+        ]
       }
     ]
   }
@@ -766,7 +825,7 @@
       <p class="hero-note">Sin compromiso · Respuesta en 24 hs</p>
 
       <div class="grad-band hero-band">
-        <img class="hero-photo" src="/assets/people/hero-equipo.jpg" alt="Equipo de trabajo reunido alrededor de una notebook en una oficina moderna" />
+        <img class="hero-photo" src="/assets/people/hero-equipo.jpg" fetchpriority="high" alt="Equipo de trabajo reunido alrededor de una notebook en una oficina moderna" />
       </div>
     </div>
   </header>
