@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trazabilidad de lotes en producción: guía práctica | Veridian</title>
+  <meta name="description" content="Qué registrar en cada lote (insumos, proveedores, vencimientos, controles y liberación de calidad) para responder un reclamo o una auditoría en minutos." />
+  <link rel="canonical" href="https://veridian-ware.com/blog/trazabilidad-de-lotes-en-produccion/" />
+  <meta name="theme-color" content="#f9faf8" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Veridian" />
+  <meta property="og:title" content="Trazabilidad de lotes en producción: cómo responder en minutos" />
+  <meta property="og:description" content="Qué registrar en cada lote de producción para responder un reclamo o una auditoría en minutos y no en días." />
+  <meta property="og:url" content="https://veridian-ware.com/blog/trazabilidad-de-lotes-en-produccion/" />
+  <meta property="og:image" content="https://veridian-ware.com/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,400;1,9..144,560&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/blog.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Trazabilidad de lotes en producción: cómo responder en minutos",
+    "description": "Qué registrar en cada lote (insumos, proveedores, vencimientos, controles y liberación de calidad) para responder un reclamo o una auditoría en minutos.",
+    "inLanguage": "es-AR",
+    "datePublished": "2026-10-05",
+    "dateModified": "2026-10-05",
+    "mainEntityOfPage": "https://veridian-ware.com/blog/trazabilidad-de-lotes-en-produccion/",
+    "image": "https://veridian-ware.com/assets/og-image.png",
+    "author": {
+      "@type": "Organization",
+      "name": "Veridian",
+      "url": "https://veridian-ware.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Veridian",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://veridian-ware.com/assets/icon-512.png"
+      }
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://veridian-ware.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://veridian-ware.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Trazabilidad de lotes en producción: cómo responder en minutos",
+        "item": "https://veridian-ware.com/blog/trazabilidad-de-lotes-en-produccion/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">VERIDIAN<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="/#modulos">Módulos</a></li>
+      <li><a href="/#producto">El producto</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <article>
+    <div class="article-head">
+      <div class="meta">Guía · 5 oct 2026 · 7 min de lectura</div>
+      <h1>Trazabilidad de lotes en producción: <em>cómo responder en minutos</em></h1>
+    </div>
+
+    <div class="prose">
+      <p>Llega un reclamo por un producto o un auditor pide ver un lote, y la pregunta es siempre la misma: <strong>¿con qué se hizo ese lote y qué más está comprometido?</strong> Si la respuesta depende de buscar planillas, remitos de proveedores y anotaciones de planta, la investigación lleva días. Si cada lote quedó registrado mientras se producía, lleva minutos. La diferencia no está en el software sino en qué se registra y en qué momento. Esta guía repasa los puntos que no pueden faltar.</p>
+
+      <h2>Qué significa trazar un lote</h2>
+      <p>La trazabilidad tiene dos direcciones:</p>
+      <ul>
+        <li><strong>Hacia atrás:</strong> de un lote de producto terminado a los lotes de insumos que se usaron, sus proveedores y sus vencimientos. Es lo que se necesita para encontrar el origen de un problema.</li>
+        <li><strong>Hacia adelante:</strong> de un lote de insumo a todos los lotes de producción donde se usó. Es lo que se necesita cuando un proveedor avisa que un lote suyo tiene un defecto.</li>
+      </ul>
+      <p>Las dos preguntas tienen que poder responderse desde el mismo registro, sin cruzar fuentes a mano.</p>
+
+      <h2>1. Un código de lote desde el inicio</h2>
+      <p>El lote no se asigna al final: se crea cuando se planifica la orden de producción. Así, todo lo que pase después (insumos usados, controles, rechazos) queda colgado del mismo código desde el primer momento. Ese código es el que va impreso en el envase y el que se busca cuando llega un reclamo.</p>
+
+      <h2>2. El lote de cada insumo, al momento de usarlo</h2>
+      <p>Por cada insumo que entra a la orden, hay que registrar su lote, el proveedor, el vencimiento y, si corresponde, el certificado de análisis. Dos reglas simples evitan problemas:</p>
+      <ul>
+        <li><strong>Un insumo vencido no entra.</strong> El sistema tiene que rechazarlo al registrarlo, no avisarlo después.</li>
+        <li><strong>El registro se hace en la planta, no al cierre del día.</strong> Lo que se reconstruye de memoria es lo primero que falla en una auditoría.</li>
+      </ul>
+
+      <h2>3. Controles por etapa</h2>
+      <p>No todos los controles se hacen en el mismo momento. Hay mediciones de <strong>recepción</strong> (temperatura de la materia prima, estado del envase), de <strong>proceso</strong> (tiempos, temperaturas, puntos críticos de control) y de <strong>producto terminado</strong>. Lo importante es que los obligatorios de cada etapa bloqueen el avance: no se arranca a producir sin los controles de recepción y no se completa la orden sin los de proceso. Un punto crítico fuera de límite tiene que impedir la liberación del lote.</p>
+
+      <blockquote>Un control que se puede saltear no es un control: es una sugerencia.</blockquote>
+
+      <h2>4. Liberación de calidad con separación de funciones</h2>
+      <p>La persona que autorizó a producir no debería ser la misma que libera el lote para la venta. Es una regla básica de cualquier esquema de certificación y conviene que la haga cumplir el sistema, no la buena voluntad. La liberación tiene tres salidas posibles, cada una con su efecto sobre el stock:</p>
+      <ul>
+        <li><strong>Aprobado:</strong> el lote queda disponible para despachar.</li>
+        <li><strong>Retenido:</strong> el lote sale del stock vendible y queda en cuarentena hasta una nueva decisión.</li>
+        <li><strong>Rechazado:</strong> el lote se descarta y genera una no conformidad para investigar la causa.</li>
+      </ul>
+      <p>Si retener un lote no lo saca del stock, alguien puede venderlo sin saber que estaba retenido.</p>
+
+      <h2>5. Movimientos de stock con el lote</h2>
+      <p>La entrada del producto terminado al stock, los rechazos y las reparaciones tienen que llevar el código de lote en el movimiento. Así, el historial del producto no muestra solo cantidades: muestra qué lote entró, cuál salió y por qué.</p>
+
+      <h2>Cómo probarlo antes de que haga falta</h2>
+      <p>Hacé un simulacro: elegí un lote producido el mes pasado y medí cuánto tardás en responder tres preguntas. Qué insumos y de qué proveedores se usaron. En qué otros lotes se usó el mismo lote de un insumo. Y quién liberó el lote y cuándo. Si alguna de las tres requiere buscar fuera del sistema, ahí está el punto a corregir. Si la producción todavía se lleva en planillas, el <a href="/blog/como-elegir-erp-checklist/">checklist para elegir un ERP</a> ayuda a ordenar la evaluación.</p>
+    </div>
+
+    <div class="article-cta">
+      <h3>Trazabilidad dentro de SIG</h3>
+      <p>Cada orden de producción nace con su lote. Se registra el lote, el proveedor y el vencimiento de cada insumo, se controlan los puntos críticos y Calidad libera, retiene o rechaza el lote, que sale del stock vendible hasta que se resuelva.</p>
+      <a class="btn" href="/demo/">Solicitar una demo →</a>
+    </div>
+
+    <div class="wrap" style="max-width:720px;margin:0 auto;">
+      <a class="back" href="/blog/">← Volver al blog</a>
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-logo">VERIDIAN<span>.</span></div>
+    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  </footer>
+
+  <script>document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+</body>
+</html>
