@@ -4,7 +4,7 @@
 
 Datos clave:
 - Producto: SIG (Sistema Integrado de Gestión). Veridian es la empresa, SIG es el producto.
-- Para quién: empresas de industria, comercio y servicios en Argentina, de distintos tamaños: desde pymes que quieren dejar las planillas hasta empresas con varias áreas que buscan reemplazar su sistema actual.
+- Para quién: empresas de industria, comercio y servicios en Argentina que quieren dejar las planillas o reemplazar su sistema actual.
 - Modelo: on-premise. Instalador para Windows con PostgreSQL incluido. Los datos no salen de la infraestructura del cliente.
 - Facturación electrónica ARCA vía WSFEv1: comprobantes A, B y C, notas de crédito y débito, CAE y PDF con código QR. También F.931 y cargas sociales.
 - Módulos: ventas y clientes (cotización, pedido, remito, factura, cuentas corrientes), inventario con etiquetas QR, compras, producción con lista de materiales (BOM), órdenes de trabajo de mantenimiento, contabilidad, tesorería y RRHH.
