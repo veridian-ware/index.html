@@ -34,44 +34,117 @@
 
   <!-- Datos estructurados (Schema.org) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://veridian-ware.com/#organization",
-        "name": "Veridian",
-        "url": "https://veridian-ware.com/",
-        "logo": "https://veridian-ware.com/assets/icon-512.png",
-        "email": "contacto@veridian-erp.com.ar",
-        "description": "Veridian desarrolla SIG (Sistema Integrado de Gestión), un sistema de gestión on-premise para empresas con facturación electrónica ARCA.",
-        "areaServed": "AR",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Buenos Aires",
-          "addressCountry": "AR"
-        }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://veridian-ware.com/#organization",
+      "name": "Veridian",
+      "url": "https://veridian-ware.com/",
+      "logo": "https://veridian-ware.com/assets/icon-512.png",
+      "email": "contacto@veridian-erp.com.ar",
+      "description": "Veridian desarrolla SIG (Sistema Integrado de Gestión), un sistema de gestión on-premise para empresas con facturación electrónica ARCA.",
+      "areaServed": "AR",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Buenos Aires",
+        "addressCountry": "AR"
       },
-      {
-        "@type": "WebSite",
-        "@id": "https://veridian-ware.com/#website",
-        "url": "https://veridian-ware.com/",
-        "name": "Veridian",
-        "inLanguage": "es-AR",
-        "publisher": { "@id": "https://veridian-ware.com/#organization" }
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "SIG",
-        "alternateName": "Sistema Integrado de Gestión",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Windows",
-        "description": "Sistema de gestión on-premise para empresas con facturación electrónica ARCA (WSFEv1), contabilidad, tesorería, ventas, compras, inventario con QR, producción con BOM, RRHH y mantenimiento. Una instalación por empresa.",
-        "url": "https://veridian-ware.com/",
-        "publisher": { "@id": "https://veridian-ware.com/#organization" }
+      "sameAs": [
+        "https://github.com/veridian-ware"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://veridian-ware.com/#website",
+      "url": "https://veridian-ware.com/",
+      "name": "Veridian",
+      "inLanguage": "es-AR",
+      "publisher": {
+        "@id": "https://veridian-ware.com/#organization"
       }
-    ]
-  }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "SIG",
+      "alternateName": "Sistema Integrado de Gestión",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows",
+      "description": "Sistema de gestión on-premise para empresas con facturación electrónica ARCA (WSFEv1), contabilidad, tesorería, ventas, compras, inventario con QR, producción con BOM, RRHH y mantenimiento. Una instalación por empresa.",
+      "url": "https://veridian-ware.com/",
+      "publisher": {
+        "@id": "https://veridian-ware.com/#organization"
+      },
+      "inLanguage": "es-AR",
+      "featureList": [
+        "Facturación electrónica ARCA vía WSFEv1 (A, B y C, notas de crédito y débito, CAE y QR)",
+        "F.931 y cargas sociales",
+        "Ventas: cotización, pedido, remito y factura con cuentas corrientes",
+        "Inventario con etiquetas QR y compras",
+        "Producción con lista de materiales (BOM) y órdenes de trabajo de mantenimiento",
+        "Contabilidad, tesorería y RRHH",
+        "Instalación on-premise en Windows con PostgreSQL incluido",
+        "Cifrado AES-256-GCM, roles y registro de auditoría",
+        "Backups diarios automáticos"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://veridian-ware.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Dónde se instala SIG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En tu propio servidor, que puede ser una PC dedicada en tu empresa. El instalador para Windows incluye PostgreSQL, así que no necesitás instalar nada por separado. Es una instalación por empresa: tus datos nunca salen de tu infraestructura."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Emite factura electrónica ARCA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, de forma nativa vía WSFEv1: comprobantes A, B y C, notas de crédito y débito, con CAE y PDF con código QR. Si querés entender cómo funciona por detrás, lo explicamos en esta guía sobre factura electrónica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de los módulos y del alcance de tu implementación, así que lo cotizamos por empresa. Pedí una demo y te armamos una propuesta con todos los componentes explícitos — sin costos \"a cotizar\" después de firmar. Sobre cómo comparar presupuestos de ERP escribimos esta guía de costos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si mi empresa crece?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El sistema acompaña: podés sumar usuarios y módulos sobre la misma instalación. Y si cambiás de condición fiscal (por ejemplo de Monotributo a Responsable Inscripto), la facturación se adapta sin rehacer nada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿SIG es para pymes o para empresas más grandes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para empresas de distintos tamaños: desde una pyme que quiere dejar las planillas hasta empresas con varias áreas y más usuarios. Arrancás con los módulos que necesitás y sumás usuarios y módulos sobre la misma instalación."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué incluye el soporte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Soporte local en español: errores del sistema, consultas de uso y acompañamiento en los cambios normativos de ARCA. Hablás con una persona que conoce tu instalación, no con un chat genérico."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 
   <!-- Mejora progresiva: revela el contenido sólo si hay JS (sin JS, todo queda visible) -->
@@ -791,7 +864,7 @@
             <span class="entry-link"><span class="chev">›</span> Ver el sistema funcionando</span>
           </div>
         </a>
-        <a class="entry-card reveal" href="/blog/cuanto-cuesta-erp-pyme/">
+        <a class="entry-card reveal" href="/blog/cuanto-cuesta-un-erp/">
           <img src="/assets/people/revision-costos.jpg" alt="Dos personas revisando documentos y números en una oficina" loading="lazy" />
           <div class="entry-body">
             <h3>¿Cuánto cuesta un ERP?</h3>
@@ -972,11 +1045,15 @@
         </details>
         <details class="faq-item">
           <summary>¿Cuánto cuesta?</summary>
-          <div class="faq-body">Depende de los módulos y del alcance de tu implementación, así que lo cotizamos por empresa. Pedí una demo y te armamos una propuesta con todos los componentes explícitos — sin costos "a cotizar" después de firmar. Sobre cómo comparar presupuestos de ERP escribimos <a href="/blog/cuanto-cuesta-erp-pyme/">esta guía de costos</a>.</div>
+          <div class="faq-body">Depende de los módulos y del alcance de tu implementación, así que lo cotizamos por empresa. Pedí una demo y te armamos una propuesta con todos los componentes explícitos — sin costos "a cotizar" después de firmar. Sobre cómo comparar presupuestos de ERP escribimos <a href="/blog/cuanto-cuesta-un-erp/">esta guía de costos</a>.</div>
         </details>
         <details class="faq-item">
           <summary>¿Qué pasa si mi empresa crece?</summary>
           <div class="faq-body">El sistema acompaña: podés sumar usuarios y módulos sobre la misma instalación. Y si cambiás de condición fiscal (por ejemplo de Monotributo a Responsable Inscripto), la facturación se adapta sin rehacer nada.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿SIG es para pymes o para empresas más grandes?</summary>
+          <div class="faq-body">Para empresas de distintos tamaños: desde una pyme que quiere dejar las planillas hasta empresas con varias áreas y más usuarios. Arrancás con los módulos que necesitás y sumás usuarios y módulos sobre la misma instalación.</div>
         </details>
         <details class="faq-item">
           <summary>¿Qué incluye el soporte?</summary>
@@ -993,13 +1070,13 @@
       <h2 class="section-title reveal">Guías para ordenar tu gestión</h2>
 
       <div class="posts" style="margin-top: 40px;">
-        <a class="post-card reveal" href="/blog/cuanto-cuesta-erp-pyme/">
+        <a class="post-card reveal" href="/blog/cuanto-cuesta-un-erp/">
           <span class="tag">Guía</span>
           <h3>Cuánto cuesta un ERP para tu empresa: el costo real</h3>
           <p>Modelos de precio, costos ocultos y cómo comparar presupuestos a 3 años.</p>
           <div class="meta">11 jul 2026 · 8 min</div>
         </a>
-        <a class="post-card reveal" href="/blog/como-elegir-erp-pyme-checklist/">
+        <a class="post-card reveal" href="/blog/como-elegir-erp-checklist/">
           <span class="tag">Guía</span>
           <h3>Cómo elegir un ERP para tu empresa: checklist 2026</h3>
           <p>Módulos, facturación ARCA, on-premise vs nube, costo real y soporte.</p>
