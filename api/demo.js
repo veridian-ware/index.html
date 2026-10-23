@@ -10,6 +10,7 @@
 // en cuyo caso redirige a /gracias/).
 
 const nodemailer = require('nodemailer');
+const { buildConfirmation } = require('./_confirmacion');
 
 const MAX = { nombre: 120, email: 160, empresa: 160, telefono: 40, mensaje: 2000 };
 
@@ -77,6 +78,25 @@ module.exports = async (req, res) => {
     } catch (err) {
       console.error('demo: fallo el envío SMTP', err?.message);
       return res.status(502).json({ error: 'No pudimos registrar tu solicitud. Escribinos a contacto@veridian-erp.com.ar.' });
+    }
+
+    // Confirmación al que pidió la demo. Si falla, el pedido ya quedó
+    // registrado (nos llegó el aviso de arriba), así que no se le muestra error.
+    // Se apaga sin redeploy con DEMO_SIN_CONFIRMACION=1 en Vercel.
+    if (!process.env.DEMO_SIN_CONFIRMACION) {
+      try {
+        const mail = buildConfirmation(data);
+        await transporter.sendMail({
+          from: `"SIG · Veridian" <${SMTP_USER}>`,
+          to: data.email,
+          replyTo: 'contacto@veridian-erp.com.ar',
+          subject: mail.subject,
+          text: mail.text,
+          html: mail.html,
+        });
+      } catch (err) {
+        console.error('demo: fallo la confirmación al solicitante', err?.message);
+      }
     }
   }
 
