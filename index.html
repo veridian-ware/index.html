@@ -192,7 +192,7 @@
       background: var(--night); overflow: hidden;
     }
     .stage-in { position: absolute; inset: 0 0 64px 0; display: grid; place-items: center; padding: 0 clamp(20px, 4vw, 56px); }
-    .stage .imac { width: min(100%, calc((100svh - 2 * var(--m) - 64px) * 1.25)); }
+    .stage .win { width: min(100%, calc((100svh - 2 * var(--m) - 64px - 38px) * 1.6)); }
     .slide {
       position: absolute; inset: 0;
       opacity: 0; transition: opacity 1.6s ease;
@@ -210,14 +210,15 @@
     .stage-bar span:last-child { color: var(--on-night-soft); text-align: right; }
 
 
-    /* Computadora estilo iMac que enmarca las pantallas de SIG (dibujo plano, sin sombras) */
-    .imac { width: 100%; margin: 0 auto; }
-    .imac-screen { position: relative; background: #111214; padding: 2.4% 2.4% 2.4%; border-radius: 14px 14px 0 0; }
-    .imac-view { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #05070C; }
-    .imac-view > img, .imac-view > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .imac-chin { aspect-ratio: 100 / 7.5; background: #D7DBE1; border-radius: 0 0 14px 14px; }
-    .imac-stand { width: 18%; aspect-ratio: 18 / 13; margin: 0 auto; background: #C3C8CF; clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%); }
-    .imac-foot { width: 30%; height: 6px; margin: 0 auto; background: #C3C8CF; border-radius: 3px 3px 0 0; }
+    /* Ventana estilo macOS que enmarca las pantallas de SIG (como en los videos de SIG) */
+    .win { width: 100%; margin: 0 auto; background: #1A1D24; border-radius: 12px; overflow: hidden; }
+    .win-bar { position: relative; height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 14px; background: #22262F; }
+    .win-bar i { width: 12px; height: 12px; border-radius: 50%; background: #FF5F57; }
+    .win-bar i:nth-child(2) { background: #FEBC2E; }
+    .win-bar i:nth-child(3) { background: #28C840; }
+    .win-bar span { position: absolute; left: 50%; transform: translateX(-50%); font-size: 13px; font-weight: 500; color: #A3ABBD; white-space: nowrap; }
+    .win-view { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #05070C; }
+    .win-view > img, .win-view > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
     /* ---------- Una venta: entrada y salida ---------- */
     .io { display: grid; grid-template-columns: 1fr 1fr; margin-top: var(--gap); }
@@ -371,7 +372,7 @@
       .hero-foot { margin-top: 32px; }
       .stage-bar { height: 52px; font-size: 13px; padding: 0 14px; }
       .stage-in { bottom: 52px; padding: 0 20px; }
-      .stage .imac { width: min(100%, calc((56svh - 52px) * 1.25)); }
+      .stage .win { width: min(100%, calc((56svh - 52px - 38px) * 1.6)); }
 
       .io { grid-template-columns: 1fr; }
       .io > div { min-height: 62svh; padding: 48px 20px 110px; }
@@ -455,8 +456,9 @@
 
     <div class="stage" aria-label="Grabaciones reales de SIG">
       <div class="stage-in">
-    <figure class="imac">
-      <div class="imac-screen"><div class="imac-view">
+    <figure class="win">
+      <div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><span id="winTitle">SIG — Dashboard</span></div>
+      <div class="win-view">
       <div class="slide on" data-label="Dashboard">
         <video muted loop playsinline preload="metadata" poster="/assets/videos/poster-dashboard.jpg" width="1920" height="1080" aria-label="Grabación real del Dashboard de SIG">
           <source src="/assets/videos/dashboard.webm" type="video/webm"><source src="/assets/videos/dashboard.mp4" type="video/mp4">
@@ -487,8 +489,7 @@
           <source src="/assets/videos/rrhh.webm" type="video/webm"><source src="/assets/videos/rrhh.mp4" type="video/mp4">
         </video>
       </div>
-</div></div>
-      <div class="imac-chin"></div><div class="imac-stand"></div><div class="imac-foot"></div>
+</div>
     </figure>
       </div>
       <div class="stage-bar">
@@ -751,9 +752,9 @@
 
   <footer class="foot">
     <div class="foot-pic">
-      <figure class="imac">
-      <div class="imac-screen"><div class="imac-view"><img src="/assets/videos/poster-produccion.jpg" alt="Pantalla de Producción de SIG con las órdenes en curso" width="1920" height="1080" loading="lazy"></div></div>
-      <div class="imac-chin"></div><div class="imac-stand"></div><div class="imac-foot"></div>
+      <figure class="win">
+      <div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><span>SIG — Producción</span></div>
+      <div class="win-view"><img src="/assets/videos/poster-produccion.jpg" alt="Pantalla de Producción de SIG con las órdenes en curso" width="1920" height="1080" loading="lazy"></div>
     </figure>
     </div>
     <div class="foot-menu">
@@ -782,7 +783,7 @@
 
     /* Escenario: las grabaciones se van alternando */
     var slides = [].slice.call(document.querySelectorAll('.slide'));
-    var label = document.getElementById('stageLabel');
+    var label = document.getElementById('stageLabel'), winTitle = document.getElementById('winTitle');
     var cur = 0, timer = null;
     function show(i) {
       slides[cur].classList.remove('on');
@@ -791,6 +792,7 @@
       var s = slides[cur], v = s.querySelector('video');
       s.classList.add('on');
       label.textContent = 'SIG · ' + s.dataset.label;
+      winTitle.textContent = 'SIG — ' + s.dataset.label;
       if (!reduce && v) { v.preload = 'auto'; v.play().catch(function () {}); }
       if (old && old !== v) setTimeout(function () { old.pause(); }, 1700);
     }
