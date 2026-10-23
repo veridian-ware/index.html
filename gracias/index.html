@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>¡Gracias! — Veridian</title>
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="theme-color" content="#f9faf8" />
+  <meta name="theme-color" content="#F3F5F9" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
@@ -13,57 +13,58 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,400;1,9..144,560&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/blog.css" />
   <style>
-    .gracias {
-      min-height: 72vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 80px 24px;
-    }
-    .gracias .check {
-      width: 64px; height: 64px; border: 2px solid var(--accent); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 32px; color: var(--accent); font-size: 28px;
-    }
-    .gracias .eyebrow { justify-content: center; margin-bottom: 18px; }
-    .gracias h1 { font-family: var(--serif); font-weight: 560; font-size: clamp(48px, 7vw, 88px); line-height: 1.02; letter-spacing: -0.02em; }
-    .gracias h1 em { font-style: italic; color: var(--accent); }
-    .gracias p.msg { color: var(--muted); font-size: 17px; line-height: 1.7; max-width: 480px; margin: 26px 0 40px; }
-    .gracias p.msg strong { color: var(--text); font-weight: 600; }
-    .actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-    .btn-ghost { color: var(--muted); font-size: 14px; font-weight: 500; text-decoration: none; padding: 13px 24px; border: 1px solid var(--border); border-radius: 6px; background: var(--card); transition: color .2s, border-color .2s; }
-    .btn-ghost:hover { color: var(--text); border-color: var(--accent); }
+    .gracias { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: clamp(80px, 16vh, 180px) var(--in) clamp(120px, 18vh, 200px); align-items: end; }
+    .gracias h1 { font-size: var(--display); }
+    .gracias p { font-size: var(--lead); line-height: 1.4; }
+    .gracias .row { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; margin-top: 32px; font-size: var(--small); }
+    @media (max-width: 900px) { .gracias { grid-template-columns: 1fr; padding: 64px 20px 96px; } }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="logo">VERIDIAN<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="/#modulos">Módulos</a></li>
-      <li><a href="/#producto">El producto</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/#contacto">Contacto</a></li>
-    </ul>
+  <nav class="top" aria-label="Principal">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <div class="top-links">
+      <a class="hide-m" href="/#paquetes">Paquetes</a>
+      <a href="/blog/">Blog</a>
+      <a class="btn" href="/demo/">Pedir una demo</a>
+    </div>
   </nav>
 
   <main class="gracias">
-    <div class="check">✓</div>
-    <p class="eyebrow">Solicitud recibida</p>
-    <h1>¡Gracias!</h1>
-    <p class="msg">Recibimos tus datos. Te contactamos dentro de las <strong>24-48 hs hábiles</strong> para mostrarte SIG y resolver tus dudas.</p>
-    <div class="actions">
-      <a class="btn" href="/">Volver al inicio</a>
-      <a class="btn-ghost" href="/blog/">Leer el blog</a>
+    <h1 class="rv">Recibimos tu pedido.</h1>
+    <div class="rv" style="--i:1">
+      <p>Gracias. Te escribimos dentro de las próximas 24 a 48 horas hábiles para coordinar la demo de SIG con los casos de tu empresa.</p>
+      <div class="row">
+        <a class="btn" href="/">Volver al inicio</a>
+        <a class="link" href="/blog/">Leer las guías</a>
+      </div>
     </div>
   </main>
 
-  <footer>
-    <div class="footer-logo">VERIDIAN<span>.</span></div>
-    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  <footer class="foot">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/#paquetes">Paquetes</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/demo/">Pedir una demo</a></li>
+    </ul>
+    <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina · <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
   </footer>
 
-  <script>document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+  <script>
+    document.querySelectorAll('.current-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+    (function () {
+      var els = document.querySelectorAll('.rv');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+      document.documentElement.classList.add('anim');
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <title>Factura electrónica ARCA (WSFEv1): qué necesitás para emitir | Veridian</title>
   <meta name="description" content="Checklist para emitir factura electrónica en Argentina: clave fiscal, punto de venta, certificado digital y CAE. Guía ARCA (WSFEv1) para empresas." />
   <link rel="canonical" href="https://veridian-ware.com/blog/factura-electronica-arca-wsfev1/" />
-  <meta name="theme-color" content="#f9faf8" />
+  <meta name="theme-color" content="#F3F5F9" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,400;1,9..144,560&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/blog.css" />
 
   <script type="application/ld+json">
@@ -73,31 +73,45 @@
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="logo">VERIDIAN<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="/#modulos">Módulos</a></li>
-      <li><a href="/#producto">El producto</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/#contacto">Contacto</a></li>
-    </ul>
+  <nav class="top" aria-label="Principal">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <div class="top-links">
+      <a class="hide-m" href="/#paquetes">Paquetes</a>
+      <a href="/blog/">Blog</a>
+      <a class="btn" href="/demo/">Pedir una demo</a>
+    </div>
   </nav>
 
   <article>
     <div class="article-head">
-      <div class="meta">Guía · 8 jun 2026 · 7 min de lectura</div>
-      <h1>Factura electrónica ARCA <em>(WSFEv1)</em>: qué necesitás para emitir</h1>
+      <div>
+      <h1 class="rv">Factura electrónica ARCA (WSFEv1): qué necesitás para emitir</h1>
+      <div class="meta rv" style="--i:1">Guía · 8 jun 2026 · 7 min de lectura</div>
+      </div>
+      <img class="head-pic rv" style="--i:2" src="/assets/videos/poster-ventas.jpg" alt="Pantalla de Ventas de SIG con las facturas emitidas" width="1920" height="1080">
     </div>
 
-    <div class="prose">
+    <div class="article-body">
+      <nav class="toc" aria-label="En esta guía">
+        <p>En esta guía</p>
+        <ol>
+          <li><a href="#los-dos-caminos-para-emitir">Los dos caminos para emitir</a></li>
+          <li><a href="#que-necesitas-el-checklist">Qué necesitás: el checklist</a></li>
+          <li><a href="#como-funciona-la-emision-por-web-service">Cómo funciona la emisión por web service</a></li>
+          <li><a href="#fricciones-comunes-y-como-evitarlas">Fricciones comunes (y cómo evitarlas)</a></li>
+          <li><a href="#hacerlo-desde-tu-erp">Hacerlo desde tu ERP</a></li>
+        </ol>
+        <a class="back" href="/blog/">← Todas las guías</a>
+      </nav>
+      <div class="prose">
       <p>Si facturás en Argentina, la factura electrónica no es opcional: es el estándar para casi todas las actividades. La buena noticia es que el camino es claro una vez que sabés qué piezas necesitás. Esta guía resume lo que hace falta para empezar a emitir, ya sea desde el portal o integrándolo a tu sistema de gestión.</p>
 
 
-      <h2>Los dos caminos para emitir</h2>
+      <h2 id="los-dos-caminos-para-emitir">Los dos caminos para emitir</h2>
       <p><strong>Comprobantes en línea.</strong> El portal web de ARCA donde cargás cada comprobante a mano. Es gratis, no necesita certificado y sirve si emitís pocas facturas por mes.</p>
       <p><strong>Web Service (WSFEv1).</strong> Tu sistema —un ERP o software de gestión— se conecta directo a ARCA y emite de forma automática. Requiere un certificado digital, pero es lo que necesitás si facturás volumen o querés que todo quede integrado con ventas, stock y contabilidad.</p>
 
-      <h2>Qué necesitás: el checklist</h2>
+      <h2 id="que-necesitas-el-checklist">Qué necesitás: el checklist</h2>
       <ul>
         <li><strong>CUIT y alta fiscal</strong> — estar inscripto como Responsable Inscripto o Monotributo.</li>
         <li><strong>Clave fiscal con nivel de seguridad 3</strong> — es el nivel que habilita a operar estos servicios.</li>
@@ -106,7 +120,7 @@
         <li><strong>(Solo para web service) Certificado digital</strong> — generás una clave privada y un pedido de certificado (CSR) que subís a ARCA para obtener tu certificado (<code>.crt</code>). Ese certificado es lo que autentica a tu sistema ante ARCA.</li>
       </ul>
 
-      <h2>Cómo funciona la emisión por web service</h2>
+      <h2 id="como-funciona-la-emision-por-web-service">Cómo funciona la emisión por web service</h2>
       <p>Cuando emitís con WSFEv1, el flujo es así:</p>
       <ol>
         <li>Tu sistema se autentica con <strong>WSAA</strong> (el servicio de autenticación de ARCA) usando el certificado, y obtiene un <em>ticket de acceso</em> temporal.</li>
@@ -116,7 +130,7 @@
       </ol>
       <p>Todo esto ocurre en segundos y queda transparente para quien factura: cargás la venta y el sistema hace el resto.</p>
 
-      <h2>Fricciones comunes (y cómo evitarlas)</h2>
+      <h2 id="fricciones-comunes-y-como-evitarlas">Fricciones comunes (y cómo evitarlas)</h2>
       <ul>
         <li><strong>Certificado vencido o mal asociado</strong> al servicio → la emisión falla. Conviene renovarlo antes de que caduque.</li>
         <li><strong>Punto de venta equivocado</strong> — usar el de "Comprobantes en línea" para web service es un clásico error.</li>
@@ -124,28 +138,40 @@
         <li><strong>Homologación vs producción</strong> — ARCA tiene un entorno de prueba (homologación) para validar todo antes de emitir en serio.</li>
       </ul>
 
-      <h2>Hacerlo desde tu ERP</h2>
+      <h2 id="hacerlo-desde-tu-erp">Hacerlo desde tu ERP</h2>
       <p>Toda esta plomería —generar la clave y el CSR, asociar el certificado, autenticarse con WSAA, pedir el CAE y armar el PDF con QR— es justo lo que un buen sistema de gestión resuelve por vos. <strong>SIG</strong> incluye un asistente de credenciales (genera la clave, el CSR y prueba la conexión) y emite comprobantes A/B/C y notas de crédito/débito con su CAE, PDF y QR, integrados con ventas y contabilidad.</p>
 
       <p>Para casos puntuales de tu situación fiscal, consultá siempre con tu contador.</p>
+      </div>
     </div>
 
     <div class="article-cta">
       <h3>Facturá ARCA sin dolores de cabeza</h3>
       <p>SIG automatiza WSFEv1 de punta a punta: credenciales, CAE, PDF y QR, integrado con tu operación. On-premise, llave en mano.</p>
-      <a class="btn" href="/demo/">Solicitar una demo →</a>
-    </div>
-
-    <div class="wrap" style="max-width:720px;margin:0 auto;">
-      <a class="back" href="/blog/">← Volver al blog</a>
+      <a class="btn" href="/demo/">Pedir una demo</a>
     </div>
   </article>
 
-  <footer>
-    <div class="footer-logo">VERIDIAN<span>.</span></div>
-    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  <footer class="foot">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/#paquetes">Paquetes</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/demo/">Pedir una demo</a></li>
+    </ul>
+    <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina · <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
   </footer>
 
-  <script>document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+  <script>
+    document.querySelectorAll('.current-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+    (function () {
+      var els = document.querySelectorAll('.rv');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+      document.documentElement.classList.add('anim');
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
 </body>
 </html>

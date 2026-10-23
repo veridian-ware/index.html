@@ -6,7 +6,7 @@
   <title>Blog — Veridian | ERP, facturación ARCA y gestión empresarial</title>
   <meta name="description" content="Guías y recursos sobre ERP, facturación electrónica ARCA y gestión empresarial, del equipo de Veridian." />
   <link rel="canonical" href="https://veridian-ware.com/blog/" />
-  <meta name="theme-color" content="#f9faf8" />
+  <meta name="theme-color" content="#F3F5F9" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
@@ -22,97 +22,113 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,400;1,9..144,560&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/blog.css" />
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="logo">VERIDIAN<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="/#modulos">Módulos</a></li>
-      <li><a href="/#producto">El producto</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/#contacto">Contacto</a></li>
-    </ul>
+  <nav class="top" aria-label="Principal">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <div class="top-links">
+      <a class="hide-m" href="/#paquetes">Paquetes</a>
+      <a href="/blog/">Blog</a>
+      <a class="btn" href="/demo/">Pedir una demo</a>
+    </div>
   </nav>
 
   <header class="blog-head">
-    <div class="wrap">
-      <p class="eyebrow">Blog · Recursos</p>
-      <h1>Gestión, ERP y<br><em>facturación ARCA</em></h1>
-      <p>Guías prácticas para empresas que quieren ordenar su operación: facturación electrónica, contabilidad, stock, producción y más.</p>
+    <h1 class="rv">Guías para ordenar tu gestión.</h1>
+    <div class="rv" style="--i:1">
+      <p>Facturación electrónica, costos de un ERP, sueldos, producción y mantenimiento, explicados para quien decide en una empresa industrial.</p>
     </div>
+    <video class="blog-video rv" style="--i:2" muted loop playsinline autoplay poster="/assets/videos/poster-contabilidad.jpg" width="1920" height="1080" aria-label="Grabación real de Contabilidad en SIG">
+      <source src="/assets/videos/contabilidad.webm" type="video/webm"><source src="/assets/videos/contabilidad.mp4" type="video/mp4">
+    </video>
   </header>
 
-  <main class="wrap">
+  <main>
     <div class="posts">
 
       <!-- Para sumar un artículo, copiá una tarjeta y apuntá el href a /blog/<slug>/ -->
-      <a class="post-card" href="/blog/liquidacion-de-sueldos-y-f931/">
-        <span class="tag">Guía</span>
-        <h2>Liquidación de sueldos y F.931: qué tiene que resolver tu sistema</h2>
-        <p>Convenios, horas extra al 50 % y al 100 %, licencias de la LCT, aguinaldo y F.931: qué revisar antes de elegir un sistema.</p>
-        <div class="meta">5 oct 2026 · 8 min de lectura</div>
+      <a class="post-card rv" href="/blog/liquidacion-de-sueldos-y-f931/">
+        <img class="pic" src="/assets/videos/poster-rrhh.jpg" alt="Pantalla de Sueldos de SIG con la nómina del mes" width="1920" height="1080" loading="lazy">
+        <div class="body"><h2>Sueldos y F.931: qué revisar</h2>
+          <p>Convenios, horas extra al 50 % y al 100 %, licencias de la LCT, aguinaldo y F.931: qué revisar antes de elegir un sistema.</p>
+          <div class="meta">5 oct 2026 · 8 min de lectura</div></div>
       </a>
 
-      <a class="post-card" href="/blog/trazabilidad-de-lotes-en-produccion/">
-        <span class="tag">Guía</span>
-        <h2>Trazabilidad de lotes en producción: cómo responder en minutos</h2>
-        <p>Lote de cada insumo, controles por etapa, liberación de calidad y cuarentena: qué registrar para responder una auditoría en minutos.</p>
-        <div class="meta">5 oct 2026 · 7 min de lectura</div>
+      <a class="post-card rv" href="/blog/trazabilidad-de-lotes-en-produccion/">
+        <img class="pic" src="/assets/videos/poster-produccion.jpg" alt="Pantalla de Producción de SIG con las órdenes en curso" width="1920" height="1080" loading="lazy">
+        <div class="body"><h2>Trazabilidad de lotes en producción</h2>
+          <p>Lote de cada insumo, controles por etapa, liberación de calidad y cuarentena: qué registrar para responder una auditoría en minutos.</p>
+          <div class="meta">5 oct 2026 · 7 min de lectura</div></div>
       </a>
 
-      <a class="post-card" href="/blog/plan-de-mantenimiento-preventivo/">
-        <span class="tag">Guía</span>
-        <h2>Plan de mantenimiento preventivo: cómo armarlo y sostenerlo</h2>
-        <p>Equipos, frecuencias, órdenes de trabajo que se generan solas, repuestos e indicadores: un plan preventivo que se cumple.</p>
-        <div class="meta">5 oct 2026 · 7 min de lectura</div>
+      <a class="post-card rv" href="/blog/plan-de-mantenimiento-preventivo/">
+        <img class="pic" src="/assets/videos/poster-dashboard.jpg" alt="Dashboard de SIG con las órdenes de trabajo pendientes" width="1920" height="1080" loading="lazy">
+        <div class="body"><h2>Plan de mantenimiento preventivo</h2>
+          <p>Equipos, frecuencias, órdenes de trabajo que se generan solas, repuestos e indicadores: un plan preventivo que se cumple.</p>
+          <div class="meta">5 oct 2026 · 7 min de lectura</div></div>
       </a>
 
-      <a class="post-card" href="/blog/cuanto-cuesta-un-erp/">
-        <span class="tag">Guía</span>
-        <h2>Cuánto cuesta un ERP para tu empresa: el costo real</h2>
-        <p>Modelos de precio (suscripción, licencia, open source), los cinco componentes del costo y cómo comparar presupuestos a 3 años.</p>
-        <div class="meta">11 jul 2026 · 8 min de lectura</div>
+      <a class="post-card rv" href="/blog/cuanto-cuesta-un-erp/">
+        <img class="pic" src="/assets/videos/poster-contabilidad.jpg" alt="Libro diario de SIG con los asientos del mes" width="1920" height="1080" loading="lazy">
+        <div class="body"><h2>Cuánto cuesta un ERP, de verdad</h2>
+          <p>Modelos de precio (suscripción, licencia, open source), los cinco componentes del costo y cómo comparar presupuestos a 3 años.</p>
+          <div class="meta">11 jul 2026 · 8 min de lectura</div></div>
       </a>
 
-      <a class="post-card" href="/blog/como-elegir-erp-checklist/">
-        <span class="tag">Guía</span>
-        <h2>Cómo elegir un ERP para tu empresa: checklist 2026</h2>
-        <p>Módulos, facturación ARCA, on-premise vs nube, costo real, implementación y soporte: el checklist para elegir sin equivocarte.</p>
-        <div class="meta">15 jun 2026 · 8 min de lectura</div>
+      <a class="post-card rv" href="/blog/como-elegir-erp-checklist/">
+        <img class="pic" src="/assets/videos/poster-dashboard.jpg" alt="Dashboard de SIG con ventas, gastos y vencimientos ARCA" width="1920" height="1080" loading="lazy">
+        <div class="body"><h2>Cómo elegir un ERP: checklist</h2>
+          <p>Módulos, facturación ARCA, on-premise vs nube, costo real, implementación y soporte: el checklist para elegir sin equivocarte.</p>
+          <div class="meta">15 jun 2026 · 8 min de lectura</div></div>
       </a>
 
-      <a class="post-card" href="/blog/monotributo-vs-responsable-inscripto-facturacion/">
-        <span class="tag">Guía</span>
-        <h2>Monotributo vs Responsable Inscripto: cómo cambia tu facturación</h2>
-        <p>Qué comprobantes emitís (C vs A/B), cómo funciona el IVA y por qué tu condición fiscal influye en a quién le vendés.</p>
-        <div class="meta">15 jun 2026 · 7 min de lectura</div>
+      <a class="post-card rv" href="/blog/monotributo-vs-responsable-inscripto-facturacion/">
+        <img class="pic" src="/assets/videos/poster-ventas.jpg" alt="Pantalla de Ventas de SIG con pedidos y facturas" width="1920" height="1080" loading="lazy">
+        <div class="body"><h2>Monotributo o Responsable Inscripto</h2>
+          <p>Qué comprobantes emitís (C vs A/B), cómo funciona el IVA y por qué tu condición fiscal influye en a quién le vendés.</p>
+          <div class="meta">15 jun 2026 · 7 min de lectura</div></div>
       </a>
 
-      <a class="post-card" href="/blog/factura-electronica-arca-wsfev1/">
-        <span class="tag">Guía</span>
-        <h2>Factura electrónica ARCA (WSFEv1): qué necesitás para emitir</h2>
-        <p>Clave fiscal, punto de venta, certificado digital y CAE. El checklist para emitir, desde el portal o desde tu sistema.</p>
-        <div class="meta">8 jun 2026 · 7 min de lectura</div>
+      <a class="post-card rv" href="/blog/factura-electronica-arca-wsfev1/">
+        <img class="pic" src="/assets/videos/poster-ventas.jpg" alt="Pantalla de Ventas de SIG con las facturas emitidas" width="1920" height="1080" loading="lazy">
+        <div class="body"><h2>Factura electrónica ARCA (WSFEv1)</h2>
+          <p>Clave fiscal, punto de venta, certificado digital y CAE. El checklist para emitir, desde el portal o desde tu sistema.</p>
+          <div class="meta">8 jun 2026 · 7 min de lectura</div></div>
       </a>
 
-      <a class="post-card" href="/blog/erp-on-premise-vs-nube/">
-        <span class="tag">Guía</span>
-        <h2>ERP on-premise vs ERP en la nube: qué conviene a tu empresa</h2>
-        <p>Dónde viven tus datos, cómo pagás y qué pasa con ARCA. Comparamos los dos modelos para que elijas con criterio.</p>
-        <div class="meta">8 jun 2026 · 6 min de lectura</div>
+      <a class="post-card rv" href="/blog/erp-on-premise-vs-nube/">
+        <img class="pic" src="/assets/videos/poster-compras.jpg" alt="Pantalla de Compras de SIG con importaciones en curso" width="1920" height="1080" loading="lazy">
+        <div class="body"><h2>ERP en tu servidor o en la nube</h2>
+          <p>Dónde viven tus datos, cómo pagás y qué pasa con ARCA. Comparamos los dos modelos para que elijas con criterio.</p>
+          <div class="meta">8 jun 2026 · 6 min de lectura</div></div>
       </a>
 
     </div>
   </main>
 
-  <footer>
-    <div class="footer-logo">VERIDIAN<span>.</span></div>
-    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  <footer class="foot">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/#paquetes">Paquetes</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/demo/">Pedir una demo</a></li>
+    </ul>
+    <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina · <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
   </footer>
 
-  <script>document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+  <script>
+    document.querySelectorAll('.current-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+    (function () {
+      var els = document.querySelectorAll('.rv');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+      document.documentElement.classList.add('anim');
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <title>ERP on-premise vs ERP en la nube: qué conviene | Veridian</title>
   <meta name="description" content="On-premise o nube: dónde viven tus datos, cómo pagás y qué pasa con la facturación ARCA. Guía para elegir el ERP correcto para tu empresa." />
   <link rel="canonical" href="https://veridian-ware.com/blog/erp-on-premise-vs-nube/" />
-  <meta name="theme-color" content="#f9faf8" />
+  <meta name="theme-color" content="#F3F5F9" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,400;1,9..144,560&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/blog.css" />
 
   <script type="application/ld+json">
@@ -73,30 +73,44 @@
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="logo">VERIDIAN<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="/#modulos">Módulos</a></li>
-      <li><a href="/#producto">El producto</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/#contacto">Contacto</a></li>
-    </ul>
+  <nav class="top" aria-label="Principal">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <div class="top-links">
+      <a class="hide-m" href="/#paquetes">Paquetes</a>
+      <a href="/blog/">Blog</a>
+      <a class="btn" href="/demo/">Pedir una demo</a>
+    </div>
   </nav>
 
   <article>
     <div class="article-head">
-      <div class="meta">Guía · 8 jun 2026 · 6 min de lectura</div>
-      <h1>ERP on-premise vs ERP en la nube: qué conviene a <em>tu empresa</em></h1>
+      <div>
+      <h1 class="rv">ERP on-premise vs ERP en la nube: qué conviene a tu empresa</h1>
+      <div class="meta rv" style="--i:1">Guía · 8 jun 2026 · 6 min de lectura</div>
+      </div>
+      <img class="head-pic rv" style="--i:2" src="/assets/videos/poster-compras.jpg" alt="Pantalla de Compras de SIG con importaciones en curso" width="1920" height="1080">
     </div>
 
-    <div class="prose">
+    <div class="article-body">
+      <nav class="toc" aria-label="En esta guía">
+        <p>En esta guía</p>
+        <ol>
+          <li><a href="#que-significa-cada-modelo">Qué significa cada modelo</a></li>
+          <li><a href="#ventajas-del-on-premise-para-tu-empresa">Ventajas del on-premise para tu empresa</a></li>
+          <li><a href="#cuando-conviene-la-nube">Cuándo conviene la nube</a></li>
+          <li><a href="#el-factor-arca">El factor ARCA</a></li>
+          <li><a href="#entonces-cual-elijo">Entonces, ¿cuál elijo?</a></li>
+        </ol>
+        <a class="back" href="/blog/">← Todas las guías</a>
+      </nav>
+      <div class="prose">
       <p>Cuando una empresa elige su ERP suele enfocarse en las funciones: stock, facturación, contabilidad. Pero hay una decisión previa que define todo lo demás: <strong>dónde corre el sistema y dónde viven tus datos</strong>. Ahí aparecen los dos modelos —<strong>on-premise</strong> y <strong>nube (SaaS)</strong>— y cada uno tiene consecuencias concretas en costo, control y privacidad.</p>
 
-      <h2>Qué significa cada modelo</h2>
+      <h2 id="que-significa-cada-modelo">Qué significa cada modelo</h2>
       <p>En un ERP <strong>on-premise</strong>, el software se instala en un servidor propio de la empresa. Los datos quedan en tu infraestructura y vos tenés el control: backups, accesos, versiones e integraciones.</p>
       <p>En un ERP <strong>en la nube</strong> (SaaS), el software corre en los servidores del proveedor. Accedés por internet y pagás una suscripción, normalmente mensual y por usuario.</p>
 
-      <h2>Ventajas del on-premise para tu empresa</h2>
+      <h2 id="ventajas-del-on-premise-para-tu-empresa">Ventajas del on-premise para tu empresa</h2>
       <ul>
         <li><strong>Tus datos en tu servidor.</strong> La información comercial, fiscal y de clientes no sale de tu empresa ni depende de la nube de un tercero.</li>
         <li><strong>Costo previsible.</strong> Una licencia o pago único en lugar de una mensualidad que crece con cada usuario que sumás.</li>
@@ -104,7 +118,7 @@
         <li><strong>Control total.</strong> Vos decidís cuándo actualizar, cómo respaldar y con qué integrar.</li>
       </ul>
 
-      <h2>Cuándo conviene la nube</h2>
+      <h2 id="cuando-conviene-la-nube">Cuándo conviene la nube</h2>
       <p>El SaaS no es "peor" — resuelve mejor otros escenarios:</p>
       <ul>
         <li>Equipos muy distribuidos que necesitan entrar desde cualquier lado sin configurar nada.</li>
@@ -112,36 +126,48 @@
         <li>Necesidad de escalar rápido sin instalar.</li>
       </ul>
 
-      <h2>El factor ARCA</h2>
+      <h2 id="el-factor-arca">El factor ARCA</h2>
       <p>Para una empresa argentina, la <strong>facturación electrónica ARCA (WSFEv1)</strong> es innegociable. Los dos modelos pueden emitir comprobantes válidos; lo que importa es que el ERP gestione bien los <strong>certificados, los puntos de venta y los tipos de comprobante</strong> (A/B/C, notas de crédito y débito). En on-premise, además, tus certificados y datos fiscales quedan guardados en tu propio servidor.</p>
 
       <blockquote>La pregunta no es "¿nube o no?", sino "¿qué quiero priorizar: cero mantenimiento, o control y previsibilidad de costos?"</blockquote>
 
-      <h2>Entonces, ¿cuál elijo?</h2>
+      <h2 id="entonces-cual-elijo">Entonces, ¿cuál elijo?</h2>
       <p>Una guía simple:</p>
       <ul>
         <li>Si valorás <strong>privacidad de los datos, costo previsible y control</strong> → on-premise.</li>
         <li>Si priorizás <strong>acceso remoto masivo y cero mantenimiento de servidores</strong> → nube.</li>
       </ul>
       <p>Para muchas empresas, el on-premise da tranquilidad sobre los datos y evita la mensualidad que se vuelve cara a medida que el equipo crece.</p>
+      </div>
     </div>
 
     <div class="article-cta">
       <h3>SIG es on-premise</h3>
       <p>Una instalación por empresa, tus datos en tu servidor, con facturación ARCA, contabilidad, ventas, stock y producción. Llave en mano.</p>
-      <a class="btn" href="/demo/">Solicitar una demo →</a>
-    </div>
-
-    <div class="wrap" style="max-width:720px;margin:0 auto;">
-      <a class="back" href="/blog/">← Volver al blog</a>
+      <a class="btn" href="/demo/">Pedir una demo</a>
     </div>
   </article>
 
-  <footer>
-    <div class="footer-logo">VERIDIAN<span>.</span></div>
-    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  <footer class="foot">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/#paquetes">Paquetes</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/demo/">Pedir una demo</a></li>
+    </ul>
+    <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina · <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
   </footer>
 
-  <script>document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+  <script>
+    document.querySelectorAll('.current-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+    (function () {
+      var els = document.querySelectorAll('.rv');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+      document.documentElement.classList.add('anim');
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <title>Solicitar una demo — SIG de Veridian</title>
   <meta name="description" content="Pedí una demo de SIG: contanos cómo trabaja tu empresa y te mostramos el sistema resolviendo tu operación real. Respuesta en 24-48 hs hábiles." />
   <link rel="canonical" href="https://veridian-ware.com/demo/" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#F3F5F9" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
@@ -22,249 +22,70 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/blog.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #ffffff;
-      --band: #f5f5f4;
-      --card: #ffffff;
-      --border: #e6e6e6;
-      --border-strong: #d1d1d1;
-      --ink: #161616;
-      --muted: #4f4f4f;
-      --blue: #0f52a2;
-      --blue-dark: #0c4283;
-      --link: #0e62ad;
-      --lime: #c8f542; /* lima del logo — no cambiar */
-      --grad: linear-gradient(105deg, #cdee58 0%, #f6d75a 48%, #ffb45e 100%);
-      --sans: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
-      --ease: cubic-bezier(0.33, 0, 0.1, 1);
-      --shadow-card: 0 1.6px 3.6px rgba(0,0,0,0.10), 0 6px 14px rgba(0,0,0,0.10);
-      --shadow-float: 0 6px 14px rgba(0,0,0,0.10), 0 24px 60px rgba(0,0,0,0.14);
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    h1 { font-weight: 600; text-wrap: balance; }
-    ::selection { background: var(--blue); color: #fff; }
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-      outline: 2px solid var(--ink);
-      outline-offset: 2px;
-      border-radius: 4px;
-    }
-
-    /* nav flotante tipo píldora, como la home */
-    nav {
-      position: fixed;
-      top: 16px; left: 50%;
-      transform: translateX(-50%);
-      width: min(1200px, calc(100% - 32px));
-      z-index: 100;
-      background: var(--card);
-      border-radius: 14px;
-      box-shadow: var(--shadow-card);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 12px 24px;
-    }
-    .logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 25px;
-      letter-spacing: 0.12em;
-      color: var(--ink);
-      text-decoration: none;
-    }
-    .logo span { color: var(--lime); }
-    .nav-back {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: color 0.15s var(--ease);
-    }
-    .nav-back:hover { color: var(--blue); }
-
-    main {
-      flex: 1;
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 140px 40px 96px;
-      display: grid;
-      grid-template-columns: minmax(300px, 420px) minmax(360px, 560px);
-      gap: 72px;
-      justify-content: center;
-      align-items: start;
-    }
-
-    .kicker {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #6e6e6e;
-      margin-bottom: 14px;
-    }
-    .intro h1 {
-      font-size: clamp(32px, 3.6vw, 46px);
-      line-height: 1.12;
-      letter-spacing: -0.01em;
-      margin-bottom: 16px;
-    }
-    .intro > p { color: var(--muted); margin-bottom: 28px; max-width: 46ch; }
-    .intro ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-    .intro li { display: flex; gap: 12px; align-items: center; font-size: 15px; }
-    .intro li::before {
-      content: '✓';
-      flex-shrink: 0;
-      width: 24px; height: 24px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700;
-      color: #fff;
-      background: var(--blue);
-      border-radius: 50%;
-    }
-    .intro .mail { margin-top: 32px; font-size: 14px; color: var(--muted); }
-    .intro .mail a { color: var(--link); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-
-    /* tarjeta del form con el resplandor sutil detrás, como la home */
-    .form-wrap { position: relative; z-index: 0; }
-    .form-wrap::before {
-      content: '';
-      position: absolute;
-      inset: 24% 6% 1%;
-      background: var(--grad);
-      border-radius: 40px;
-      filter: blur(36px);
-      opacity: 0.32;
-      z-index: -1;
-      pointer-events: none;
-    }
-    .form-card {
-      background: var(--card);
-      border-radius: 16px;
-      box-shadow: var(--shadow-float);
-      padding: 40px;
-    }
-    .field { margin-bottom: 20px; }
-    .field label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 7px;
-    }
-    .field label small { font-weight: 400; color: var(--muted); }
+    .demo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--m); padding: 0 var(--m) var(--m); min-height: calc(100svh - 88px); }
+    .intro { padding: clamp(48px, 10vh, 120px) calc(var(--in) - var(--m)) 64px; display: grid; align-content: space-between; gap: 64px; }
+    .intro h1 { font-size: var(--display); max-width: 10ch; }
+    .intro .lead { font-size: var(--lead); line-height: 1.4; margin-top: 32px; max-width: 34ch; }
+    .intro ol { list-style: none; display: grid; gap: 20px; max-width: 40ch; }
+    .intro ol b { display: block; font-weight: 650; }
+    .intro .mail { font-size: var(--small); margin-top: 32px; }
+    .form-card { background: var(--paper-2); padding: clamp(32px, 5vw, 72px); }
+    .field { margin-bottom: 22px; }
+    .field label { display: block; font-size: var(--small); font-weight: 600; margin-bottom: 8px; }
+    .field label small { font-weight: 400; font-size: var(--small); color: var(--soft); }
     .field input, .field textarea {
-      width: 100%;
-      font-family: var(--sans);
-      font-size: 15px;
-      color: var(--ink);
-      background: var(--card);
-      border: 1px solid var(--border-strong);
-      border-radius: 6px;
-      padding: 12px 14px;
-      transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+      width: 100%; font: inherit; font-size: 17px; color: var(--ink);
+      background: var(--paper); border: 0; border-bottom: 2px solid var(--soft); border-radius: 0;
+      padding: 14px; transition: border-color .2s;
     }
-    .field input::placeholder, .field textarea::placeholder { color: #6e6e6e; }
-    .field input:focus, .field textarea:focus {
-      outline: none;
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(15,82,162,0.15);
-    }
-    .field textarea { min-height: 120px; resize: vertical; }
-
-    /* honeypot fuera de la vista (los bots lo completan igual) */
+    .field input::placeholder, .field textarea::placeholder { color: #6B7385; }
+    .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--accent); background: #fff; }
+    .field textarea { min-height: 140px; resize: vertical; }
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-
-    .submit {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      font-family: var(--sans);
-      background: var(--blue);
-      color: #fff;
-      border: none;
-      padding: 14px 28px;
-      font-size: 15px;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.15s var(--ease), transform 0.2s var(--ease);
-    }
-    .submit:hover { background: var(--blue-dark); transform: translateY(-1px); }
-    .submit[disabled] { opacity: 0.6; cursor: wait; transform: none; }
-
-    .form-note { margin-top: 16px; font-size: 13px; color: var(--muted); text-align: center; }
-    .form-error {
-      display: none;
-      margin-top: 16px;
-      font-size: 14px;
-      color: #8a2f2f;
-      background: #faecec;
-      border: 1px solid #eccfcf;
-      border-radius: 6px;
-      padding: 12px 16px;
-    }
+    .submit { width: 100%; margin-top: 8px; }
+    .submit[disabled] { opacity: .6; cursor: wait; }
+    .form-note { margin-top: 16px; font-size: var(--small); color: var(--soft); }
+    .form-error { display: none; margin-top: 16px; font-size: var(--small); color: #fff; background: #A3261F; padding: 14px 16px; }
     .form-error.visible { display: block; }
     .form-error a { color: inherit; font-weight: 600; }
-
-    footer {
-      border-top: 1px solid var(--border);
-      background: var(--band);
-      padding: 36px 40px;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
-    }
-    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); }
-    .footer-logo span { color: var(--lime); }
-    .footer-copy { font-size: 13px; color: var(--muted); }
-
-    @media (max-width: 860px) {
-      main { grid-template-columns: 1fr; gap: 44px; padding: 120px 20px 72px; }
-      .form-card { padding: 28px 22px; }
-      footer { padding: 28px 24px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition-duration: 0.001ms !important; }
+    @media (max-width: 900px) {
+      .demo { grid-template-columns: 1fr; padding: 0; }
+      .intro { padding: 40px 20px 48px; gap: 40px; }
+      .form-card { padding: 32px 20px 48px; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="logo">VERIDIAN<span>.</span></a>
-    <a href="/" class="nav-back">← Volver al sitio</a>
+  <nav class="top" aria-label="Principal">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <div class="top-links">
+      <a class="hide-m" href="/#paquetes">Paquetes</a>
+      <a href="/blog/">Blog</a>
+      <a href="/">Volver al sitio</a>
+    </div>
   </nav>
 
-  <main>
+  <main class="demo">
     <div class="intro">
-      <p class="kicker">Solicitar una demo</p>
-      <h1>Pedí tu demo de SIG</h1>
-      <p>Contanos cómo trabaja tu empresa y te mostramos el sistema resolviendo tu operación real — no la del vendedor.</p>
-      <ul>
-        <li>Demo en vivo con datos de tu rubro</li>
-        <li>Respuesta en 24-48 hs hábiles</li>
-        <li>Sin compromiso y sin costos ocultos</li>
-      </ul>
-      <p class="mail">¿Preferís escribirnos directo? <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
+      <div>
+        <h1 class="rv">Pedí una demo de SIG.</h1>
+        <p class="lead rv" style="--i:1">Contanos cómo trabaja tu empresa y te mostramos el sistema resolviendo tus propios casos, no los de un folleto.</p>
+      </div>
+      <div class="rv" style="--i:2">
+        <ol>
+          <li><b>Te escribimos en 24 a 48 horas hábiles.</b> Coordinamos un horario y quiénes de tu equipo participan.</li>
+          <li><b>Hacemos la demo en vivo.</b> Recorremos ventas, facturación ARCA y la parte de planta que te interesa.</li>
+          <li><b>Te mandamos la propuesta.</b> Paquete, usuarios, extensiones e implementación, todo a la vista.</li>
+        </ol>
+        <p class="mail">¿Preferís escribirnos? <a class="link" href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
+      </div>
     </div>
 
-    <div class="form-wrap">
-      <form class="form-card" id="demoForm" action="/api/demo" method="POST" novalidate>
+    <form class="form-card rv" style="--i:1" id="demoForm" action="/api/demo" method="POST" novalidate>
         <div class="field">
           <label for="nombre">Nombre</label>
           <input type="text" id="nombre" name="nombre" required maxlength="120" autocomplete="name" placeholder="Tu nombre" />
@@ -292,20 +113,30 @@
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
         </div>
 
-        <button type="submit" class="submit" id="submitBtn">Solicitar la demo</button>
+        <button type="submit" class="btn submit" id="submitBtn">Solicitar la demo</button>
         <p class="form-note">Usamos tus datos solo para responderte. Nada de listas ni spam.</p>
         <p class="form-error" id="formError"></p>
       </form>
-    </div>
   </main>
 
-  <footer>
-    <div class="footer-logo">VERIDIAN<span>.</span></div>
-    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  <footer class="foot">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/#paquetes">Paquetes</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/demo/">Pedir una demo</a></li>
+    </ul>
+    <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina · <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
   </footer>
 
   <script>
     document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      document.documentElement.classList.add('anim');
+      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.rv').forEach(e => io.observe(e));
+    }
 
     // Envío con fetch; sin JS el form hace POST clásico y la API redirige a /gracias/
     const form = document.getElementById('demoForm');

@@ -6,7 +6,7 @@
   <title>Trazabilidad de lotes en producción: guía práctica | Veridian</title>
   <meta name="description" content="Qué registrar en cada lote (insumos, proveedores, vencimientos, controles y liberación de calidad) para responder un reclamo o una auditoría en minutos." />
   <link rel="canonical" href="https://veridian-ware.com/blog/trazabilidad-de-lotes-en-produccion/" />
-  <meta name="theme-color" content="#f9faf8" />
+  <meta name="theme-color" content="#F3F5F9" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,400;1,9..144,560&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/blog.css" />
 
   <script type="application/ld+json">
@@ -80,26 +80,42 @@
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="logo">VERIDIAN<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="/#modulos">Módulos</a></li>
-      <li><a href="/#producto">El producto</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/#contacto">Contacto</a></li>
-    </ul>
+  <nav class="top" aria-label="Principal">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <div class="top-links">
+      <a class="hide-m" href="/#paquetes">Paquetes</a>
+      <a href="/blog/">Blog</a>
+      <a class="btn" href="/demo/">Pedir una demo</a>
+    </div>
   </nav>
 
   <article>
     <div class="article-head">
-      <div class="meta">Guía · 5 oct 2026 · 7 min de lectura</div>
-      <h1>Trazabilidad de lotes en producción: <em>cómo responder en minutos</em></h1>
+      <div>
+      <h1 class="rv">Trazabilidad de lotes en producción: cómo responder en minutos</h1>
+      <div class="meta rv" style="--i:1">Guía · 5 oct 2026 · 7 min de lectura</div>
+      </div>
+      <img class="head-pic rv" style="--i:2" src="/assets/videos/poster-produccion.jpg" alt="Pantalla de Producción de SIG con las órdenes en curso" width="1920" height="1080">
     </div>
 
-    <div class="prose">
+    <div class="article-body">
+      <nav class="toc" aria-label="En esta guía">
+        <p>En esta guía</p>
+        <ol>
+          <li><a href="#que-significa-trazar-un-lote">Qué significa trazar un lote</a></li>
+          <li><a href="#1-un-codigo-de-lote-desde-el-inicio">1. Un código de lote desde el inicio</a></li>
+          <li><a href="#2-el-lote-de-cada-insumo-al-momento-de-usarlo">2. El lote de cada insumo, al momento de usarlo</a></li>
+          <li><a href="#3-controles-por-etapa">3. Controles por etapa</a></li>
+          <li><a href="#4-liberacion-de-calidad-con-separacion-de-funciones">4. Liberación de calidad con separación de funciones</a></li>
+          <li><a href="#5-movimientos-de-stock-con-el-lote">5. Movimientos de stock con el lote</a></li>
+          <li><a href="#como-probarlo-antes-de-que-haga-falta">Cómo probarlo antes de que haga falta</a></li>
+        </ol>
+        <a class="back" href="/blog/">← Todas las guías</a>
+      </nav>
+      <div class="prose">
       <p>Llega un reclamo por un producto o un auditor pide ver un lote, y la pregunta es siempre la misma: <strong>¿con qué se hizo ese lote y qué más está comprometido?</strong> Si la respuesta depende de buscar planillas, remitos de proveedores y anotaciones de planta, la investigación lleva días. Si cada lote quedó registrado mientras se producía, lleva minutos. La diferencia no está en el software sino en qué se registra y en qué momento. Esta guía repasa los puntos que no pueden faltar.</p>
 
-      <h2>Qué significa trazar un lote</h2>
+      <h2 id="que-significa-trazar-un-lote">Qué significa trazar un lote</h2>
       <p>La trazabilidad tiene dos direcciones:</p>
       <ul>
         <li><strong>Hacia atrás:</strong> de un lote de producto terminado a los lotes de insumos que se usaron, sus proveedores y sus vencimientos. Es lo que se necesita para encontrar el origen de un problema.</li>
@@ -107,22 +123,22 @@
       </ul>
       <p>Las dos preguntas tienen que poder responderse desde el mismo registro, sin cruzar fuentes a mano.</p>
 
-      <h2>1. Un código de lote desde el inicio</h2>
+      <h2 id="1-un-codigo-de-lote-desde-el-inicio">1. Un código de lote desde el inicio</h2>
       <p>El lote no se asigna al final: se crea cuando se planifica la orden de producción. Así, todo lo que pase después (insumos usados, controles, rechazos) queda colgado del mismo código desde el primer momento. Ese código es el que va impreso en el envase y el que se busca cuando llega un reclamo.</p>
 
-      <h2>2. El lote de cada insumo, al momento de usarlo</h2>
+      <h2 id="2-el-lote-de-cada-insumo-al-momento-de-usarlo">2. El lote de cada insumo, al momento de usarlo</h2>
       <p>Por cada insumo que entra a la orden, hay que registrar su lote, el proveedor, el vencimiento y, si corresponde, el certificado de análisis. Dos reglas simples evitan problemas:</p>
       <ul>
         <li><strong>Un insumo vencido no entra.</strong> El sistema tiene que rechazarlo al registrarlo, no avisarlo después.</li>
         <li><strong>El registro se hace en la planta, no al cierre del día.</strong> Lo que se reconstruye de memoria es lo primero que falla en una auditoría.</li>
       </ul>
 
-      <h2>3. Controles por etapa</h2>
+      <h2 id="3-controles-por-etapa">3. Controles por etapa</h2>
       <p>No todos los controles se hacen en el mismo momento. Hay mediciones de <strong>recepción</strong> (temperatura de la materia prima, estado del envase), de <strong>proceso</strong> (tiempos, temperaturas, puntos críticos de control) y de <strong>producto terminado</strong>. Lo importante es que los obligatorios de cada etapa bloqueen el avance: no se arranca a producir sin los controles de recepción y no se completa la orden sin los de proceso. Un punto crítico fuera de límite tiene que impedir la liberación del lote.</p>
 
       <blockquote>Un control que se puede saltear no es un control: es una sugerencia.</blockquote>
 
-      <h2>4. Liberación de calidad con separación de funciones</h2>
+      <h2 id="4-liberacion-de-calidad-con-separacion-de-funciones">4. Liberación de calidad con separación de funciones</h2>
       <p>La persona que autorizó a producir no debería ser la misma que libera el lote para la venta. Es una regla básica de cualquier esquema de certificación y conviene que la haga cumplir el sistema, no la buena voluntad. La liberación tiene tres salidas posibles, cada una con su efecto sobre el stock:</p>
       <ul>
         <li><strong>Aprobado:</strong> el lote queda disponible para despachar.</li>
@@ -131,29 +147,41 @@
       </ul>
       <p>Si retener un lote no lo saca del stock, alguien puede venderlo sin saber que estaba retenido.</p>
 
-      <h2>5. Movimientos de stock con el lote</h2>
+      <h2 id="5-movimientos-de-stock-con-el-lote">5. Movimientos de stock con el lote</h2>
       <p>La entrada del producto terminado al stock, los rechazos y las reparaciones tienen que llevar el código de lote en el movimiento. Así, el historial del producto no muestra solo cantidades: muestra qué lote entró, cuál salió y por qué.</p>
 
-      <h2>Cómo probarlo antes de que haga falta</h2>
+      <h2 id="como-probarlo-antes-de-que-haga-falta">Cómo probarlo antes de que haga falta</h2>
       <p>Hacé un simulacro: elegí un lote producido el mes pasado y medí cuánto tardás en responder tres preguntas. Qué insumos y de qué proveedores se usaron. En qué otros lotes se usó el mismo lote de un insumo. Y quién liberó el lote y cuándo. Si alguna de las tres requiere buscar fuera del sistema, ahí está el punto a corregir. Si la producción todavía se lleva en planillas, el <a href="/blog/como-elegir-erp-checklist/">checklist para elegir un ERP</a> ayuda a ordenar la evaluación.</p>
+      </div>
     </div>
 
     <div class="article-cta">
       <h3>Trazabilidad dentro de SIG</h3>
       <p>Cada orden de producción nace con su lote. Se registra el lote, el proveedor y el vencimiento de cada insumo, se controlan los puntos críticos y Calidad libera, retiene o rechaza el lote, que sale del stock vendible hasta que se resuelva.</p>
-      <a class="btn" href="/demo/">Solicitar una demo →</a>
-    </div>
-
-    <div class="wrap" style="max-width:720px;margin:0 auto;">
-      <a class="back" href="/blog/">← Volver al blog</a>
+      <a class="btn" href="/demo/">Pedir una demo</a>
     </div>
   </article>
 
-  <footer>
-    <div class="footer-logo">VERIDIAN<span>.</span></div>
-    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  <footer class="foot">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/#paquetes">Paquetes</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/demo/">Pedir una demo</a></li>
+    </ul>
+    <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina · <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
   </footer>
 
-  <script>document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+  <script>
+    document.querySelectorAll('.current-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+    (function () {
+      var els = document.querySelectorAll('.rv');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+      document.documentElement.classList.add('anim');
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
 </body>
 </html>

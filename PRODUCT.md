@@ -26,8 +26,8 @@ Serio, preciso, cercano. "Empresa establecida de software" — no startup experi
 ## Design Principles
 
 1. **Mostrar el producto real.** Grabaciones y capturas del ERP verdadero, sin mockups ni retoques.
-2. **Precisión Stripe en claro.** Profundidad sutil, hairlines, micro-interacciones pulidas; la calidad del detalle comunica la calidad del software.
-3. **El verde es la marca.** Viridian carga la identidad; el punto lima del logo es intocable.
+2. **Decisiones, no adornos.** Sin sombras, líneas finas, degradados ni etiquetas; tipografía grande, campos de color y el producto real.
+3. **SIG es la marca.** Papel, tinta noche y un solo azul (#2457E6), como en las piezas de video.
 4. **Una idea por pantalla.** Scroll largo, ritmo deliberado, sin competir por atención dentro del fold.
 5. **ARCA primero.** La facturación electrónica es el diferencial local; siempre visible y concreta.
 

@@ -6,7 +6,7 @@
   <title>Plan de mantenimiento preventivo: cómo armarlo | Veridian</title>
   <meta name="description" content="Cómo armar un plan de mantenimiento preventivo que se cumpla: equipos, frecuencias, órdenes de trabajo automáticas, repuestos e indicadores." />
   <link rel="canonical" href="https://veridian-ware.com/blog/plan-de-mantenimiento-preventivo/" />
-  <meta name="theme-color" content="#f9faf8" />
+  <meta name="theme-color" content="#F3F5F9" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,400;1,9..144,560&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/blog.css" />
 
   <script type="application/ld+json">
@@ -80,35 +80,52 @@
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="logo">VERIDIAN<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="/#modulos">Módulos</a></li>
-      <li><a href="/#producto">El producto</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/#contacto">Contacto</a></li>
-    </ul>
+  <nav class="top" aria-label="Principal">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <div class="top-links">
+      <a class="hide-m" href="/#paquetes">Paquetes</a>
+      <a href="/blog/">Blog</a>
+      <a class="btn" href="/demo/">Pedir una demo</a>
+    </div>
   </nav>
 
   <article>
     <div class="article-head">
-      <div class="meta">Guía · 5 oct 2026 · 7 min de lectura</div>
-      <h1>Plan de mantenimiento preventivo: <em>cómo armarlo y sostenerlo</em></h1>
+      <div>
+      <h1 class="rv">Plan de mantenimiento preventivo: cómo armarlo y sostenerlo</h1>
+      <div class="meta rv" style="--i:1">Guía · 5 oct 2026 · 7 min de lectura</div>
+      </div>
+      <img class="head-pic rv" style="--i:2" src="/assets/videos/poster-dashboard.jpg" alt="Dashboard de SIG con las órdenes de trabajo pendientes" width="1920" height="1080">
     </div>
 
-    <div class="prose">
+    <div class="article-body">
+      <nav class="toc" aria-label="En esta guía">
+        <p>En esta guía</p>
+        <ol>
+          <li><a href="#correctivo-vs-preventivo-el-costo-que-no-se-ve">Correctivo vs preventivo: el costo que no se ve</a></li>
+          <li><a href="#1-empeza-por-el-inventario-de-equipos">1. Empezá por el inventario de equipos</a></li>
+          <li><a href="#2-defini-tareas-concretas-y-frecuencias">2. Definí tareas concretas y frecuencias</a></li>
+          <li><a href="#3-que-la-orden-de-trabajo-se-genere-sola">3. Que la orden de trabajo se genere sola</a></li>
+          <li><a href="#4-repuestos-e-insumos-registrados-en-cada-orden">4. Repuestos e insumos registrados en cada orden</a></li>
+          <li><a href="#5-cierre-con-firma-y-registro">5. Cierre con firma y registro</a></li>
+          <li><a href="#6-los-indicadores-para-seguirlo">6. Los indicadores para seguirlo</a></li>
+          <li><a href="#en-resumen">En resumen</a></li>
+        </ol>
+        <a class="back" href="/blog/">← Todas las guías</a>
+      </nav>
+      <div class="prose">
       <p>Casi todas las plantas tienen un plan de mantenimiento preventivo. El problema es que suele vivir en una planilla o en la cabeza de una persona, y se cumple mientras nadie se toma vacaciones y no hay urgencias. Cuando aparece la primera falla grande, el preventivo se posterga, y a los pocos meses el mantenimiento vuelve a ser todo correctivo. Esta guía repasa cómo armar un plan que se sostenga solo.</p>
 
-      <h2>Correctivo vs preventivo: el costo que no se ve</h2>
+      <h2 id="correctivo-vs-preventivo-el-costo-que-no-se-ve">Correctivo vs preventivo: el costo que no se ve</h2>
       <p>El mantenimiento correctivo se hace cuando algo falla. Parece más barato porque no se hace nada hasta que hace falta, pero el costo real incluye la producción parada, el repuesto comprado de urgencia y el daño que una falla le hace a otros componentes. El preventivo se hace antes, con una frecuencia definida: tiene un costo visible y planificado que suele ser bastante menor que el de las fallas que evita.</p>
 
-      <h2>1. Empezá por el inventario de equipos</h2>
+      <h2 id="1-empeza-por-el-inventario-de-equipos">1. Empezá por el inventario de equipos</h2>
       <p>No hace falta cubrir toda la planta desde el primer día. Listá los equipos y priorizá los críticos: los que paran la producción si fallan, los que tienen un riesgo para la seguridad y los que tienen repuestos con plazos largos de entrega. Para esos, el preventivo es obligatorio.</p>
 
-      <h2>2. Definí tareas concretas y frecuencias</h2>
+      <h2 id="2-defini-tareas-concretas-y-frecuencias">2. Definí tareas concretas y frecuencias</h2>
       <p>Cada tarea tiene que ser concreta: no "revisar el compresor" sino "cambiar el filtro de aire y verificar la presión de corte". La frecuencia puede salir del manual del fabricante, del historial de fallas o de la experiencia del equipo de mantenimiento. Lo habitual es expresarla en días, semanas o meses.</p>
 
-      <h2>3. Que la orden de trabajo se genere sola</h2>
+      <h2 id="3-que-la-orden-de-trabajo-se-genere-sola">3. Que la orden de trabajo se genere sola</h2>
       <p>Este es el punto que más diferencia hace. Si alguien tiene que acordarse de crear la orden cada vez que vence una tarea, el plan depende de esa persona. Un sistema que <strong>genera la orden de trabajo automáticamente</strong>, con unos días de anticipación al vencimiento, convierte el plan en trabajo concreto asignado a un responsable. Dos detalles que conviene revisar:</p>
       <ul>
         <li><strong>Calendario fijo:</strong> el próximo vencimiento tiene que calcularse desde el vencimiento anterior, no desde la fecha en que se cerró la orden. Si no, un atraso corre todo el cronograma.</li>
@@ -117,39 +134,51 @@
 
       <blockquote>Un plan preventivo que depende de que alguien se acuerde no es un plan: es una intención.</blockquote>
 
-      <h2>4. Repuestos e insumos registrados en cada orden</h2>
+      <h2 id="4-repuestos-e-insumos-registrados-en-cada-orden">4. Repuestos e insumos registrados en cada orden</h2>
       <p>Cada orden de trabajo tiene que registrar qué repuestos e insumos se usaron, y descontarlos del stock en el momento. Así el stock del pañol refleja lo que realmente hay, y se sabe cuánto cuesta en materiales mantener cada equipo. Lo que no se usó vuelve al stock con su movimiento. Si los repuestos se compran para una orden y nunca se descuentan, el inventario queda inflado y el próximo faltante aparece por sorpresa.</p>
 
-      <h2>5. Cierre con firma y registro</h2>
+      <h2 id="5-cierre-con-firma-y-registro">5. Cierre con firma y registro</h2>
       <p>Cerrar una orden tiene que dejar constancia: quién hizo el trabajo, qué se encontró, qué se cambió y quién dio la conformidad. Ese historial es lo que permite ver, meses después, si un equipo falla siempre por la misma causa.</p>
 
-      <h2>6. Los indicadores para seguirlo</h2>
+      <h2 id="6-los-indicadores-para-seguirlo">6. Los indicadores para seguirlo</h2>
       <ul>
         <li><strong>Cumplimiento del plan:</strong> qué porcentaje de las órdenes preventivas se cerró en fecha.</li>
         <li><strong>Relación preventivo/correctivo:</strong> si las órdenes correctivas no bajan con el tiempo, el plan no está apuntando a los equipos correctos.</li>
         <li><strong>Fallas repetidas por equipo:</strong> el mismo equipo con la misma falla es la señal para revisar la tarea o la frecuencia.</li>
       </ul>
 
-      <h2>En resumen</h2>
+      <h2 id="en-resumen">En resumen</h2>
       <p>Un plan preventivo se sostiene cuando no depende de la memoria de nadie: equipos priorizados, tareas concretas, órdenes de trabajo que se generan solas con anticipación, repuestos descontados en cada orden y un historial que permite corregir el plan. Empezá por los equipos críticos y sumá el resto a medida que el plan se cumpla.</p>
+      </div>
     </div>
 
     <div class="article-cta">
       <h3>Mantenimiento dentro de SIG</h3>
       <p>Planes preventivos que generan sus órdenes de trabajo con la anticipación que elijas, repuestos e insumos del pañol descontados del stock en cada orden, y cierre con firma del supervisor.</p>
-      <a class="btn" href="/demo/">Solicitar una demo →</a>
-    </div>
-
-    <div class="wrap" style="max-width:720px;margin:0 auto;">
-      <a class="back" href="/blog/">← Volver al blog</a>
+      <a class="btn" href="/demo/">Pedir una demo</a>
     </div>
   </article>
 
-  <footer>
-    <div class="footer-logo">VERIDIAN<span>.</span></div>
-    <div class="footer-copy">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina.</div>
+  <footer class="foot">
+    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/#paquetes">Paquetes</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/demo/">Pedir una demo</a></li>
+    </ul>
+    <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina · <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
   </footer>
 
-  <script>document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+  <script>
+    document.querySelectorAll('.current-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+    (function () {
+      var els = document.querySelectorAll('.rv');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+      document.documentElement.classList.add('anim');
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
 </body>
 </html>
