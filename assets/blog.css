@@ -66,20 +66,32 @@ h1 em, h2 em { font-style: normal; color: inherit; }
 .top-links a:not(.btn) { text-decoration: none; }
 .top-links a:not(.btn):hover { color: var(--accent); }
 
+/* Computadora estilo iMac que enmarca las pantallas de SIG (dibujo plano, sin sombras) */
+.imac { width: 100%; margin: 0 auto; }
+.imac-screen { position: relative; background: #111214; padding: 2.4% 2.4% 2.4%; border-radius: 14px 14px 0 0; }
+.imac-view { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #05070C; }
+.imac-view > img, .imac-view > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.imac-chin { aspect-ratio: 100 / 7.5; background: #D7DBE1; border-radius: 0 0 14px 14px; }
+.imac-stand { width: 18%; aspect-ratio: 18 / 13; margin: 0 auto; background: #C3C8CF; clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%); }
+.imac-foot { width: 30%; height: 6px; margin: 0 auto; background: #C3C8CF; border-radius: 3px 3px 0 0; }
+
 /* Índice del blog */
 .blog-head { padding: clamp(64px, 12vh, 140px) var(--in) 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px var(--m); align-items: end; }
 .blog-head h1 { font-size: var(--display); }
 .blog-head p { font-size: var(--lead); line-height: 1.4; }
-.blog-video { grid-column: 1 / -1; width: 100%; height: 62vh; object-fit: cover; object-position: 34% 0; background: var(--night); margin-top: 40px; }
+.blog-head { grid-template-columns: 1fr 1fr; align-items: center; }
+.blog-head .imac { grid-column: 2; grid-row: 1 / span 2; }
+.blog-head h1 { align-self: end; }
+.blog-head > div { align-self: start; }
 
 .posts { padding: clamp(80px, 10vw, 140px) var(--in) clamp(120px, 14vw, 200px); display: grid; gap: 8px; }
 .posts { gap: 56px; }
 .post-card {
-  display: grid; grid-template-columns: 1fr 1fr; gap: var(--m); align-items: center;
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--m); align-items: start;
   text-decoration: none; color: inherit;
 }
-.post-card .pic { width: 100%; height: clamp(200px, 20vw, 300px); object-fit: cover; object-position: 0 0; background: var(--night); transition: transform .5s var(--ease); }
-.post-card:hover .pic { transform: scale(1.02); }
+.post-card .meta { grid-column: 1; grid-row: 1; margin-top: 6px; }
+.post-card .body { grid-column: 2; grid-row: 1; }
 .post-card h2 { font-size: clamp(24px, 2.2vw, 34px); letter-spacing: -0.03em; line-height: 1.12; transition: color .2s; }
 .post-card p { margin-top: 14px; }
 .post-card .meta { font-size: var(--small); color: var(--soft); margin-top: 14px; }
@@ -90,7 +102,8 @@ article { padding: clamp(56px, 10vh, 120px) 0 0; }
 .article-head { padding: 0 var(--in); }
 .article-head h1 { font-size: clamp(32px, 3.6vw, 56px); line-height: 1.04; max-width: 26ch; }
 .article-head .meta { margin-top: 28px; font-size: var(--small); color: var(--soft); }
-.head-pic { width: 100%; height: 58vh; margin-top: clamp(40px, 5vw, 64px); object-fit: cover; object-position: 0 0; background: var(--night); }
+.head-pic { margin-top: clamp(40px, 5vw, 64px); background: var(--paper-2); padding: clamp(32px, 4vw, 56px) var(--in) 0; }
+.head-pic .imac { width: min(100%, 1040px); }
 
 .article-body { display: grid; grid-template-columns: 1fr 1fr; gap: var(--m); padding: 0 var(--in); margin-top: clamp(72px, 9vw, 120px); align-items: start; }
 .toc { position: sticky; top: 32px; font-size: var(--small); }
@@ -161,12 +174,13 @@ article { padding: clamp(56px, 10vh, 120px) 0 0; }
   :root { --display: clamp(36px, 9vw, 56px); --heading: clamp(26px, 6vw, 32px); }
   .blog-head { grid-template-columns: 1fr; padding: 48px 20px 0; }
   .posts { padding: 56px 20px 96px; }
-  .blog-video { height: 40vh; margin-top: 16px; }
+  .blog-head .imac { grid-column: 1; grid-row: auto; margin-top: 16px; }
   .posts { gap: 48px; }
-  .post-card { grid-template-columns: 1fr; gap: 16px; }
+  .post-card { grid-template-columns: 1fr; gap: 8px; }
+  .post-card .meta, .post-card .body { grid-column: 1; grid-row: auto; }
   .post-card p { font-size: 16px; }
   .article-head { padding: 0 20px; }
-  .head-pic { height: 36vh; margin-top: 24px; }
+  .head-pic { margin-top: 24px; padding: 24px 20px; }
   .article-head h1 { font-size: clamp(24px, 6.6vw, 40px); }
   .toc ol { max-width: none; columns: 2; column-gap: 32px; display: block; }
   .toc li { margin-bottom: 8px; break-inside: avoid; }
