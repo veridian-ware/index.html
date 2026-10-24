@@ -57,6 +57,7 @@
       .form-card { padding: 32px 20px 48px; }
     }
   </style>
+  <script src="/assets/pixel.js?v=1" defer></script>
 </head>
 <body>
 
@@ -126,6 +127,7 @@
       <li><a href="/#paquetes">Paquetes</a></li>
       <li><a href="/blog/">Blog</a></li>
       <li><a href="/demo/">Pedir una demo</a></li>
+        <li><a href="/privacidad/">Privacidad</a></li>
     </ul>
     <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina · <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
   </footer>
@@ -158,6 +160,7 @@
           body: JSON.stringify(Object.fromEntries(new FormData(form))),
         });
         if (res.ok) {
+          try { sessionStorage.setItem('sig_lead', '1'); } catch (_) {}
           window.location.href = '/gracias/';
           return;
         }
