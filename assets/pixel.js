@@ -1,9 +1,10 @@
 /* Píxel de Meta para medir los anuncios.
    Se carga en todas las páginas. Muestra un aviso la primera vez; si la
    persona elige "No, gracias", no se vuelve a cargar en ese navegador.
-   Con PIXEL_ID vacío no hace nada (ni aviso ni código de Meta). */
+   Con PIXEL_ID vacío no hace nada (ni aviso ni código de Meta).
+   Al cambiar este archivo, subir el ?v= de las páginas: /assets se cachea 7 días. */
 (function () {
-  var PIXEL_ID = '';
+  var PIXEL_ID = '2231648257694150';
   var KEY = 'sig_cookies';
 
   if (!PIXEL_ID) return;
