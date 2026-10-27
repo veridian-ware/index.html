@@ -204,7 +204,8 @@
     .nav .btn { height: 40px; padding: 0 18px; color: #fff; }
 
     /* Asistencia: botón de la barra con la demo y el mail */
-    .help { position: relative; }
+    .help { position: relative; display: none; }
+    @media (max-width: 1000px) { .help { display: block; } }
     .help-btn {
       position: relative; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 50%;
       cursor: pointer; border: 0;
