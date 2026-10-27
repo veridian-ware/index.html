@@ -6,7 +6,7 @@
   <title>SIG de Veridian — Sistema de gestión para empresas industriales, con facturación ARCA</title>
   <meta name="description" content="SIG es el sistema de gestión para empresas industriales: facturación ARCA, ventas, compras, producción, mantenimiento, contabilidad y sueldos, instalado en tu propio servidor." />
   <link rel="canonical" href="https://veridian-ware.com/" />
-  <meta name="theme-color" content="#F3F5F9" />
+  <meta name="theme-color" content="#05070C" />
   <meta name="google-site-verification" content="nj96HVBIHf4TjwA0uTr1ovN7_jf9CGQLsHtFAtjp7EA" />
   <meta name="facebook-domain-verification" content="1jgz1ntwygf24o8l3osh2cwgb85m9u" />
 
@@ -95,9 +95,10 @@
 
   <script>document.documentElement.classList.add('js');</script>
 
+  <link rel="preload" as="image" href="/assets/hero/planta-poster.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -105,24 +106,29 @@
       /* Marca SIG: papel, tinta noche y un solo azul (ver sig-launch-kit) */
       --paper: #F3F5F9;
       --paper-2: #E4E9F2;
+      --white: #FFFFFF;
       --night: #05070C;
-      --night-2: #0D121C;
+      --night-2: #0B0F17;
+      --night-3: #131926;
       --ink: #05070C;
       --soft: #4A5266;
       --on-night: #F3F5F9;
       --on-night-soft: #A3ACBF;
+      --line: rgba(5, 7, 12, .09);
+      --line-night: rgba(243, 245, 249, .09);
       --accent: #2457E6;
       --accent-press: #1B45BD;
+      --accent-glow: #4F7BFF;
 
-      --display: clamp(40px, 4.6vw, 76px);
-      --heading: clamp(28px, 2.6vw, 40px);
-      --lead: clamp(20px, 1.7vw, 24px);
-      --body: 18px;
+      --display: clamp(44px, 6.4vw, 96px);
+      --heading: clamp(32px, 3.6vw, 56px);
+      --lead: clamp(19px, 1.5vw, 22px);
+      --body: 17px;
       --small: 15px;
 
-      --m: clamp(16px, 2.2vw, 32px);
-      --in: clamp(24px, 6vw, 86px);
-      --gap: clamp(120px, 14vw, 200px);
+      --pad: clamp(20px, 5vw, 80px);
+      --max: 1240px;
+      --gap: clamp(112px, 13vw, 184px);
       --ease: cubic-bezier(.16, 1, .3, 1);
     }
 
@@ -131,7 +137,7 @@
       font-family: 'Inter', system-ui, sans-serif;
       font-optical-sizing: auto;
       font-size: var(--body);
-      line-height: 1.55;
+      line-height: 1.6;
       color: var(--ink);
       background: var(--paper);
       -webkit-font-smoothing: antialiased;
@@ -141,20 +147,35 @@
     a { color: inherit; }
     ::selection { background: var(--accent); color: #fff; }
     :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-    h1, h2, h3 { font-weight: 700; letter-spacing: -0.035em; line-height: 1; text-wrap: balance; }
+    h1, h2, h3 { font-weight: 700; letter-spacing: -0.04em; line-height: 1.02; text-wrap: balance; }
     p { max-width: 62ch; }
+    .wrap { width: min(100% - 2 * var(--pad), var(--max)); margin-inline: auto; }
     .tab { font-variant-numeric: tabular-nums; }
+    .muted { color: var(--soft); }
 
     .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      height: 52px; padding: 0 26px;
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      height: 52px; padding: 0 26px; border-radius: 10px;
       background: var(--accent); color: #fff;
       font: 600 var(--small)/1 'Inter', sans-serif; letter-spacing: -0.01em;
       text-decoration: none; border: 0; cursor: pointer;
-      transition: background .2s, transform .2s var(--ease);
+      transition: background .25s, transform .25s var(--ease);
+    }
+    .btn::after {
+      /* brillo que cruza el botón al pasar el mouse */
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.28) 50%, transparent 70%);
+      transform: translateX(-120%); transition: transform .8s var(--ease);
     }
     .btn:hover { background: var(--accent-press); }
+    .btn:hover::after { transform: translateX(120%); }
     .btn:active { transform: scale(.97); }
+    .btn svg { transition: transform .3s var(--ease); }
+    .btn:hover svg { transform: translateX(3px); }
+    .btn.ghost { background: transparent; color: inherit; box-shadow: inset 0 0 0 1px currentColor; }
+    .btn.ghost::after { display: none; }
+    .btn.ghost:hover { background: rgba(127, 140, 170, .12); }
     .link {
       font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px;
       text-underline-offset: 5px; text-decoration-color: var(--accent);
@@ -162,694 +183,743 @@
     }
     .link:hover { color: var(--accent); }
 
-    /* ---------- Hero: hoja de papel + escenario fijo con el sistema ---------- */
+    /* ---------- Barra superior ---------- */
+    .top {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      transition: background .35s, backdrop-filter .35s, box-shadow .35s;
+    }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .top.solid { background: rgba(5, 7, 12, .72); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); box-shadow: 0 1px 0 var(--line-night); }
+    .word { font-size: 28px; font-weight: 800; letter-spacing: -0.06em; line-height: 1; text-decoration: none; color: var(--on-night); }
+    .nav { display: flex; align-items: center; gap: 32px; font-size: var(--small); font-weight: 500; color: var(--on-night-soft); }
+    .nav a { text-decoration: none; transition: color .2s; }
+    .nav a:hover { color: var(--on-night); }
+    .nav .btn { height: 40px; padding: 0 18px; color: #fff; }
+
+    /* ---------- Hero: video de planta de fondo que se apaga al bajar ---------- */
     .hero {
-      display: grid; grid-template-columns: 1fr 1fr; gap: var(--m);
-      padding: var(--m); min-height: 100svh;
-    }
-    .sheet {
-      background: var(--paper-2);
-      display: grid; grid-template-rows: auto 1fr auto;
-      padding: var(--m) clamp(24px, 4vw, 64px) clamp(32px, 5vw, 72px);
-      min-height: calc(100svh - 2 * var(--m));
-    }
-    .bar {
-      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-      font-size: var(--small); font-weight: 600;
-    }
-    .bar a { text-decoration: none; }
-    .bar a:hover { color: var(--accent); }
-    .bar .r { justify-self: end; }
-    .word { font-size: clamp(40px, 4.2vw, 64px); font-weight: 800; letter-spacing: -0.06em; line-height: 1; text-decoration: none; }
-    .hero-copy { align-self: center; padding-top: 6vh; }
-    .hero h1 { font-size: var(--display); max-width: 11ch; }
-    .hero-copy p { font-size: var(--lead); line-height: 1.4; margin-top: 36px; max-width: 34ch; }
-    .hero-copy .btn { margin-top: 40px; }
-    .hero-foot { font-size: var(--small); color: var(--soft); }
-
-    .stage {
-      position: sticky; top: var(--m);
-      height: calc(100svh - 2 * var(--m));
-      background: var(--night); overflow: hidden;
-    }
-    .stage-in { position: absolute; inset: 0 0 64px 0; display: grid; place-items: center; padding: 0 clamp(20px, 4vw, 56px); }
-    .stage .win { width: min(100%, calc((100svh - 2 * var(--m) - 64px - 38px) * 1.6)); }
-    .slide {
-      position: absolute; inset: 0;
-      opacity: 0; transition: opacity 1.6s ease;
-    }
-    .slide.on { opacity: 1; }
-    .slide video, .slide img { width: 100%; height: 100%; object-fit: cover; }
-    .slide:first-child { opacity: 1; }
-    .js .slide:first-child:not(.on) { opacity: 0; }
-    .stage-bar {
-      position: absolute; left: 0; right: 0; bottom: 0; height: 64px;
+      position: relative; isolation: isolate; overflow: hidden;
       background: var(--night); color: var(--on-night);
-      display: flex; justify-content: space-between; align-items: center; gap: 16px;
-      padding: 0 24px; font-size: var(--small);
+      min-height: 100svh; display: grid; align-items: center;
+      padding: 120px 0 96px;
     }
-    .stage-bar span:last-child { color: var(--on-night-soft); text-align: right; }
-
-
-    /* Ventana estilo macOS que enmarca las pantallas de SIG (como en los videos de SIG) */
-    .win { width: 100%; margin: 0 auto; background: #1A1D24; border-radius: 12px; overflow: hidden; }
-    .win-bar { position: relative; height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 14px; background: #22262F; }
-    .win-bar i { width: 12px; height: 12px; border-radius: 50%; background: #FF5F57; }
-    .win-bar i:nth-child(2) { background: #FEBC2E; }
-    .win-bar i:nth-child(3) { background: #28C840; }
-    .win-bar span { position: absolute; left: 50%; transform: translateX(-50%); font-size: 13px; font-weight: 500; color: #A3ABBD; white-space: nowrap; }
-    .win-view { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #05070C; }
-    .win-view > img, .win-view > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-
-    /* ---------- Una venta: entrada y salida ---------- */
-    .io { display: grid; grid-template-columns: 1fr 1fr; margin-top: var(--gap); }
-    .io > div { min-height: 90svh; position: relative; padding: 18svh var(--in) 140px; }
-    .io-in { background: var(--night); color: var(--on-night); }
-    .io-out { background: #fff; display: flex; justify-content: center; align-items: flex-start; }
-    .io h2 { position: absolute; bottom: 40px; font-size: var(--display); }
-    .io-in h2 { left: var(--in); }
-    .io-out h2 { right: var(--in); }
-    .order { font-size: var(--lead); line-height: 1.5; max-width: 30ch; }
-    .order p + p { margin-top: 20px; }
-    .order .muted { color: var(--on-night-soft); font-size: var(--small); }
-    .order select, .order input {
-      font: inherit; color: var(--on-night); background: var(--night-2);
-      border: 0; border-bottom: 2px solid var(--accent); padding: 4px 8px; border-radius: 0;
+    .bg {
+      position: absolute; inset: 0; z-index: -3; overflow: hidden;
+      opacity: var(--fade, 1);
+      transform: translate3d(0, var(--shift, 0px), 0) scale(var(--zoom, 1.04));
+      will-change: opacity, transform;
     }
-    .order input { width: 3ch; text-align: center; -moz-appearance: textfield; appearance: textfield; }
-    .order input::-webkit-inner-spin-button, .order input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-    .order select:focus, .order input:focus { outline: 3px solid var(--accent); }
-
-    /* Fragmentos de la interfaz real (data-ui): respetan el estilo de SIG */
-    [data-ui] {
-      font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.45;
-      background: #0B0F17; color: #E6E9F0; border-radius: 10px; width: min(100%, 500px);
-      padding: 18px; font-variant-numeric: tabular-nums; letter-spacing: 0;
+    .bg video, .bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .bg::after {
+      /* velo noche + tinte azul para que el texto se lea sobre cualquier cuadro */
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 45%, rgba(5, 7, 12, .45), rgba(5, 7, 12, .78) 75%),
+        linear-gradient(180deg, rgba(5, 7, 12, .55) 0%, rgba(5, 7, 12, .25) 40%, rgba(5, 7, 12, .92) 92%, var(--night) 100%),
+        rgba(20, 50, 140, .22);
     }
-    [data-ui] .ui-h { display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; font-size: 15px; margin-bottom: 12px; }
-    [data-ui] .ui-k { color: #8A93A6; font-size: 13px; font-weight: 500; }
-    [data-ui] .ui-card { background: #121826; border-radius: 8px; padding: 14px; }
-    [data-ui] .ui-card + .ui-card { margin-top: 10px; }
-    [data-ui] .ui-row { display: flex; justify-content: space-between; gap: 16px; padding: 3px 0; }
-    [data-ui] .ui-ok { color: #4ADE80; }
-    [data-ui] .ui-blue { color: #7EA6FF; }
-    [data-ui] .ui-pill { display: inline-block; font-size: 13px; padding: 1px 8px; border-radius: 99px; background: rgba(74, 222, 128, .12); color: #4ADE80; }
-    [data-ui] .ui-pill.b { background: rgba(126, 166, 255, .14); color: #7EA6FF; }
-    [data-ui] table { width: 100%; border-collapse: collapse; }
-    [data-ui] td { padding: 5px 0; }
-    [data-ui] td + td { text-align: right; white-space: nowrap; padding-left: 10px; }
-    .flash { animation: flash .9s var(--ease); }
-    @keyframes flash { from { color: #fff; background: rgba(47, 107, 255, .35); } }
-
-    /* ---------- Paquetes: salida fija, controles reales ---------- */
-    .pack { display: grid; grid-template-columns: 1fr 1fr; margin-top: var(--gap); }
-    .pack-fixed {
-      position: sticky; top: 0; height: 100svh;
-      background: var(--paper-2); display: grid; place-items: center; padding: var(--m);
+    .hero::before {
+      /* grilla tenue sobre el video */
+      content: ''; position: absolute; inset: 0; z-index: -2; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(243, 245, 249, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(243, 245, 249, .05) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
     }
-    .pack-read { padding: 72px var(--in) 18vh; }
-    .pack-read h2 { font-size: var(--heading); }
-    .block { max-width: 44ch; margin-top: 32vh; }
-    .block:first-of-type { margin-top: 48px; }
-    .block h3 { font-size: var(--lead); letter-spacing: -0.02em; line-height: 1.2; }
-    .block p { margin-top: 16px; }
-    .seg { display: flex; margin-top: 24px; background: var(--paper-2); padding: 4px; width: fit-content; }
-    .seg label { position: relative; cursor: pointer; }
-    .seg input { position: absolute; opacity: 0; }
-    .seg span { display: block; padding: 12px 18px; font-size: var(--small); font-weight: 600; transition: background .2s, color .2s; }
-    .seg input:checked + span { background: var(--ink); color: var(--paper); }
-    .seg input:focus-visible + span { outline: 3px solid var(--accent); }
-    .seg label:hover span { color: var(--accent); }
-    .seg input:checked + span:hover, .seg label:hover input:checked + span { color: var(--paper); }
-    .checks { margin-top: 24px; display: grid; gap: 10px; }
-    .checks label { display: flex; gap: 12px; align-items: center; font-size: var(--small); cursor: pointer; min-height: 32px; }
-    .checks input { width: 22px; height: 22px; accent-color: var(--accent); }
-    .range-row { margin-top: 24px; display: flex; align-items: center; gap: 16px; font-size: var(--small); font-weight: 600; }
-    input[type=range] { accent-color: var(--accent); width: min(100%, 320px); height: 32px; }
-    .menu-ui { columns: 2; column-gap: 18px; }
-    .menu-ui li { list-style: none; display: flex; justify-content: space-between; gap: 8px; padding: 4px 0; break-inside: avoid; transition: opacity .3s; }
-    .menu-ui li.off { opacity: .32; }
-    .menu-ui li.off::after { content: 'fuera del paquete'; color: #8A93A6; font-size: 13px; white-space: nowrap; }
+    .hero-copy { opacity: var(--copy, 1); transform: translate3d(0, var(--lift, 0px), 0); }
+    .scroll-cue {
+      position: absolute; left: 50%; bottom: 28px; translate: -50% 0;
+      width: 26px; height: 42px; border-radius: 99px; box-shadow: inset 0 0 0 1.5px rgba(243, 245, 249, .4);
+      opacity: var(--copy, 1);
+    }
+    .scroll-cue::after { content: ''; position: absolute; left: 50%; top: 9px; width: 3px; height: 8px; margin-left: -1.5px; border-radius: 2px; background: #fff; animation: cue 2s var(--ease) infinite; }
+    @keyframes cue { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
+    .glow {
+      position: absolute; z-index: -1; pointer-events: none;
+      width: 900px; height: 900px; left: 50%; top: -420px; translate: -50% 0;
+      background: radial-gradient(circle, rgba(36, 87, 230, .45), rgba(36, 87, 230, 0) 62%);
+      filter: blur(20px);
+      animation: breathe 9s ease-in-out infinite;
+    }
+    @keyframes breathe { 50% { opacity: .65; scale: 1.08; } }
+    .spot {
+      /* luz que sigue al mouse */
+      position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .6s;
+      background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 30%), rgba(79, 123, 255, .12), transparent 60%);
+    }
+    .hero:hover .spot { opacity: 1; }
+    .hero-copy { text-align: center; display: grid; justify-items: center; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 7px 14px 7px 8px; border-radius: 99px; margin-bottom: 32px;
+      font-size: 14px; color: var(--on-night-soft); text-decoration: none;
+      background: rgba(243, 245, 249, .05); box-shadow: inset 0 0 0 1px var(--line-night);
+      transition: background .25s;
+    }
+    .pill:hover { background: rgba(243, 245, 249, .09); }
+    .pill b { font-weight: 600; font-size: 12px; color: #fff; background: var(--accent); padding: 3px 9px; border-radius: 99px; }
+    .hero h1 { font-size: var(--display); max-width: 14ch; letter-spacing: -0.05em; }
+    .hero h1 .grad {
+      background: linear-gradient(100deg, #fff 10%, #9DB6FF 50%, #fff 90%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: sheen 7s ease-in-out infinite;
+    }
+    @keyframes sheen { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
+    .hero-copy p { font-size: var(--lead); line-height: 1.5; margin-top: 28px; max-width: 46ch; color: var(--on-night-soft); }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
 
-    /* ---------- Datos: hechos al costado, párrafo ancho ---------- */
-    .facts { padding: var(--gap) 0 0 var(--in); }
-    .facts-row { display: grid; grid-template-columns: calc(50vw - var(--in)) 1fr; padding-right: var(--in); }
-    .facts-row + .facts-row { margin-top: 120px; }
-    .facts-side { display: grid; gap: 20px; align-content: start; font-size: var(--small); }
-    .facts-side dt { color: var(--soft); }
-    .facts-side dd { font-weight: 600; }
-    .facts-lead h2 { font-size: var(--heading); max-width: 18ch; }
-    .facts-lead p { font-size: var(--lead); line-height: 1.4; margin-top: 28px; max-width: 46ch; }
-    .facts-word { font-size: var(--small); font-weight: 600; }
-    .lists { display: grid; grid-template-columns: repeat(2, minmax(0, 340px)); gap: 64px; }
-    .lists h3 { font-size: var(--small); letter-spacing: 0; font-weight: 700; margin-bottom: 14px; }
-    .lists li { list-style: none; font-size: var(--small); padding: 5px 0; display: flex; justify-content: space-between; gap: 16px; }
-    .lists li span:last-child { color: var(--soft); white-space: nowrap; }
+    /* Palabras que entran desenfocadas */
+    .js .split .w { display: inline-block; opacity: 0; filter: blur(10px); transform: translateY(18px); }
+    .split.in .w { opacity: 1; filter: none; transform: none; transition: opacity .9s var(--ease), filter .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--d) * 70ms); }
 
-    /* ---------- Implementación: arrastrar las etapas ---------- */
-    .steps { display: grid; grid-template-columns: 1fr 1fr; margin-top: var(--gap); min-height: 88svh; position: relative; }
-    .steps-l { background: var(--accent); color: #fff; padding: 18svh var(--in) 160px; }
-    .steps-r { background: var(--night); display: grid; place-items: center; padding: 72px var(--m) 160px; }
-    .clause { font-size: var(--display); font-weight: 700; letter-spacing: -0.04em; line-height: 1; max-width: 12ch; }
-    .clause-note { font-size: var(--lead); line-height: 1.4; margin-top: 32px; max-width: 32ch; }
-    .js .stage-item { display: none; }
-    .js .stage-item.on { display: block; animation: fade .2s ease; }
-    .stage-item + .stage-item { margin-top: 48px; }
-    .js .stage-item + .stage-item { margin-top: 0; }
-    @keyframes fade { from { opacity: 0; } }
-    .frag-wrap { width: min(100%, 460px); }
-    @media (max-width: 900px) { .frag-wrap { width: 100%; } }
-    .slider { position: absolute; left: 28px; right: 28px; bottom: 28px; display: none; }
-    .js .slider { display: block; }
-    .slider input { width: 100%; height: 40px; accent-color: #fff; }
-    .slider ol { display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; font-size: var(--small); color: rgba(255, 255, 255, .62); margin-top: 6px; }
-    .slider ol li:nth-child(n+3) { color: var(--on-night-soft); }
-    .slider ol li { cursor: pointer; }
-    .slider ol li.on { color: #fff; font-weight: 600; }
 
-    /* ---------- Preguntas: texto de lectura ---------- */
-    .faq { display: grid; grid-template-columns: calc(50vw - var(--in)) 1fr; padding: var(--gap) var(--in) 0; }
-    .faq h2 { font-size: var(--heading); }
-    .faq-text { columns: 2; column-gap: 56px; }
-    .faq-text p { break-inside: avoid; margin-bottom: 22px; }
-    .faq-text { column-gap: 40px; }
-    .faq-text b { font-weight: 600; }
+    /* ---------- Cinta de módulos ---------- */
+    .ribbon { background: var(--night); color: var(--on-night-soft); padding: 56px 0 72px; }
+    .ribbon p { text-align: center; font-size: 14px; margin: 0 auto 28px; }
+    .marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+    .marquee ul { display: flex; gap: 56px; width: max-content; list-style: none; animation: slide 48s linear infinite; }
+    .marquee:hover ul { animation-play-state: paused; }
+    .marquee li { font-size: clamp(20px, 2vw, 28px); font-weight: 600; letter-spacing: -0.03em; white-space: nowrap; color: rgba(243, 245, 249, .5); transition: color .3s; }
+    .marquee li:hover { color: var(--on-night); }
+    .marquee li::before { content: '✦'; color: var(--accent-glow); font-size: .55em; margin-right: 56px; vertical-align: .3em; opacity: .7; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+
+    /* ---------- Encabezado de sección ---------- */
+    .head { max-width: 760px; }
+    .head h2 { font-size: var(--heading); }
+    .head p { font-size: var(--lead); line-height: 1.5; margin-top: 22px; color: var(--soft); }
+    .kicker { display: inline-block; font-size: 14px; font-weight: 600; color: var(--accent); margin-bottom: 18px; }
+
+    /* ---------- Recorrido por el sistema: pantalla fija + texto que cambia ---------- */
+    .tour { padding-top: var(--gap); }
+    .tour-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 6vw, 96px); margin-top: 72px; }
+    .tour-list { list-style: none; }
+    .tour-item { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; padding-left: 28px; position: relative; opacity: .32; transition: opacity .5s var(--ease); }
+    .tour-item:first-child { min-height: 46vh; justify-content: flex-start; padding-top: 8vh; }
+    .tour-item::before { content: ''; position: absolute; left: 0; top: 18%; bottom: 18%; width: 2px; background: var(--line); }
+    .tour-item::after { content: ''; position: absolute; left: 0; top: 18%; width: 2px; height: 0; background: var(--accent); transition: height .8s var(--ease); }
+    .tour-item:first-child::before, .tour-item:first-child::after { top: 8vh; }
+    .tour-item.on { opacity: 1; }
+    .tour-item.on::after { height: 64%; }
+    .tour-item .n { font-size: 14px; font-weight: 600; color: var(--accent); }
+    .tour-item h3 { font-size: clamp(26px, 2.4vw, 36px); margin-top: 10px; }
+    .tour-item p { margin-top: 14px; color: var(--soft); max-width: 40ch; }
+    .tour-item .mob { display: none; }
+    .chips { flex-wrap: wrap; gap: 8px; margin-top: 18px; list-style: none; font-size: 14px; font-weight: 500; }
+    .chips li { padding: 6px 12px; border-radius: 99px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+    .no-js .tour-item, .tour-item:only-child { opacity: 1; }
+    .tour-stage {
+      position: sticky; top: calc(50vh - min(22vw, 290px)); align-self: start;
+      aspect-ratio: 6 / 5; max-height: 580px; border-radius: 28px; overflow: hidden; isolation: isolate;
+      background: var(--night); color: var(--on-night);
+    }
+    .tour-stage::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background-image: linear-gradient(rgba(243,245,249,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(243,245,249,.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 80% at 80% 0%, #000, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 80% 0%, #000, transparent 70%);
+    }
+    .tour-stage .glow { width: 700px; height: 700px; top: -380px; left: 85%; }
+    .panel { position: absolute; inset: 0; padding: clamp(32px, 3.4vw, 52px); display: flex; flex-direction: column; justify-content: flex-end; }
+    .panel .num {
+      position: absolute; top: clamp(8px, 1.5vw, 20px); right: clamp(24px, 3vw, 44px);
+      font-size: clamp(120px, 15vw, 220px); font-weight: 800; letter-spacing: -0.07em; line-height: 1;
+      color: transparent; -webkit-text-stroke: 1.5px rgba(126, 166, 255, .35);
+      transition: transform 1s var(--ease), opacity .8s;
+    }
+    .panel h4 { font-size: clamp(30px, 3vw, 44px); font-weight: 700; letter-spacing: -0.045em; line-height: 1; transition: transform .9s var(--ease), opacity .7s; }
+    .flow { list-style: none; margin-top: 28px; position: relative; display: grid; gap: 14px; }
+    .flow::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: rgba(243, 245, 249, .12); }
+    .flow::after {
+      /* punto de luz que recorre el circuito */
+      content: ''; position: absolute; left: 4px; top: 4px; width: 8px; height: 8px; border-radius: 50%;
+      background: #fff; box-shadow: 0 0 0 4px rgba(79, 123, 255, .35), 0 0 18px 4px rgba(79, 123, 255, .8);
+      animation: travel 3.6s var(--ease) infinite;
+    }
+    @keyframes travel { 0% { top: 4px; opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { top: calc(100% - 12px); opacity: 0; } }
+    .flow li { position: relative; padding-left: 32px; font-size: 17px; color: var(--on-night-soft); transition: transform .8s var(--ease), opacity .6s; transition-delay: calc(var(--k) * 70ms + 150ms); }
+    .flow li::before { content: ''; position: absolute; left: 2px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: var(--night); box-shadow: inset 0 0 0 2px var(--accent-glow); }
+    .flow li:last-child { color: var(--on-night); font-weight: 600; }
+    .flow li:last-child::before { background: var(--accent-glow); }
+    .panel:not(.on) { pointer-events: none; }
+    .panel:not(.on) .num { opacity: 0; transform: translateY(30px); }
+    .panel:not(.on) h4, .panel:not(.on) .flow li { opacity: 0; transform: translateY(18px); transition-delay: 0s; }
+    .panel:not(.on) .flow::after { display: none; }
+
+    /* ---------- Por qué SIG: grilla con luz al pasar ---------- */
+    .why { padding-top: var(--gap); }
+    .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 64px; }
+    .card {
+      --x: 50%; --y: 50%;
+      position: relative; overflow: hidden; isolation: isolate;
+      background: var(--white); border-radius: 18px; padding: clamp(28px, 3vw, 40px);
+      box-shadow: inset 0 0 0 1px var(--line);
+      min-height: 280px; display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform .5s var(--ease), box-shadow .5s;
+    }
+    .card::before {
+      content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .4s;
+      background: radial-gradient(420px circle at var(--x) var(--y), rgba(36, 87, 230, .10), transparent 55%);
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px rgba(36, 87, 230, .35), 0 24px 60px -30px rgba(36, 87, 230, .35); }
+    .card:hover::before { opacity: 1; }
+    .card h3 { font-size: clamp(22px, 1.9vw, 28px); letter-spacing: -0.03em; line-height: 1.15; }
+    .card p { margin-top: 12px; color: var(--soft); font-size: 16px; }
+    .card .big { font-size: clamp(56px, 6vw, 92px); font-weight: 800; letter-spacing: -0.06em; line-height: .9; color: var(--accent); }
+    .card .big small { font-size: .38em; letter-spacing: -0.03em; margin-left: 6px; color: var(--ink); }
+    .c3 { grid-column: span 3; } .c2 { grid-column: span 2; } .c4 { grid-column: span 4; }
+    .card.dark { background: var(--night); color: var(--on-night); box-shadow: none; }
+    .card.dark p { color: var(--on-night-soft); }
+    .card.dark::before { background: radial-gradient(420px circle at var(--x) var(--y), rgba(79, 123, 255, .22), transparent 55%); }
+    .card.dark .big small { color: var(--on-night); }
+    .card.blue { background: var(--accent); color: #fff; box-shadow: none; }
+    .card.blue p { color: rgba(255, 255, 255, .82); }
+    .card.blue .big { color: #fff; }
+    .card.blue::before { background: radial-gradient(420px circle at var(--x) var(--y), rgba(255, 255, 255, .18), transparent 55%); }
+    .ticks { list-style: none; margin-top: 20px; display: grid; gap: 8px; font-size: 15px; }
+    .ticks li { display: flex; gap: 10px; align-items: baseline; }
+    .ticks li::before { content: ''; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-glow); translate: 0 -2px; }
+    /* ondas que salen del servidor */
+    .pulse { position: relative; width: 56px; height: 56px; margin-bottom: 28px; }
+    .pulse i { position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--accent-glow); animation: ring 3.2s var(--ease) infinite; }
+    .pulse i:nth-child(2) { animation-delay: 1.07s; }
+    .pulse i:nth-child(3) { animation-delay: 2.14s; }
+    .pulse b { position: absolute; inset: 18px; border-radius: 50%; background: var(--accent-glow); }
+    @keyframes ring { from { scale: .35; opacity: 1; } to { scale: 1.4; opacity: 0; } }
+
+    /* ---------- Paquetes ---------- */
+    .plans { padding-top: var(--gap); }
+    .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 64px; }
+    .plan { background: var(--white); border-radius: 18px; padding: clamp(28px, 3vw, 40px); box-shadow: inset 0 0 0 1px var(--line); display: flex; flex-direction: column; transition: transform .5s var(--ease); }
+    .plan:hover { transform: translateY(-4px); }
+    .plan h3 { font-size: 28px; }
+    .plan .for { margin-top: 10px; color: var(--soft); font-size: 16px; min-height: 3.2em; }
+    .plan ul { list-style: none; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; gap: 11px; font-size: 15px; }
+    .plan li { display: flex; gap: 12px; }
+    .plan li svg { flex: none; margin-top: 4px; color: var(--accent); }
+    .plan li.plus { font-weight: 600; }
+    .plan.feat { background: var(--night); color: var(--on-night); box-shadow: 0 0 0 1px rgba(79, 123, 255, .5), 0 40px 80px -40px rgba(36, 87, 230, .55); }
+    .plan.feat .for { color: var(--on-night-soft); }
+    .plan.feat ul { border-color: var(--line-night); }
+    .plan.feat li svg { color: var(--accent-glow); }
+    .plan .tag { align-self: flex-start; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: var(--accent); color: #fff; margin-bottom: 18px; }
+    .plans-note { margin-top: 28px; color: var(--soft); font-size: var(--small); }
+
+    /* ---------- Implementación: línea que se dibuja ---------- */
+    .steps { padding-top: var(--gap); }
+    .road { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 72px; list-style: none; }
+    .road::before, .road::after { content: ''; position: absolute; left: 0; right: 0; top: 19px; height: 2px; background: var(--line); }
+    .road::after { background: var(--accent); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); transition: transform .2s linear; }
+    .road li { position: relative; z-index: 1; padding-right: 12px; }
+    .road .dot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); font-size: 15px; font-weight: 700; transition: background .4s, color .4s, box-shadow .4s; }
+    .road li.on .dot { background: var(--accent); color: #fff; box-shadow: 0 0 0 6px rgba(36, 87, 230, .14); }
+    .road h3 { font-size: 22px; letter-spacing: -0.03em; margin-top: 24px; }
+    .road p { margin-top: 10px; color: var(--soft); font-size: 16px; }
+
+    /* ---------- Preguntas ---------- */
+    .faq { padding-top: var(--gap); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(40px, 6vw, 96px); }
+    .faq-list details { border-bottom: 1px solid var(--line); }
+    .faq-list details:first-child { border-top: 1px solid var(--line); }
+    .faq-list summary {
+      list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+      padding: 24px 0; font-size: 19px; font-weight: 600; letter-spacing: -0.02em; transition: color .2s;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary:hover { color: var(--accent); }
+    .faq-list summary i { flex: none; position: relative; width: 14px; height: 14px; }
+    .faq-list summary i::before, .faq-list summary i::after { content: ''; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: currentColor; transition: transform .35s var(--ease); }
+    .faq-list summary i::after { transform: rotate(90deg); }
+    .faq-list details[open] summary i::after { transform: rotate(0); }
+    .faq-list .ans { overflow: hidden; }
+    .faq-list .ans p { padding: 0 0 26px; color: var(--soft); }
 
     /* ---------- Cierre ---------- */
-    .cta { padding: 30svh var(--in) 20svh calc(50vw); }
-    .cta p { font-size: var(--lead); line-height: 1.4; max-width: 34ch; }
-    .cta .row { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; margin-top: 28px; font-size: var(--small); }
+    .cta { padding: var(--gap) 0; }
+    .cta-box {
+      position: relative; isolation: isolate; overflow: hidden; border-radius: 28px;
+      background: var(--night); color: var(--on-night); text-align: center;
+      padding: clamp(72px, 10vw, 140px) var(--pad);
+      display: grid; justify-items: center;
+    }
+    .cta-box::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background-image: linear-gradient(var(--line-night) 1px, transparent 1px), linear-gradient(90deg, var(--line-night) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 60% 70% at 50% 100%, #000, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 100%, #000, transparent 70%);
+    }
+    .cta-box .glow { top: auto; bottom: -560px; }
+    .cta-box h2 { font-size: var(--heading); max-width: 18ch; }
+    .cta-box p { font-size: var(--lead); color: var(--on-night-soft); margin-top: 20px; max-width: 44ch; }
+    .cta-box .hero-cta { margin-top: 36px; }
+    .cta-box .mail { margin-top: 28px; font-size: var(--small); color: var(--on-night-soft); }
+    .cta-box .mail a { color: var(--on-night); }
 
-    .foot { display: grid; grid-template-columns: 1fr 1fr; min-height: 100svh; background: var(--night); color: var(--on-night); }
-    .foot-pic { display: grid; place-items: center; padding: var(--in); background: var(--night-2); }
-    .foot-menu { padding: 80px var(--in) 32px; display: grid; grid-template-rows: auto 1fr auto auto; }
-    .foot-menu .word { font-size: var(--heading); }
-    .foot-menu ul { list-style: none; margin-top: 56px; display: grid; gap: 14px; align-content: start; }
-    .foot-menu ul a { font-size: var(--heading); font-weight: 700; letter-spacing: -0.035em; text-decoration: none; display: inline-block; transition: transform .3s var(--ease), color .3s; }
-    .foot-menu ul:hover a { color: var(--on-night-soft); }
-    .foot-menu ul a:hover, .foot-menu ul a:focus-visible { color: var(--on-night); transform: translateX(12px); }
-    .foot-info { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; font-size: var(--small); margin-top: 64px; }
-    .foot-info span { display: block; color: var(--on-night-soft); }
-    .foot-info a { text-decoration: none; }
-    .foot-info a:hover { color: #7EA6FF; }
-    .legal { font-size: 13px; color: var(--on-night-soft); margin-top: 48px; }
+    .foot { border-top: 1px solid var(--line); padding: 48px 0 40px; font-size: var(--small); }
+    .foot .wrap { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: start; }
+    .foot .word { color: var(--ink); }
+    .foot nav { display: flex; flex-wrap: wrap; gap: 12px 28px; }
+    .foot nav a { text-decoration: none; color: var(--soft); transition: color .2s; }
+    .foot nav a:hover { color: var(--accent); }
+    .legal { grid-column: 1 / -1; font-size: 13px; color: var(--soft); }
 
-    /* ---------- Entradas ---------- */
-    .anim .rv { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--i, 0) * 75ms); }
+    /* ---------- Entradas al bajar ---------- */
+    .anim .rv { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
     .anim .rv.in { opacity: 1; transform: none; }
-    .anim .rv-pic { clip-path: inset(0 0 100% 0); transition: clip-path 1.1s var(--ease); }
-    .anim .rv-pic.in { clip-path: inset(0 0 0 0); }
 
-    /* ---------- Teléfono ---------- */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding: 12px; gap: 0; }
-      .stage { order: -1; position: sticky; top: 12px; height: 56svh; z-index: 0; }
-      .sheet { position: relative; z-index: 1; min-height: auto; margin-top: -10svh; padding: 24px 20px 40px; }
-
-      .hero-copy { padding-top: 48px; }
-      :root { --display: clamp(36px, 9vw, 56px); --heading: clamp(26px, 6vw, 32px); }
-      .hero h1 { font-size: var(--display); }
-      .hero-copy .btn { width: 100%; }
-      .hero-foot { margin-top: 32px; }
-      .stage-bar { height: 52px; font-size: 13px; padding: 0 14px; }
-      .stage-in { bottom: 52px; padding: 0 20px; }
-      .stage .win { width: min(100%, calc((56svh - 52px - 38px) * 1.6)); }
-
-      .io { grid-template-columns: 1fr; }
-      .io > div { min-height: 62svh; padding: 48px 20px 110px; }
-      .io-out { padding-top: 110px !important; padding-bottom: 48px !important; }
-      .io h2 { font-size: var(--display); }
-      .io-in h2 { left: 20px; bottom: 28px; }
-      .io-out h2 { right: auto; left: 20px; top: 28px; bottom: auto; }
-      .order { font-size: 18px; }
-      .io-out { padding-left: 0 !important; padding-right: 0 !important; }
-      .io-out [data-ui], .pack-fixed [data-ui], .steps-r [data-ui] { width: 100%; border-radius: 0; }
-
-      .pack { grid-template-columns: 1fr; }
-      .pack-fixed { height: auto; position: relative; padding: 0; }
-      
-      .pack-read { padding: 48px 20px; }
-      .block { margin-top: 64px; }
-
-      .block p { font-size: 16px; }
-      .seg { width: 100%; }
-      .seg label { flex: 1; }
-      .seg span { text-align: center; padding: 12px 6px; }
-
-      .facts-row { gap: 32px; }
-      .facts-lead { order: -1; }
-      .facts-side { grid-template-columns: 1fr 1fr; }
-      .facts-row + .facts-row { margin-top: 64px; }
-      .lists { grid-template-columns: 1fr; gap: 40px; }
-
-
-      .steps { grid-template-columns: 1fr; }
-      .steps-r { order: -1; min-height: 46svh; padding: 0 0 120px; align-items: start; }
-      .slider { top: calc(46svh - 64px); bottom: auto; left: 20px; right: 20px; }
-      .slider ol { display: none; }
-      .slider ol li, .slider ol li:nth-child(n+3) { color: var(--on-night-soft); }
-      .slider ol li.on { color: #fff; }
-      .steps-l { padding: 48px 20px 64px; }
-      .clause { font-size: var(--display); }
-
-      .faq { grid-template-columns: 1fr; }
-
-      .faq-text { columns: 1; }
-      .faq-text p { font-size: 16px; }
-
-      .cta { padding: 20svh 20px 14svh; }
-      .facts { padding-left: 20px; }
-      .facts-row { grid-template-columns: 1fr; padding-right: 20px; }
-      .faq { padding: var(--gap) 20px 0; }
-      .cta .btn { width: 100%; }
-
-      .foot { grid-template-columns: 1fr; }
-      .foot-pic { padding: 40px 20px; }
-      .foot-menu { padding: 40px 20px 24px; }
-      .foot-menu ul a { font-size: var(--heading); }
-      .foot-info { grid-template-columns: 1fr; }
+    /* ---------- Tablet y teléfono ---------- */
+    @media (max-width: 1000px) {
+      .nav a:not(.btn) { display: none; }
+      .tour-grid { grid-template-columns: 1fr; margin-top: 40px; }
+      .tour-stage { display: none; }
+      .tour-item, .tour-item:first-child { min-height: 0; opacity: 1; padding: 0; margin-bottom: 72px; }
+      .tour-item::before, .tour-item::after { display: none; }
+      .tour-item .mob { display: flex; }
+      .bento { grid-template-columns: 1fr 1fr; }
+      .c2, .c3, .c4 { grid-column: span 1; }
+      .c4 { grid-column: span 2; }
+      .plan-grid { grid-template-columns: 1fr; }
+      .plan .for { min-height: 0; }
+      .road { grid-template-columns: 1fr 1fr; row-gap: 48px; }
+      .road::before, .road::after { display: none; }
+      .faq { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 640px) {
+      :root { --display: clamp(40px, 11vw, 56px); --heading: clamp(30px, 8vw, 40px); --body: 16px; }
+      .top .wrap { height: 64px; }
+      .hero { padding-top: 120px; }
+      .hero-cta { width: 100%; }
+      .hero-cta .btn { flex: 1 1 100%; }
+      .bento { grid-template-columns: 1fr; }
+      .c2, .c3, .c4 { grid-column: span 1; }
+      .card { min-height: 0; gap: 28px; }
+      .road { grid-template-columns: 1fr; }
+      .cta-box { border-radius: 20px; }
+      .foot .wrap { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .slide { transition: none; }
-      .js .rv, .anim .rv-pic { opacity: 1; transform: none; clip-path: none; transition: none; }
-      .flash, .js .stage-item.on { animation: none; }
+      *, *::before, *::after { animation: none !important; }
+      .js .split .w, .anim .rv { opacity: 1; filter: none; transform: none; transition: none; }
+      .card, .plan, .btn::after, .panel *, .bg { transition: none; }
     }
   </style>
   <script src="/assets/pixel.js?v=2" defer></script>
 </head>
 <body>
 
-  <header class="hero" id="inicio">
-    <div class="sheet">
-      <nav class="bar" aria-label="Principal">
+  <header class="top" id="top">
+    <div class="wrap">
+      <a class="word" href="#inicio" aria-label="SIG, inicio">SIG</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#recorrido">El sistema</a>
         <a href="#paquetes">Paquetes</a>
-        <a class="word" href="#inicio" aria-label="SIG, inicio">SIG</a>
-        <a class="r" href="/blog/">Blog</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="/blog/">Blog</a>
+        <a class="btn" href="/demo/">Pedir una demo</a>
       </nav>
-      <div class="hero-copy">
-        <h1 class="rv">Toda tu planta, en un sistema.</h1>
-        <p class="rv" style="--i:1">SIG es el sistema de gestión para empresas industriales: facturación ARCA, ventas, compras, producción, mantenimiento, contabilidad y sueldos, instalado en tu propio servidor.</p>
-        <a class="btn rv" style="--i:2" href="/demo/">Pedir una demo</a>
-      </div>
-      <p class="hero-foot">Una instalación dedicada por empresa · Soporte en español desde Buenos Aires</p>
-    </div>
-
-    <div class="stage" aria-label="Grabaciones reales de SIG">
-      <div class="stage-in">
-    <figure class="win">
-      <div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><span id="winTitle">SIG — Dashboard</span></div>
-      <div class="win-view">
-      <div class="slide on" data-label="Dashboard">
-        <video muted loop playsinline preload="metadata" poster="/assets/videos/poster-dashboard.jpg" width="1920" height="1080" aria-label="Grabación real del Dashboard de SIG">
-          <source src="/assets/videos/dashboard.webm" type="video/webm"><source src="/assets/videos/dashboard.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="slide" data-label="Ventas">
-        <video muted loop playsinline preload="none" poster="/assets/videos/poster-ventas.jpg" width="1920" height="1080" aria-label="Grabación real de Ventas en SIG">
-          <source src="/assets/videos/ventas.webm" type="video/webm"><source src="/assets/videos/ventas.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="slide" data-label="Producción">
-        <video muted loop playsinline preload="none" poster="/assets/videos/poster-produccion.jpg" width="1920" height="1080" aria-label="Grabación real de Producción en SIG">
-          <source src="/assets/videos/produccion.webm" type="video/webm"><source src="/assets/videos/produccion.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="slide" data-label="Compras e importaciones">
-        <video muted loop playsinline preload="none" poster="/assets/videos/poster-compras.jpg" width="1920" height="1080" aria-label="Grabación real de Compras en SIG">
-          <source src="/assets/videos/compras.webm" type="video/webm"><source src="/assets/videos/compras.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="slide" data-label="Contabilidad">
-        <video muted loop playsinline preload="none" poster="/assets/videos/poster-contabilidad.jpg" width="1920" height="1080" aria-label="Grabación real de Contabilidad en SIG">
-          <source src="/assets/videos/contabilidad.webm" type="video/webm"><source src="/assets/videos/contabilidad.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="slide" data-label="Sueldos">
-        <video muted loop playsinline preload="none" poster="/assets/videos/poster-rrhh.jpg" width="1920" height="1080" aria-label="Grabación real de Sueldos en SIG">
-          <source src="/assets/videos/rrhh.webm" type="video/webm"><source src="/assets/videos/rrhh.mp4" type="video/mp4">
-        </video>
-      </div>
-</div>
-    </figure>
-      </div>
-      <div class="stage-bar">
-        <span id="stageLabel">SIG · Dashboard</span>
-        <span>Grabación real, sin retoques</span>
-      </div>
     </div>
   </header>
 
+  <section class="hero" id="inicio" aria-labelledby="hero-h">
+    <div class="bg" id="bg" aria-hidden="true">
+      <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/hero/planta-poster.jpg" width="2560" height="1440">
+        <source src="/assets/hero/planta-720.mp4" type="video/mp4" media="(max-width: 700px)">
+        <source src="/assets/hero/planta-1080.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="spot" aria-hidden="true"></div>
+    <div class="wrap hero-copy">
+      <a class="pill rv" href="/blog/factura-electronica-arca-wsfev1/"><b>ARCA</b> Factura electrónica nativa, con CAE y QR <span aria-hidden="true">→</span></a>
+      <h1 id="hero-h" class="split">Toda tu planta, <span class="grad">en un sistema.</span></h1>
+      <p class="rv" style="--i:3">SIG es el sistema de gestión para empresas industriales: facturación ARCA, ventas, compras, producción, mantenimiento, contabilidad y sueldos, instalado en tu propio servidor.</p>
+      <div class="hero-cta rv" style="--i:4">
+        <a class="btn" href="/demo/">Pedir una demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn ghost" href="#recorrido">Ver el sistema</a>
+      </div>
+    </div>
+
+    <span class="scroll-cue" aria-hidden="true"></span>
+  </section>
+
+  <section class="ribbon" aria-label="Módulos de SIG">
+    <p>Un solo sistema, todas las áreas de la empresa</p>
+    <div class="marquee">
+      <ul>
+        <li>Facturación ARCA</li><li>Ventas y expedición</li><li>Compras e importaciones</li><li>Producción y MRP</li><li>Calidad y lotes</li><li>Mantenimiento</li><li>Laboratorio</li><li>Contabilidad</li><li>Tesorería y banco</li><li>Sueldos y F.931</li><li>Portal del empleado</li><li>Higiene y Seguridad</li>
+        <li aria-hidden="true">Facturación ARCA</li><li aria-hidden="true">Ventas y expedición</li><li aria-hidden="true">Compras e importaciones</li><li aria-hidden="true">Producción y MRP</li><li aria-hidden="true">Calidad y lotes</li><li aria-hidden="true">Mantenimiento</li><li aria-hidden="true">Laboratorio</li><li aria-hidden="true">Contabilidad</li><li aria-hidden="true">Tesorería y banco</li><li aria-hidden="true">Sueldos y F.931</li><li aria-hidden="true">Portal del empleado</li><li aria-hidden="true">Higiene y Seguridad</li>
+      </ul>
+    </div>
+  </section>
+
   <main>
-    <!-- Una venta: lo que entra y lo que SIG escribe -->
-    <section class="io" id="venta" aria-labelledby="venta-h">
-      <div class="io-in">
-        <div class="order rv">
-          <p>Pedido de <b>Motos del Litoral S.A.</b>, responsable inscripto:</p>
-          <p>
-            <label><input id="qty" type="number" min="1" max="9" value="3" inputmode="numeric" aria-label="Cantidad"></label>
-            ×
-            <label><select id="prod" aria-label="Producto">
-              <option value="veltra">Veltra Tour 500</option>
-              <option value="arvek">Arvek Street 125</option>
-              <option value="norvo">Norvo Trail 150</option>
-            </select></label>
-          </p>
-          <p class="muted">Cambiá la cantidad o el modelo y mirá lo que SIG registra del otro lado.</p>
-        </div>
-        <h2 id="venta-h"><span>Una venta.</span></h2>
+    <!-- Recorrido: grabaciones reales, una por área -->
+    <section class="tour wrap" id="recorrido" aria-labelledby="tour-h">
+      <div class="head">
+        <span class="kicker rv">El sistema por dentro</span>
+        <h2 id="tour-h" class="rv" style="--i:1">Cada área, conectada con las demás.</h2>
+        <p class="rv" style="--i:2">Lo que pasa en ventas mueve el stock, el stock alimenta producción y todo termina en la contabilidad. Así circula la información dentro de SIG.</p>
       </div>
-      <div class="io-out">
-        <div data-ui class="rv" style="--i:1" aria-live="polite">
-          <div class="ui-h"><span>Factura A 0001-00000144</span><span class="ui-pill">CAE otorgado</span></div>
-          <div class="ui-card">
-            <div class="ui-row"><span id="oLine">3 × Veltra Tour 500</span><span id="oNet">$ 26.700.000,00</span></div>
-            <div class="ui-row"><span class="ui-k">IVA 21 %</span><span id="oIva">$ 5.607.000,00</span></div>
-            <div class="ui-row"><b>Total</b><b id="oTot">$ 32.307.000,00</b></div>
-          </div>
-          <div class="ui-card">
-            <div class="ui-row"><span class="ui-k">Stock en depósito</span><span><span id="oStock0">14</span> → <b id="oStock1">11</b></span></div>
-            <div class="ui-row"><span class="ui-k">Remito</span><span>R 0001-00000215 <span class="ui-pill b">Para despachar</span></span></div>
-          </div>
-          <div class="ui-card">
-            <div class="ui-row"><span class="ui-k">Asiento AS-2026-005412</span><span class="ui-ok">Contabilizado</span></div>
-            <table>
-              <tr><td>Deudores por ventas</td><td id="aD">$ 32.307.000,00</td></tr>
-              <tr><td class="ui-k">a Ventas</td><td id="aV">$ 26.700.000,00</td></tr>
-              <tr><td class="ui-k">a IVA débito fiscal</td><td id="aI">$ 5.607.000,00</td></tr>
-            </table>
-          </div>
-        </div>
-        <h2 aria-hidden="true"><span>Todo registrado.</span></h2>
-      </div>
-    </section>
-
-    <!-- Paquetes del contrato -->
-    <section class="pack" id="paquetes" aria-labelledby="paq-h">
-      <div class="pack-fixed">
-        <div data-ui>
-          <div class="ui-h"><span>Licencia <span class="ui-k">VER-<span id="lCode">IND</span>-2026-0001</span></span><span class="ui-pill" id="lPack">Industrial</span></div>
-          <div class="ui-card">
-            <ul class="menu-ui" id="menu">
-              <li data-m="c">Ventas y expedición</li>
-              <li data-m="c">Facturación ARCA</li>
-              <li data-m="c">Compras</li>
-              <li data-m="c">Contabilidad</li>
-              <li data-m="c">Tesorería y banco</li>
-              <li data-m="c">Sueldos y portal</li>
-              <li data-m="c">Proyectos</li>
-              <li data-m="c">Analítica</li>
-              <li data-m="i">Producción y MRP</li>
-              <li data-m="i">Calidad y lotes</li>
-              <li data-m="i">Mantenimiento</li>
-              <li data-m="i">Laboratorio</li>
-              <li data-m="i">Ingeniería</li>
-              <li data-m="i">Procesos</li>
-              <li data-m="i">Higiene y Seguridad</li>
-              <li data-m="i">Custodia de terceros</li>
-            </ul>
-          </div>
-          <div class="ui-card">
-            <div class="ui-row"><span class="ui-k">Usuarios</span><b id="lUsers">25</b></div>
-            <div class="ui-row"><span class="ui-k">Extensiones</span><span id="lExt">Conector de Excel</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="pack-read">
-        <h2 id="paq-h" class="rv">Armá tu SIG.</h2>
-        <div class="block rv">
-          <h3>Tres paquetes, según tu operación.</h3>
-          <p><b>Comercial</b> cubre la gestión: ventas, facturación ARCA, compras, contabilidad, tesorería y sueldos. <b>Industrial</b> suma la planta: producción, calidad, mantenimiento, laboratorio, ingeniería e higiene y seguridad. <b>Enterprise</b> trae además todas las extensiones.</p>
-          <div class="seg" role="radiogroup" aria-label="Paquete">
-            <label><input type="radio" name="pk" value="comercial"><span>Comercial</span></label>
-            <label><input type="radio" name="pk" value="industrial" checked><span>Industrial</span></label>
-            <label><input type="radio" name="pk" value="enterprise"><span>Enterprise</span></label>
-          </div>
-        </div>
-        <div class="block rv">
-          <h3>Las extensiones, cuando las necesites.</h3>
-          <p>Se suman a la licencia que ya tenés, sin reinstalar. Son dieciséis: conectores con Excel, Google Sheets y Power BI, avisos por WhatsApp, planificación avanzada, conciliación bancaria automática y más.</p>
-          <div class="checks" id="exts">
-            <label><input type="checkbox" value="Conector de Excel" checked> Conector de Excel</label>
-            <label><input type="checkbox" value="Avisos por WhatsApp"> Avisos por WhatsApp</label>
-            <label><input type="checkbox" value="Planificación avanzada"> Planificación avanzada</label>
-            <label><input type="checkbox" value="Conciliación bancaria automática"> Conciliación bancaria automática</label>
-          </div>
-        </div>
-        <div class="block rv">
-          <h3>Los usuarios que tu equipo use.</h3>
-          <p>La licencia fija cuántas personas trabajan en el sistema a la vez. Si el equipo crece, se emite una licencia nueva sobre la misma instalación.</p>
-          <div class="range-row">
-            <input type="range" id="users" min="5" max="200" step="5" value="25" aria-label="Usuarios">
-            <output for="users" id="usersOut" class="tab">25 usuarios</output>
-          </div>
+      <div class="tour-grid">
+        <ol class="tour-list">
+          <li class="tour-item on" data-v="0">
+            <span class="n">01</span>
+            <h3>Dashboard</h3>
+            <p>Ventas, gastos, margen y caja del mes en una sola pantalla, con los vencimientos de ARCA y las alertas de cada área.</p>
+            <ul class="chips mob"><li>Ventas del mes</li><li>Gastos</li><li>Margen</li><li>Caja disponible</li></ul>
+          </li>
+          <li class="tour-item" data-v="1">
+            <span class="n">02</span>
+            <h3>Ventas</h3>
+            <p>Del pedido a la factura electrónica, el remito y la cobranza, con la cuenta corriente de cada cliente al día.</p>
+            <ul class="chips mob"><li>Pedido</li><li>Factura ARCA</li><li>Remito</li><li>Cobranza</li></ul>
+          </li>
+          <li class="tour-item" data-v="2">
+            <span class="n">03</span>
+            <h3>Producción</h3>
+            <p>Órdenes de producción con listas de materiales, MRP, eficiencia por línea y trazabilidad de lotes.</p>
+            <ul class="chips mob"><li>Lista de materiales</li><li>MRP</li><li>Orden de producción</li><li>Lote trazable</li></ul>
+          </li>
+          <li class="tour-item" data-v="3">
+            <span class="n">04</span>
+            <h3>Compras e importaciones</h3>
+            <p>Solicitudes, órdenes de compra, recepción en depósito y facturas de proveedor, también para lo que llega de afuera.</p>
+            <ul class="chips mob"><li>Solicitud</li><li>Orden de compra</li><li>Recepción en depósito</li><li>Factura de proveedor</li></ul>
+          </li>
+          <li class="tour-item" data-v="4">
+            <span class="n">05</span>
+            <h3>Contabilidad</h3>
+            <p>Los asientos se generan solos desde cada operación. Tesorería y conciliación bancaria en el mismo lugar.</p>
+            <ul class="chips mob"><li>Operación</li><li>Asiento automático</li><li>Tesorería</li><li>Conciliación bancaria</li></ul>
+          </li>
+          <li class="tour-item" data-v="5">
+            <span class="n">06</span>
+            <h3>Sueldos</h3>
+            <p>Liquidación por convenio, F.931 y recibos que cada empleado firma desde el celular.</p>
+            <ul class="chips mob"><li>Convenio</li><li>Liquidación</li><li>F.931</li><li>Recibo firmado</li></ul>
+          </li>
+        </ol>
+        <div class="tour-stage" aria-hidden="true">
+          <div class="glow"></div>
+          <div class="panel on"><span class="num">01</span><h4>Dashboard</h4><ol class="flow"><li style="--k:0">Ventas del mes</li><li style="--k:1">Gastos</li><li style="--k:2">Margen</li><li style="--k:3">Caja disponible</li></ol></div>
+          <div class="panel"><span class="num">02</span><h4>Ventas</h4><ol class="flow"><li style="--k:0">Pedido</li><li style="--k:1">Factura ARCA</li><li style="--k:2">Remito</li><li style="--k:3">Cobranza</li></ol></div>
+          <div class="panel"><span class="num">03</span><h4>Producción</h4><ol class="flow"><li style="--k:0">Lista de materiales</li><li style="--k:1">MRP</li><li style="--k:2">Orden de producción</li><li style="--k:3">Lote trazable</li></ol></div>
+          <div class="panel"><span class="num">04</span><h4>Compras e importaciones</h4><ol class="flow"><li style="--k:0">Solicitud</li><li style="--k:1">Orden de compra</li><li style="--k:2">Recepción en depósito</li><li style="--k:3">Factura de proveedor</li></ol></div>
+          <div class="panel"><span class="num">05</span><h4>Contabilidad</h4><ol class="flow"><li style="--k:0">Operación</li><li style="--k:1">Asiento automático</li><li style="--k:2">Tesorería</li><li style="--k:3">Conciliación bancaria</li></ol></div>
+          <div class="panel"><span class="num">06</span><h4>Sueldos</h4><ol class="flow"><li style="--k:0">Convenio</li><li style="--k:1">Liquidación</li><li style="--k:2">F.931</li><li style="--k:3">Recibo firmado</li></ol></div>
         </div>
       </div>
     </section>
 
-    <!-- Datos y seguridad -->
-    <section class="facts" id="datos" aria-labelledby="datos-h">
-      <div class="facts-row">
-        <dl class="facts-side rv">
-          <div><dt>Dónde corre</dt><dd>En tu servidor</dd></div>
-          <div><dt>Base de datos</dt><dd>PostgreSQL, incluida</dd></div>
-          <div><dt>Datos sensibles</dt><dd>Cifrados con AES-256</dd></div>
-        </dl>
-        <div class="facts-lead">
-          <h2 id="datos-h" class="rv">Tus datos, en tu servidor.</h2>
-          <p class="rv" style="--i:1">SIG no es un servicio en la nube compartido con otras empresas. Cada cliente tiene su propia instalación, en su propio equipo: la información comercial, fiscal y de sueldos no sale de tu empresa, y se puede exportar completa el día que quieras.</p>
-        </div>
+    <!-- Por qué SIG -->
+    <section class="why wrap" id="datos" aria-labelledby="why-h">
+      <div class="head">
+        <span class="kicker rv">Por qué SIG</span>
+        <h2 id="why-h" class="rv" style="--i:1">Tus datos, en tu servidor.</h2>
+        <p class="rv" style="--i:2">SIG no es un servicio en la nube compartido con otras empresas. Cada cliente tiene su propia instalación, en su propio equipo.</p>
       </div>
-      <div class="facts-row">
-        <p class="facts-word rv">Cómo se cuida</p>
-        <div class="lists">
-          <div class="rv">
-            <h3>Seguridad</h3><ul>
-            <li><span>Doble factor de ingreso</span><span>TOTP</span></li>
-            <li><span>Ingreso con huella</span><span>con HTTPS</span></li>
-            <li><span>Permisos por rol y por campo</span><span>sueldos, costos</span></li>
-            <li><span>Bloqueo por intentos fallidos</span><span>siempre</span></li>
-            <li><span>Registro de cada cambio</span><span>quién y cuándo</span></li>
-            <li><span>Respaldo cifrado</span><span>diario</span></li>
-            <li><span>Respaldo antes de actualizar</span><span>automático</span></li>
-          </ul></div>
-          <div class="rv" style="--i:1">
-            <h3>Migración guiada</h3><ul>
-            <li><span>Plan de cuentas</span><span>paso 1</span></li>
-            <li><span>Clientes y proveedores</span><span>pasos 2 y 3</span></li>
-            <li><span>Productos y listas de materiales</span><span>pasos 4 y 5</span></li>
-            <li><span>Empleados y activos</span><span>pasos 6 y 7</span></li>
-            <li><span>Stock inicial</span><span>paso 8</span></li>
-            <li><span>Facturas abiertas</span><span>pasos 9 y 10</span></li>
-            <li><span>Asiento de apertura, al centavo</span><span>paso 11</span></li>
-          </ul></div>
-        </div>
+      <div class="bento">
+        <article class="card dark c4 rv">
+          <div class="pulse" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+          <div>
+            <h3>Una instalación dedicada por empresa.</h3>
+            <p>El instalador para Windows trae la base de datos PostgreSQL incluida y deja SIG corriendo como servicio. La información comercial, fiscal y de sueldos no sale de tu empresa, y se exporta completa el día que quieras.</p>
+          </div>
+        </article>
+        <article class="card blue c2 rv" style="--i:1">
+          <div class="big"><span data-count="256">256</span><small>bits</small></div>
+          <div>
+            <h3>Datos sensibles cifrados.</h3>
+            <p>CUIT, documentos y sueldos se guardan cifrados con AES-256.</p>
+          </div>
+        </article>
+        <article class="card c2 rv">
+          <div class="big"><span data-count="11">11</span><small>pasos</small></div>
+          <div>
+            <h3>Migración guiada.</h3>
+            <p>Del plan de cuentas al asiento de apertura. No confirma nada si los totales no cuadran con tu sistema anterior.</p>
+          </div>
+        </article>
+        <article class="card c2 rv" style="--i:1">
+          <div class="big">A·B·C</div>
+          <div>
+            <h3>ARCA de forma nativa.</h3>
+            <p>Facturas, notas de crédito y débito por WSFEv1, con CAE y PDF con código QR.</p>
+          </div>
+        </article>
+        <article class="card c2 rv" style="--i:2">
+          <div class="big"><span data-count="16">16</span><small>extensiones</small></div>
+          <div>
+            <h3>Crece con vos.</h3>
+            <p>Excel, Google Sheets, Power BI, WhatsApp y más, sobre la misma instalación.</p>
+          </div>
+        </article>
+        <article class="card c3 rv">
+          <h3>Seguridad que no se puede apagar.</h3>
+          <ul class="ticks">
+            <li>Doble factor de ingreso e ingreso con huella</li>
+            <li>Permisos por rol y por campo: sueldos y costos</li>
+            <li>Registro de cada cambio: quién y cuándo</li>
+            <li>Respaldo cifrado diario y antes de cada actualización</li>
+          </ul>
+        </article>
+        <article class="card dark c3 rv" style="--i:1">
+          <h3>Personas del otro lado.</h3>
+          <p>Soporte en español desde Buenos Aires, con gente que conoce tu instalación: errores, consultas de uso y los cambios normativos de ARCA.</p>
+          <ul class="ticks">
+            <li>Portal del empleado en el celular</li>
+            <li>Actualizaciones con respaldo previo automático</li>
+          </ul>
+        </article>
       </div>
+    </section>
+
+    <!-- Paquetes -->
+    <section class="plans wrap" id="paquetes" aria-labelledby="paq-h">
+      <div class="head">
+        <span class="kicker rv">Paquetes</span>
+        <h2 id="paq-h" class="rv" style="--i:1">Tres paquetes, según tu operación.</h2>
+        <p class="rv" style="--i:2">Se cotiza por empresa, con el paquete, los usuarios y las extensiones a la vista. Pasar de uno a otro es una licencia nueva: no se reinstala nada.</p>
+      </div>
+      <div class="plan-grid">
+        <article class="plan rv">
+          <h3>Comercial</h3>
+          <p class="for">Para la gestión de la empresa.</p>
+          <ul>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ventas, expedición y cobranzas</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Facturación ARCA</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Compras</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Contabilidad, tesorería y banco</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sueldos y portal del empleado</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Proyectos y analítica</li>
+          </ul>
+        </article>
+        <article class="plan feat rv" style="--i:1">
+          <span class="tag">Para industria</span>
+          <h3>Industrial</h3>
+          <p class="for">Todo lo comercial, más la planta.</p>
+          <ul>
+            <li class="plus"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Todo el paquete Comercial</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Producción y MRP</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Calidad y lotes</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Mantenimiento y laboratorio</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ingeniería y procesos</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Higiene y Seguridad</li>
+          </ul>
+        </article>
+        <article class="plan rv" style="--i:2">
+          <h3>Enterprise</h3>
+          <p class="for">Todo lo industrial, con todas las extensiones.</p>
+          <ul>
+            <li class="plus"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Todo el paquete Industrial</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Las 16 extensiones incluidas</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Conectores con Excel, Google Sheets y Power BI</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Avisos por WhatsApp</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Planificación avanzada</li>
+            <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Conciliación bancaria automática</li>
+          </ul>
+        </article>
+      </div>
+      <p class="plans-note rv">Las extensiones también se suman de a una a cualquier paquete, cuando las necesites.</p>
     </section>
 
     <!-- Implementación -->
-    <section class="steps" id="implementacion" aria-label="Cómo se implementa">
-      <div class="steps-l">
-                <div class="stage-item on" data-s="0">
-          <h2 class="clause">Primero, tu operación.</h2>
-          <p class="clause-note">Una reunión para entender qué fabricás, cómo vendés y cómo facturás. Con eso elegimos el paquete y armamos la propuesta.</p>
-        </div>
-        <div class="stage-item" data-s="1">
-          <h2 class="clause">Después, tus datos.</h2>
-          <p class="clause-note">La migración guiada trae lo que tenés hoy y no confirma nada hasta que los totales cuadran con tu sistema anterior.</p>
-        </div>
-        <div class="stage-item" data-s="2">
-          <h2 class="clause">Luego, la instalación.</h2>
-          <p class="clause-note">El instalador deja SIG corriendo como servicio en tu servidor, con tus puntos de venta ARCA y tus usuarios.</p>
-        </div>
-        <div class="stage-item" data-s="3">
-          <h2 class="clause">Por último, a operar.</h2>
-          <p class="clause-note">Capacitamos a tu equipo y seguimos del otro lado, en español, con personas que conocen tu instalación.</p>
-        </div>
+    <section class="steps wrap" id="implementacion" aria-labelledby="impl-h">
+      <div class="head">
+        <span class="kicker rv">Implementación</span>
+        <h2 id="impl-h" class="rv" style="--i:1">De tu sistema actual a SIG, en cuatro pasos.</h2>
       </div>
-      <div class="steps-r">
-        <div class="frag-wrap">
-          <div data-ui class="stage-item on" data-s="0">
-            <div class="ui-h"><span>Relevamiento</span><span class="ui-k">Paquete propuesto: Industrial</span></div>
-            <div class="ui-card">
-              <div class="ui-row"><span>Facturación ARCA · 2 puntos de venta</span><span class="ui-ok">Incluido</span></div>
-              <div class="ui-row"><span>Producción con listas de materiales</span><span class="ui-ok">Incluido</span></div>
-              <div class="ui-row"><span>Mantenimiento preventivo</span><span class="ui-ok">Incluido</span></div>
-              <div class="ui-row"><span>Sueldos · convenio UOM</span><span class="ui-ok">Incluido</span></div>
-              <div class="ui-row"><span>Conector de Excel</span><span class="ui-blue">Extensión</span></div>
-            </div>
-          </div>
-          <div data-ui class="stage-item" data-s="1">
-            <div class="ui-h"><span>Migración · Clientes</span><span class="ui-pill">Cuadra</span></div>
-            <div class="ui-card">
-              <table>
-                <tr><td class="ui-k">Total</td><td class="ui-k">Sistema anterior</td><td class="ui-k">SIG</td></tr>
-                <tr><td>Clientes</td><td>412</td><td>412</td></tr>
-                <tr><td>Saldo deudor</td><td>$ 182.430.115,40</td><td>$ 182.430.115,40</td></tr>
-                <tr><td>Facturas abiertas</td><td>96</td><td>96</td></tr>
-              </table>
-            </div>
-            <div class="ui-card"><div class="ui-row"><span class="ui-k">Lote de carga</span><span>reversible · fecha de corte 30/09/2026</span></div></div>
-          </div>
-          <div data-ui class="stage-item" data-s="2">
-            <div class="ui-h"><span>Instalación de SIG</span><span class="ui-k">Windows Server</span></div>
-            <div class="ui-card">
-              <div class="ui-row"><span>Respaldo previo cifrado</span><span class="ui-ok">Listo</span></div>
-              <div class="ui-row"><span>Base de datos PostgreSQL</span><span class="ui-ok">Listo</span></div>
-              <div class="ui-row"><span>Servicio de SIG</span><span class="ui-ok">En marcha</span></div>
-              <div class="ui-row"><span>Respaldo diario programado</span><span class="ui-ok">Listo</span></div>
-              <div class="ui-row"><span>Versión que responde</span><span class="ui-blue">igual a la instalada</span></div>
-            </div>
-          </div>
-          <div data-ui class="stage-item" data-s="3">
-            <div class="ui-h"><span>Soporte · Consulta 214</span><span class="ui-pill">Resuelta</span></div>
-            <div class="ui-card">
-              <p>¿Cómo cargo un nuevo punto de venta para la sucursal Rosario?</p>
-              <p class="ui-k" style="margin-top:8px">Planta · lunes 9:12</p>
-            </div>
-            <div class="ui-card">
-              <p>Te lo dejamos dado de alta y probado contra ARCA. Ya podés facturar desde el punto de venta 0003.</p>
-              <p class="ui-k" style="margin-top:8px">Soporte de Veridian · lunes 9:40</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="slider">
-        <input type="range" id="stageRange" min="0" max="3" step="1" value="0" aria-label="Etapa de la implementación" aria-valuetext="Tu operación">
-        <ol>
-          <li class="on" data-s="0">Tu operación</li>
-          <li data-s="1">Tus datos</li>
-          <li data-s="2">La instalación</li>
-          <li data-s="3">A operar</li>
-        </ol>
-      </div>
+      <ol class="road" id="road">
+        <li class="rv"><span class="dot">1</span><h3>Primero, tu operación.</h3><p>Una reunión para entender qué fabricás, cómo vendés y cómo facturás. Con eso elegimos el paquete y armamos la propuesta.</p></li>
+        <li class="rv" style="--i:1"><span class="dot">2</span><h3>Después, tus datos.</h3><p>La migración guiada trae lo que tenés hoy y no confirma nada hasta que los totales cuadran con tu sistema anterior.</p></li>
+        <li class="rv" style="--i:2"><span class="dot">3</span><h3>Luego, la instalación.</h3><p>El instalador deja SIG corriendo como servicio en tu servidor, con tus puntos de venta ARCA y tus usuarios.</p></li>
+        <li class="rv" style="--i:3"><span class="dot">4</span><h3>Por último, a operar.</h3><p>Capacitamos a tu equipo y seguimos del otro lado, en español, con personas que conocen tu instalación.</p></li>
+      </ol>
     </section>
 
     <!-- Preguntas -->
-    <section class="faq" id="preguntas" aria-labelledby="faq-h">
-      <h2 id="faq-h" class="rv">Preguntas frecuentes</h2>
-      <div class="faq-text rv" style="--i:1">
-        <p><b>¿Dónde se instala SIG?</b> En un servidor de tu empresa. El instalador para Windows trae la base de datos PostgreSQL incluida y deja SIG corriendo como servicio. Cada empresa tiene su propia instalación: tus datos no pasan por la nube de nadie.</p>
-        <p><b>¿Emite factura electrónica ARCA?</b> Sí, de forma nativa por WSFEv1: comprobantes A, B y C, notas de crédito y débito, con CAE y PDF con código QR. Para pedir el CAE el servidor necesita salida a internet; el resto del sistema funciona en tu red. Lo explicamos en la <a class="link" href="/blog/factura-electronica-arca-wsfev1/">guía de factura electrónica</a>.</p>
-        <p><b>¿Cuánto cuesta?</b> Depende del paquete, la cantidad de usuarios y las extensiones, así que lo cotizamos por empresa con todos los componentes a la vista. Para comparar presupuestos escribimos la <a class="link" href="/blog/cuanto-cuesta-un-erp/">guía de costos de un ERP</a>.</p>
-        <p><b>¿Puedo traer los datos de mi sistema actual?</b> Sí. La migración guiada carga plan de cuentas, clientes, proveedores, productos, listas de materiales, empleados, activos, stock, facturas abiertas y el asiento de apertura, y no confirma nada si los totales no cuadran con el sistema anterior.</p>
-        <p><b>¿Qué pasa si mi empresa crece?</b> Se suman usuarios, se pasa a otro paquete o se agregan extensiones sobre la misma instalación, con una licencia nueva. No se reinstala nada ni se pierden datos.</p>
-        <p><b>¿Mis empleados ven sus recibos?</b> Sí. El portal del empleado se usa desde el celular: cada uno ve y firma sus recibos de sueldo y pide sus licencias.</p>
-        <p><b>¿Cómo llegan las actualizaciones?</b> Con un instalador nuevo que primero hace un respaldo cifrado de la base. Si el respaldo falla, no toca nada.</p>
-        <p><b>¿Y si un día quiero dejar SIG?</b> Los datos están en una base PostgreSQL en tu servidor y se exportan a Excel. Entrar es fácil; salir también.</p>
-        <p><b>¿Qué incluye el soporte?</b> Soporte en español con personas que conocen tu instalación: errores, consultas de uso y los cambios normativos de ARCA.</p>
+    <section class="faq wrap" id="preguntas" aria-labelledby="faq-h">
+      <div class="head">
+        <h2 id="faq-h" class="rv">Preguntas frecuentes</h2>
+        <p class="rv" style="--i:1">¿Te queda otra? Escribinos a <a class="link" href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a>.</p>
+      </div>
+      <div class="faq-list rv" style="--i:1">
+        <details><summary>¿Dónde se instala SIG?<i aria-hidden="true"></i></summary><div class="ans"><p>En un servidor de tu empresa. El instalador para Windows trae la base de datos PostgreSQL incluida y deja SIG corriendo como servicio. Cada empresa tiene su propia instalación: tus datos no pasan por la nube de nadie.</p></div></details>
+        <details><summary>¿Emite factura electrónica ARCA?<i aria-hidden="true"></i></summary><div class="ans"><p>Sí, de forma nativa por WSFEv1: comprobantes A, B y C, notas de crédito y débito, con CAE y PDF con código QR. Para pedir el CAE el servidor necesita salida a internet; el resto del sistema funciona en tu red. Lo explicamos en la <a class="link" href="/blog/factura-electronica-arca-wsfev1/">guía de factura electrónica</a>.</p></div></details>
+        <details><summary>¿Cuánto cuesta?<i aria-hidden="true"></i></summary><div class="ans"><p>Depende del paquete, la cantidad de usuarios y las extensiones, así que lo cotizamos por empresa con todos los componentes a la vista. Para comparar presupuestos escribimos la <a class="link" href="/blog/cuanto-cuesta-un-erp/">guía de costos de un ERP</a>.</p></div></details>
+        <details><summary>¿Puedo traer los datos de mi sistema actual?<i aria-hidden="true"></i></summary><div class="ans"><p>Sí. La migración guiada carga plan de cuentas, clientes, proveedores, productos, listas de materiales, empleados, activos, stock, facturas abiertas y el asiento de apertura, y no confirma nada si los totales no cuadran con el sistema anterior.</p></div></details>
+        <details><summary>¿Qué pasa si mi empresa crece?<i aria-hidden="true"></i></summary><div class="ans"><p>Se suman usuarios, se pasa a otro paquete o se agregan extensiones sobre la misma instalación, con una licencia nueva. No se reinstala nada ni se pierden datos.</p></div></details>
+        <details><summary>¿Mis empleados ven sus recibos?<i aria-hidden="true"></i></summary><div class="ans"><p>Sí. El portal del empleado se usa desde el celular: cada uno ve y firma sus recibos de sueldo y pide sus licencias.</p></div></details>
+        <details><summary>¿Cómo llegan las actualizaciones?<i aria-hidden="true"></i></summary><div class="ans"><p>Con un instalador nuevo que primero hace un respaldo cifrado de la base. Si el respaldo falla, no toca nada.</p></div></details>
+        <details><summary>¿Y si un día quiero dejar SIG?<i aria-hidden="true"></i></summary><div class="ans"><p>Los datos están en una base PostgreSQL en tu servidor y se exportan a Excel. Entrar es fácil; salir también.</p></div></details>
+        <details><summary>¿Qué incluye el soporte?<i aria-hidden="true"></i></summary><div class="ans"><p>Soporte en español con personas que conocen tu instalación: errores, consultas de uso y los cambios normativos de ARCA.</p></div></details>
       </div>
     </section>
 
     <!-- Cierre -->
-    <section class="cta" id="contacto" aria-labelledby="cta-h">
-      <h2 id="cta-h" class="rv" style="font-size:var(--lead);letter-spacing:-0.01em;font-weight:500;line-height:1.4;max-width:34ch">Contanos cómo trabaja tu planta y te mostramos SIG resolviendo tus propios casos.</h2>
-      <div class="row rv" style="--i:1">
-        <a class="btn" href="/demo/">Pedir una demo</a>
-        <a class="link" href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a>
+    <section class="cta wrap" id="contacto" aria-labelledby="cta-h">
+      <div class="cta-box">
+        <div class="glow" aria-hidden="true"></div>
+        <h2 id="cta-h" class="rv">Mirá SIG resolviendo tus propios casos.</h2>
+        <p class="rv" style="--i:1">Contanos cómo trabaja tu planta y armamos una demo con tu operación real.</p>
+        <div class="hero-cta rv" style="--i:2">
+          <a class="btn" href="/demo/">Pedir una demo
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <p class="mail rv" style="--i:3">O escribinos a <a class="link" href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
       </div>
     </section>
   </main>
 
   <footer class="foot">
-    <div class="foot-pic">
-      <figure class="win">
-      <div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><span>SIG — Producción</span></div>
-      <div class="win-view"><img src="/assets/videos/poster-produccion.jpg" alt="Pantalla de Producción de SIG con las órdenes en curso" width="1920" height="1080" loading="lazy"></div>
-    </figure>
-    </div>
-    <div class="foot-menu">
+    <div class="wrap">
       <a class="word" href="#inicio" aria-label="SIG, volver al inicio">SIG</a>
-      <ul>
-        <li><a href="#venta">Una venta</a></li>
-        <li><a href="#paquetes">Paquetes</a></li>
-        <li><a href="#datos">Tus datos</a></li>
-        <li><a href="#implementacion">Implementación</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/demo/">Pedir una demo</a></li>
-        <li><a href="/privacidad/">Privacidad</a></li>
-      </ul>
-      <div class="foot-info">
-        <p><span>Contacto</span><a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
-      </div>
-      <p class="legal">© 2026 Veridian · Buenos Aires, Argentina. SIG es un producto de Veridian. Las cifras de los ejemplos son de muestra.</p>
+      <nav aria-label="Pie">
+        <a href="#recorrido">El sistema</a>
+        <a href="#paquetes">Paquetes</a>
+        <a href="#implementacion">Implementación</a>
+        <a href="/blog/">Blog</a>
+        <a href="/demo/">Pedir una demo</a>
+        <a href="/privacidad/">Privacidad</a>
+      </nav>
+      <p class="legal">© 2026 Veridian · Buenos Aires, Argentina. SIG es un producto de Veridian.</p>
     </div>
   </footer>
 
   <script>
   (function () {
-    document.documentElement.classList.add('anim');
+    var root = document.documentElement;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var fmt = function (n) { return '$ ' + n.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+    root.classList.add('anim');
 
-    /* Escenario: las grabaciones se van alternando */
-    var slides = [].slice.call(document.querySelectorAll('.slide'));
-    var label = document.getElementById('stageLabel'), winTitle = document.getElementById('winTitle');
-    var cur = 0, timer = null;
-    function show(i) {
-      slides[cur].classList.remove('on');
-      var old = slides[cur].querySelector('video');
-      cur = i;
-      var s = slides[cur], v = s.querySelector('video');
-      s.classList.add('on');
-      label.textContent = 'SIG · ' + s.dataset.label;
-      winTitle.textContent = 'SIG — ' + s.dataset.label;
-      if (!reduce && v) { v.preload = 'auto'; v.play().catch(function () {}); }
-      if (old && old !== v) setTimeout(function () { old.pause(); }, 1700);
+    /* Título: se parte en palabras para que entren de a una (sin JS se lee igual) */
+    document.querySelectorAll('.split').forEach(function (h) {
+      var n = 0;
+      (function walk(node) {
+        [].slice.call(node.childNodes).forEach(function (c) {
+          if (c.nodeType === 3) {
+            var frag = document.createDocumentFragment();
+            c.textContent.split(/(\s+)/).forEach(function (t) {
+              if (!t) return;
+              if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
+              var s = document.createElement('span'); s.className = 'w'; s.style.setProperty('--d', n++); s.textContent = t; frag.appendChild(s);
+            });
+            node.replaceChild(frag, c);
+          } else if (c.nodeType === 1) walk(c);
+        });
+      })(h);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { h.classList.add('in'); }); });
+    });
+
+    /* Barra superior: toma fondo al bajar */
+    var top = document.getElementById('top');
+    var hero = document.querySelector('.hero'), bg = document.getElementById('bg');
+    var road = document.getElementById('road');
+    var steps = road ? [].slice.call(road.children) : [];
+    var ticking = false;
+    function onScroll() {
+      ticking = false;
+      var y = window.scrollY, vh = window.innerHeight;
+      top.classList.toggle('solid', y > 24);
+      if (!reduce && y < vh * 1.2) {
+        /* el video de la planta se apaga, se aleja y sube más lento que la página */
+        var k = Math.min(1, y / (hero.offsetHeight * 0.85));
+        bg.style.setProperty('--fade', (1 - k).toFixed(3));
+        bg.style.setProperty('--zoom', (1.04 + 0.08 * k).toFixed(4));
+        bg.style.setProperty('--shift', (y * 0.35).toFixed(1) + 'px');
+        hero.style.setProperty('--copy', Math.max(0, 1 - k * 1.6).toFixed(3));
+        hero.style.setProperty('--lift', (-y * 0.18).toFixed(1) + 'px');
+      }
+      if (road && window.innerWidth > 1000) {
+        /* la línea de la implementación se dibuja al bajar */
+        var rr = road.getBoundingClientRect();
+        var q = Math.min(1, Math.max(0, (vh * 0.75 - rr.top) / (rr.height + vh * 0.25)));
+        road.style.setProperty('--p', q.toFixed(3));
+        steps.forEach(function (li, i) { li.classList.toggle('on', q >= i / steps.length + 0.02); });
+      } else steps.forEach(function (li) { li.classList.add('on'); });
     }
-    function start() { if (!reduce && !timer) timer = setInterval(function () { show((cur + 1) % slides.length); }, 7000); }
-    function stop() { clearInterval(timer); timer = null; }
-    if (!reduce) { var v0 = slides[0].querySelector('video'); v0.play().catch(function () {}); start(); }
-    document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
 
-    /* Una venta: lo que entra cambia lo que SIG registra */
-    var P = { veltra: ['Veltra Tour 500', 8900000, 14], arvek: ['Arvek Street 125', 3450000, 22], norvo: ['Norvo Trail 150', 4980000, 9] };
-    var qty = document.getElementById('qty'), prod = document.getElementById('prod');
-    function sale() {
-      var p = P[prod.value], q = Math.max(1, Math.min(p[2], parseInt(qty.value, 10) || 1));
-      qty.max = p[2];
-      var net = q * p[1], iva = Math.round(net * 0.21 * 100) / 100, tot = net + iva;
-      var set = function (id, t) { var e = document.getElementById(id); if (e.textContent !== t) { e.textContent = t; e.classList.remove('flash'); void e.offsetWidth; e.classList.add('flash'); } };
-      set('oLine', q + ' × ' + p[0]); set('oNet', fmt(net)); set('oIva', fmt(iva)); set('oTot', fmt(tot));
-      set('oStock0', String(p[2])); set('oStock1', String(p[2] - q));
-      set('aD', fmt(tot)); set('aV', fmt(net)); set('aI', fmt(iva));
+    /* Luz que sigue al mouse en el hero y en las tarjetas */
+    var spot = document.querySelector('.spot');
+    if (!reduce && window.matchMedia('(hover: hover)').matches) {
+      hero.addEventListener('pointermove', function (e) {
+        var b = hero.getBoundingClientRect();
+        spot.style.setProperty('--mx', (e.clientX - b.left) + 'px');
+        spot.style.setProperty('--my', (e.clientY - b.top) + 'px');
+      });
+      document.querySelectorAll('.card').forEach(function (c) {
+        c.addEventListener('pointermove', function (e) {
+          var b = c.getBoundingClientRect();
+          c.style.setProperty('--x', (e.clientX - b.left) + 'px');
+          c.style.setProperty('--y', (e.clientY - b.top) + 'px');
+        });
+      });
     }
-    qty.addEventListener('input', sale); prod.addEventListener('change', sale);
-    qty.addEventListener('blur', function () { var p = P[prod.value]; qty.value = Math.max(1, Math.min(p[2], parseInt(qty.value, 10) || 1)); });
 
-    /* Paquetes: los controles arman la licencia */
-    var CODES = { comercial: 'COM', industrial: 'IND', enterprise: 'ENT' };
-    var NAMES = { comercial: 'Comercial', industrial: 'Industrial', enterprise: 'Enterprise' };
-    function pack() {
-      var pk = document.querySelector('input[name=pk]:checked').value;
-      document.querySelectorAll('#menu li').forEach(function (li) { li.classList.toggle('off', pk === 'comercial' && li.dataset.m === 'i'); });
-      document.getElementById('lCode').textContent = CODES[pk];
-      document.getElementById('lPack').textContent = NAMES[pk];
-      var ext = [].slice.call(document.querySelectorAll('#exts input:checked')).map(function (c) { return c.value; });
-      document.querySelectorAll('#exts input').forEach(function (c) { c.disabled = pk === 'enterprise'; });
-      document.getElementById('lExt').textContent = pk === 'enterprise' ? 'Las 16, incluidas' : (ext.length ? ext.join(', ') : 'Ninguna');
-      var u = document.getElementById('users').value;
-      document.getElementById('lUsers').textContent = u;
-      document.getElementById('usersOut').textContent = u + ' usuarios';
+    /* Video de fondo: corre solo mientras se ve (ahorra batería y procesador) */
+    var heroVid = document.getElementById('heroVid');
+    function play(v) { if (!reduce && v) { var p = v.play(); if (p) p.catch(function () {}); } }
+    if (reduce) { heroVid.removeAttribute("autoplay"); heroVid.pause(); }
+    document.addEventListener('visibilitychange', function () { document.hidden ? heroVid.pause() : play(heroVid); });
+
+    if (!('IntersectionObserver' in window)) {
+      play(heroVid);
+      document.querySelectorAll('.rv').forEach(function (e) { e.classList.add('in'); });
+      return;
     }
-    document.querySelectorAll('.pack input').forEach(function (i) { i.addEventListener('input', pack); i.addEventListener('change', pack); });
 
-    /* Implementación: el control recorre las etapas */
-    var range = document.getElementById('stageRange');
-    var names = ['Tu operación', 'Tus datos', 'La instalación', 'A operar'];
-    function stage(n) {
-      document.querySelectorAll('#implementacion [data-s]').forEach(function (e) { e.classList.toggle('on', e.dataset.s === String(n)); });
-      range.value = n; range.setAttribute('aria-valuetext', names[n]);
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) play(heroVid); else heroVid.pause(); });
+    }, { threshold: 0.02 }).observe(hero);
+
+    /* Recorrido: el panel muestra el circuito del área que se está leyendo */
+    var items = [].slice.call(document.querySelectorAll('.tour-item'));
+    var panels = [].slice.call(document.querySelectorAll('.panel'));
+    var itemIO = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var v = +e.target.dataset.v;
+        items.forEach(function (it) { it.classList.toggle('on', it === e.target); });
+        panels.forEach(function (pn, i) { pn.classList.toggle('on', i === v); });
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    items.forEach(function (it) { itemIO.observe(it); });
+
+    /* Números que cuentan al aparecer */
+    function count(el) {
+      var end = +el.dataset.count, t0 = null;
+      if (reduce) return;
+      function step(t) {
+        if (!t0) t0 = t;
+        var k = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - k, 4);
+        el.textContent = Math.round(end * e);
+        if (k < 1) requestAnimationFrame(step);
+      }
+      el.textContent = '0';
+      requestAnimationFrame(step);
     }
-    range.addEventListener('input', function () { stage(+range.value); });
-    document.querySelectorAll('.slider li').forEach(function (li) { li.addEventListener('click', function () { stage(+li.dataset.s); }); });
 
-    /* Entradas al llegar a cada sección (sin JS todo queda visible) */
-    var els = document.querySelectorAll('.rv, .rv-pic');
-    if (reduce || !('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    /* Entradas al llegar a cada bloque (sin JS todo queda visible) */
+    var els = document.querySelectorAll('.rv');
+    if (reduce) { els.forEach(function (e) { e.classList.add('in'); }); return; }
     var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        e.target.querySelectorAll('[data-count]').forEach(count);
+        io.unobserve(e.target);
+      });
     }, { rootMargin: '0px 0px -8% 0px' });
     els.forEach(function (e) { io.observe(e); });
   })();
