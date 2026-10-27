@@ -195,13 +195,47 @@
     .top.light { background: rgba(243, 245, 249, .82); box-shadow: 0 1px 0 var(--line); }
     .top.light .word { color: var(--ink); }
     .top.light .nav { color: var(--soft); }
-    .top.light .nav a:hover { color: var(--ink); }
+    .top.light .nav > a:hover { color: var(--ink); }
     .top .word, .top .nav { transition: color .35s; }
     .word { font-size: 28px; font-weight: 800; letter-spacing: -0.06em; line-height: 1; text-decoration: none; color: var(--on-night); }
     .nav { display: flex; align-items: center; gap: 32px; font-size: var(--small); font-weight: 500; color: var(--on-night-soft); }
-    .nav a { text-decoration: none; transition: color .2s; }
-    .nav a:hover { color: var(--on-night); }
+    .nav > a { text-decoration: none; transition: color .2s; }
+    .nav > a:hover { color: var(--on-night); }
     .nav .btn { height: 40px; padding: 0 18px; color: #fff; }
+
+    /* Asistencia: botón de la barra con la demo y el mail */
+    .help { position: relative; }
+    .help-btn {
+      display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px 0 12px; border-radius: 99px;
+      font: 600 var(--small)/1 'Inter', sans-serif; cursor: pointer; border: 0;
+      background: rgba(243, 245, 249, .1); color: var(--on-night); box-shadow: inset 0 0 0 1px rgba(243, 245, 249, .18);
+      transition: background .25s, color .35s, box-shadow .35s;
+    }
+    .help-btn:hover, .help-btn[aria-expanded="true"] { background: rgba(243, 245, 249, .18); }
+    .top.light .help-btn { background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+    .top.light .help-btn:hover, .top.light .help-btn[aria-expanded="true"] { box-shadow: inset 0 0 0 1px rgba(36, 87, 230, .45); }
+    .help-btn .dot { width: 8px; height: 8px; border-radius: 50%; background: #34D399; box-shadow: 0 0 0 0 rgba(52, 211, 153, .6); animation: live 2.4s ease-out infinite; }
+    @keyframes live { 70% { box-shadow: 0 0 0 7px rgba(52, 211, 153, 0); } 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); } }
+    .help-pop {
+      position: absolute; right: 0; top: calc(100% + 12px); width: min(320px, calc(100vw - 32px));
+      background: var(--white); color: var(--ink); border-radius: 18px; padding: 22px;
+      box-shadow: 0 0 0 1px var(--line), 0 30px 70px -20px rgba(5, 7, 12, .45);
+      opacity: 0; visibility: hidden; transform: translateY(-8px) scale(.98); transform-origin: top right;
+      transition: opacity .25s, transform .35s var(--ease), visibility 0s .35s;
+    }
+    .help-pop.open { opacity: 1; visibility: visible; transform: none; transition: opacity .25s, transform .35s var(--ease); }
+    .help-pop h2 { font-size: 20px; letter-spacing: -0.03em; }
+    .help-pop > p { font-size: 15px; color: var(--soft); margin-top: 6px; }
+    .help-pop .btn { width: 100%; margin-top: 18px; }
+    .help-mail {
+      display: flex; align-items: center; gap: 12px; margin-top: 10px; padding: 12px 14px; border-radius: 10px;
+      text-decoration: none; background: var(--paper); transition: background .2s;
+    }
+    .help-mail:hover { background: var(--paper-2); }
+    .help-mail svg { flex: none; color: var(--accent); }
+    .help-mail span { display: grid; font-size: 14px; font-weight: 600; min-width: 0; }
+    .help-mail small { font-size: 13px; font-weight: 400; color: var(--soft); }
+    .help-mail b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; }
 
     /* ---------- Hero: video de planta de fondo que se apaga al bajar ---------- */
     .hero {
@@ -480,7 +514,7 @@
 
     /* ---------- Tablet y teléfono ---------- */
     @media (max-width: 1000px) {
-      .nav a:not(.btn) { display: none; }
+      .nav > a { display: none; }
       .tour-grid { grid-template-columns: 1fr; margin-top: 40px; }
       .tour-stage { display: none; }
       .tour-item, .tour-item:first-child { min-height: 0; opacity: 1; padding: 0; margin-bottom: 72px; }
@@ -528,6 +562,20 @@
         <a href="#paquetes">Paquetes</a>
         <a href="#preguntas">Preguntas</a>
         <a href="/blog/">Blog</a>
+        <div class="help">
+          <button class="help-btn" type="button" aria-expanded="false" aria-controls="helpPop"><span class="dot" aria-hidden="true"></span>Asistencia</button>
+          <div class="help-pop" id="helpPop" role="dialog" aria-label="Asistencia">
+            <h2>¿Hablamos?</h2>
+            <p>Te mostramos SIG con tu propia operación, o escribinos lo que necesites.</p>
+            <a class="btn" href="/demo/">Pedir una demo
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="help-mail" href="mailto:contacto@veridian-erp.com.ar">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 5.5l7 5.5 7-5.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              <span><small>Escribinos</small><b>contacto@veridian-erp.com.ar</b></span>
+            </a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -850,6 +898,13 @@
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
     window.addEventListener('resize', onScroll);
     onScroll();
+
+    /* Asistencia: se abre con el botón y se cierra con Escape o tocando afuera */
+    var helpBtn = document.querySelector('.help-btn'), helpPop = document.getElementById('helpPop');
+    function helpSet(open) { helpBtn.setAttribute('aria-expanded', open); helpPop.classList.toggle('open', open); }
+    helpBtn.addEventListener('click', function (e) { e.stopPropagation(); helpSet(!helpPop.classList.contains('open')); });
+    document.addEventListener('click', function (e) { if (!helpPop.contains(e.target)) helpSet(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && helpPop.classList.contains('open')) { helpSet(false); helpBtn.focus(); } });
 
     /* Luz que sigue al mouse en el hero y en las tarjetas */
     var spot = document.querySelector('.spot');
