@@ -23,66 +23,86 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/blog.css" />
+  <link rel="stylesheet" href="/assets/blog.css?v=3" />
+  <script src="/assets/site.js?v=1" defer></script>
   <style>
-    .demo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--m); padding: 0 var(--m) var(--m); min-height: calc(100svh - 88px); }
-    .intro { padding: clamp(48px, 10vh, 120px) calc(var(--in) - var(--m)) 64px; display: grid; align-content: space-between; gap: 64px; }
-    .intro h1 { font-size: var(--display); max-width: 10ch; }
-    .intro .lead { font-size: var(--lead); line-height: 1.4; margin-top: 32px; max-width: 34ch; }
-    .intro ol { list-style: none; display: grid; gap: 20px; max-width: 40ch; }
-    .intro ol b { display: block; font-weight: 650; }
-    .intro .mail { font-size: var(--small); margin-top: 32px; }
-    .form-card { background: var(--paper-2); padding: clamp(32px, 5vw, 72px); }
-    .field { margin-bottom: 22px; }
+    .demo { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 6vw, 96px); padding: clamp(56px, 7vw, 96px) 0 clamp(96px, 12vw, 160px); align-items: start; }
+    .intro { position: sticky; top: 104px; }
+    .intro ol { list-style: none; display: grid; gap: 28px; counter-reset: paso; }
+    .intro li { position: relative; padding-left: 56px; color: var(--soft); counter-increment: paso; }
+    .intro li::before { content: counter(paso); position: absolute; left: 0; top: -4px; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font-weight: 700; font-size: 15px; box-shadow: 0 0 0 6px rgba(36, 87, 230, .12); }
+    .intro ol b { display: block; font-weight: 650; color: var(--ink); margin-bottom: 4px; }
+    .intro .mail { font-size: var(--small); margin-top: 40px; color: var(--soft); }
+    .form-card { background: var(--white); border-radius: 22px; padding: clamp(28px, 4vw, 52px); box-shadow: inset 0 0 0 1px var(--line), 0 40px 80px -50px rgba(5, 7, 12, .35); }
+    .field { margin-bottom: 20px; }
     .field label { display: block; font-size: var(--small); font-weight: 600; margin-bottom: 8px; }
     .field label small { font-weight: 400; font-size: var(--small); color: var(--soft); }
     .field input, .field textarea {
-      width: 100%; font: inherit; font-size: 17px; color: var(--ink);
-      background: var(--paper); border: 0; border-bottom: 2px solid var(--soft); border-radius: 0;
-      padding: 14px; transition: border-color .2s;
+      width: 100%; font: inherit; font-size: 16px; color: var(--ink);
+      background: var(--paper); border: 0; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line);
+      padding: 14px 16px; transition: box-shadow .2s, background .2s;
     }
     .field input::placeholder, .field textarea::placeholder { color: #6B7385; }
-    .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--accent); background: #fff; }
+    .field input:focus, .field textarea:focus { outline: none; background: #fff; box-shadow: inset 0 0 0 2px var(--accent), 0 0 0 4px rgba(36, 87, 230, .12); }
     .field textarea { min-height: 140px; resize: vertical; }
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
     .submit { width: 100%; margin-top: 8px; }
     .submit[disabled] { opacity: .6; cursor: wait; }
     .form-note { margin-top: 16px; font-size: var(--small); color: var(--soft); }
-    .form-error { display: none; margin-top: 16px; font-size: var(--small); color: #fff; background: #A3261F; padding: 14px 16px; }
+    .form-error { display: none; margin-top: 16px; font-size: var(--small); color: #fff; background: #A3261F; padding: 14px 16px; border-radius: 10px; }
     .form-error.visible { display: block; }
     .form-error a { color: inherit; font-weight: 600; }
-    @media (max-width: 900px) {
-      .demo { grid-template-columns: 1fr; padding: 0; }
-      .intro { padding: 40px 20px 48px; gap: 40px; }
-      .form-card { padding: 32px 20px 48px; }
+    @media (max-width: 1000px) {
+      .demo { grid-template-columns: 1fr; }
+      .intro { position: static; }
     }
   </style>
   <script src="/assets/pixel.js?v=2" defer></script>
 </head>
 <body>
 
-  <nav class="top" aria-label="Principal">
-    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
-    <div class="top-links">
-      <a class="hide-m" href="/#paquetes">Paquetes</a>
-      <a href="/blog/">Blog</a>
-      <a href="/">Volver al sitio</a>
+  <header class="top" id="top">
+    <div class="wrap">
+      <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="/#recorrido">El sistema</a>
+        <a href="/#paquetes">Paquetes</a>
+        <a href="/#preguntas">Preguntas</a>
+        <a href="/blog/">Blog</a>
+        <div class="help">
+          <button class="help-btn" type="button" aria-expanded="false" aria-controls="helpPop" aria-label="Asistencia" title="Asistencia"><svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 11.5V10a6.5 6.5 0 0 1 13 0v1.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="2.75" y="10.75" width="3.5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="13.75" y="10.75" width="3.5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M15.5 15.75c0 1.5-1.8 2.25-4.5 2.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          <div class="help-pop" id="helpPop" role="dialog" aria-label="Asistencia">
+            <h2>¿Hablamos?</h2>
+            <p>Te mostramos SIG con tu propia operación, o escribinos lo que necesites.</p>
+            <a class="btn" href="/demo/">Pedir una demo
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="help-mail" href="mailto:contacto@veridian-erp.com.ar">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 5.5l7 5.5 7-5.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              <span><small>Escribinos</small><b>contacto@veridian-erp.com.ar</b></span>
+            </a>
+          </div>
+        </div>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <main class="demo">
+  <header class="page-head">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1 class="rv">Pedí una demo de SIG.</h1>
+      <p class="lead rv" style="--i:1">Contanos cómo trabaja tu empresa y te mostramos el sistema resolviendo tus propios casos, no los de un folleto.</p>
+    </div>
+  </header>
+  <main class="wrap demo">
     <div class="intro">
-      <div>
-        <h1 class="rv">Pedí una demo de SIG.</h1>
-        <p class="lead rv" style="--i:1">Contanos cómo trabaja tu empresa y te mostramos el sistema resolviendo tus propios casos, no los de un folleto.</p>
-      </div>
       <div class="rv" style="--i:2">
         <ol>
           <li><b>Te escribimos en 24 a 48 horas hábiles.</b> Coordinamos un horario y quiénes de tu equipo participan.</li>
           <li><b>Hacemos la demo en vivo.</b> Recorremos ventas, facturación ARCA y la parte de planta que te interesa.</li>
           <li><b>Te mandamos la propuesta.</b> Paquete, usuarios, extensiones e implementación, todo a la vista.</li>
         </ol>
-        <p class="mail">¿Preferís escribirnos? <a class="link" href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
+        <p class="mail">¿Preferís escribirnos? <a class="mail-link" href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
       </div>
     </div>
 
@@ -121,15 +141,18 @@
   </main>
 
   <footer class="foot">
-    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
-    <ul>
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/#paquetes">Paquetes</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/demo/">Pedir una demo</a></li>
-        <li><a href="/privacidad/">Privacidad</a></li>
-    </ul>
-    <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina · <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
+    <div class="wrap">
+      <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+      <nav aria-label="Pie">
+        <a href="/#recorrido">El sistema</a>
+        <a href="/#paquetes">Paquetes</a>
+        <a href="/#implementacion">Implementación</a>
+        <a href="/blog/">Blog</a>
+        <a href="/demo/">Pedir una demo</a>
+        <a href="/privacidad/">Privacidad</a>
+      </nav>
+      <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina. SIG es un producto de Veridian.</p>
+    </div>
   </footer>
 
   <script>

@@ -23,35 +23,48 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/blog.css" />
+  <link rel="stylesheet" href="/assets/blog.css?v=3" />
+  <script src="/assets/site.js?v=1" defer></script>
   <script src="/assets/pixel.js?v=2" defer></script>
 </head>
 <body>
 
-  <nav class="top" aria-label="Principal">
-    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
-    <div class="top-links">
-      <a class="hide-m" href="/#paquetes">Paquetes</a>
-      <a href="/blog/">Blog</a>
-      <a class="btn" href="/demo/">Pedir una demo</a>
+  <header class="top" id="top">
+    <div class="wrap">
+      <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="/#recorrido">El sistema</a>
+        <a href="/#paquetes">Paquetes</a>
+        <a href="/#preguntas">Preguntas</a>
+        <a href="/blog/">Blog</a>
+        <div class="help">
+          <button class="help-btn" type="button" aria-expanded="false" aria-controls="helpPop" aria-label="Asistencia" title="Asistencia"><svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 11.5V10a6.5 6.5 0 0 1 13 0v1.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="2.75" y="10.75" width="3.5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="13.75" y="10.75" width="3.5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M15.5 15.75c0 1.5-1.8 2.25-4.5 2.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          <div class="help-pop" id="helpPop" role="dialog" aria-label="Asistencia">
+            <h2>¿Hablamos?</h2>
+            <p>Te mostramos SIG con tu propia operación, o escribinos lo que necesites.</p>
+            <a class="btn" href="/demo/">Pedir una demo
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="help-mail" href="mailto:contacto@veridian-erp.com.ar">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 5.5l7 5.5 7-5.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              <span><small>Escribinos</small><b>contacto@veridian-erp.com.ar</b></span>
+            </a>
+          </div>
+        </div>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <header class="blog-head">
-    <h1 class="rv">Guías para ordenar tu gestión.</h1>
-    <div class="rv" style="--i:1">
-      <p>Facturación electrónica, costos de un ERP, sueldos, producción y mantenimiento, explicados para quien decide en una empresa industrial.</p>
+  <header class="page-head">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1 class="rv">Guías para ordenar tu gestión.</h1>
+      <p class="lead rv" style="--i:1">Facturación electrónica, costos de un ERP, sueldos, producción y mantenimiento, explicados para quien decide en una empresa industrial.</p>
     </div>
-    <figure class="win rv" style="--i:2">
-      <div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><span>SIG — Contabilidad</span></div>
-      <div class="win-view"><video muted loop playsinline autoplay poster="/assets/videos/poster-contabilidad.jpg" width="1920" height="1080" aria-label="Grabación real de Contabilidad en SIG">
-      <source src="/assets/videos/contabilidad.webm" type="video/webm"><source src="/assets/videos/contabilidad.mp4" type="video/mp4">
-    </video></div>
-    </figure>
   </header>
 
   <main>
-    <div class="posts">
+    <div class="wrap posts">
 
       <!-- Para sumar un artículo, copiá una tarjeta y apuntá el href a /blog/<slug>/ -->
       <a class="post-card rv" href="/blog/liquidacion-de-sueldos-y-f931/">
@@ -106,15 +119,18 @@
   </main>
 
   <footer class="foot">
-    <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
-    <ul>
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/#paquetes">Paquetes</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/demo/">Pedir una demo</a></li>
-        <li><a href="/privacidad/">Privacidad</a></li>
-    </ul>
-    <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina · <a href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
+    <div class="wrap">
+      <a class="word" href="/" aria-label="SIG, inicio">SIG</a>
+      <nav aria-label="Pie">
+        <a href="/#recorrido">El sistema</a>
+        <a href="/#paquetes">Paquetes</a>
+        <a href="/#implementacion">Implementación</a>
+        <a href="/blog/">Blog</a>
+        <a href="/demo/">Pedir una demo</a>
+        <a href="/privacidad/">Privacidad</a>
+      </nav>
+      <p class="legal">© <span class="current-year">2026</span> Veridian · Buenos Aires, Argentina. SIG es un producto de Veridian.</p>
+    </div>
   </footer>
 
   <script>
