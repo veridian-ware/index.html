@@ -182,6 +182,8 @@
       transition: color .2s;
     }
     .link:hover { color: var(--accent); }
+    .mail-link { font-weight: 600; text-decoration: none; transition: color .2s; }
+    .mail-link:hover { color: var(--accent); }
 
     /* ---------- Barra superior ---------- */
     .top {
@@ -526,7 +528,6 @@
         <a href="#paquetes">Paquetes</a>
         <a href="#preguntas">Preguntas</a>
         <a href="/blog/">Blog</a>
-        <a class="btn" href="/demo/">Pedir una demo</a>
       </nav>
     </div>
   </header>
@@ -541,15 +542,8 @@
     </div>
     <div class="spot" aria-hidden="true"></div>
     <div class="wrap hero-copy">
-      <a class="pill rv" href="/blog/factura-electronica-arca-wsfev1/"><b>ARCA</b> Factura electrónica nativa <span aria-hidden="true">→</span></a>
       <h1 id="hero-h" class="split">Toda tu planta, <span class="grad">en un sistema.</span></h1>
       <p class="rv" style="--i:3">SIG es el sistema de gestión para empresas industriales: facturación ARCA, ventas, compras, producción, mantenimiento, contabilidad y sueldos, instalado en tu propio servidor.</p>
-      <div class="hero-cta rv" style="--i:4">
-        <a class="btn" href="/demo/">Pedir una demo
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a class="btn ghost" href="#recorrido">Ver el sistema</a>
-      </div>
     </div>
 
     <span class="scroll-cue" aria-hidden="true"></span>
@@ -754,7 +748,7 @@
     <section class="faq wrap" id="preguntas" aria-labelledby="faq-h">
       <div class="head">
         <h2 id="faq-h" class="rv">Preguntas frecuentes</h2>
-        <p class="rv" style="--i:1">¿Te queda otra? Escribinos a <a class="link" href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a>.</p>
+        <p class="rv" style="--i:1">¿Te queda otra? Escribinos a <a class="mail-link" href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a>.</p>
       </div>
       <div class="faq-list rv" style="--i:1">
         <details><summary>¿Dónde se instala SIG?<i aria-hidden="true"></i></summary><div class="ans"><p>En un servidor de tu empresa. El instalador para Windows trae la base de datos PostgreSQL incluida y deja SIG corriendo como servicio. Cada empresa tiene su propia instalación: tus datos no pasan por la nube de nadie.</p></div></details>
@@ -780,7 +774,7 @@
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
-        <p class="mail rv" style="--i:3">O escribinos a <a class="link" href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
+        <p class="mail rv" style="--i:3">O escribinos a <a class="mail-link" href="mailto:contacto@veridian-erp.com.ar">contacto@veridian-erp.com.ar</a></p>
       </div>
     </section>
   </main>
