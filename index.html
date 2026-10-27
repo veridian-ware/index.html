@@ -189,7 +189,12 @@
       transition: background .35s, backdrop-filter .35s, box-shadow .35s;
     }
     .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-    .top.solid { background: rgba(5, 7, 12, .72); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); box-shadow: 0 1px 0 var(--line-night); }
+    .top.solid { background: rgba(5, 7, 12, .6); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); box-shadow: 0 1px 0 var(--line-night); }
+    .top.light { background: rgba(243, 245, 249, .82); box-shadow: 0 1px 0 var(--line); }
+    .top.light .word { color: var(--ink); }
+    .top.light .nav { color: var(--soft); }
+    .top.light .nav a:hover { color: var(--ink); }
+    .top .word, .top .nav { transition: color .35s; }
     .word { font-size: 28px; font-weight: 800; letter-spacing: -0.06em; line-height: 1; text-decoration: none; color: var(--on-night); }
     .nav { display: flex; align-items: center; gap: 32px; font-size: var(--small); font-weight: 500; color: var(--on-night-soft); }
     .nav a { text-decoration: none; transition: color .2s; }
@@ -209,14 +214,14 @@
       transform: translate3d(0, var(--shift, 0px), 0) scale(var(--zoom, 1.04));
       will-change: opacity, transform;
     }
-    .bg video, .bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .bg video, .bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.85) contrast(1.08) brightness(.82); }
     .bg::after {
       /* velo noche + tinte azul para que el texto se lea sobre cualquier cuadro */
       content: ''; position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 50% 45%, rgba(5, 7, 12, .45), rgba(5, 7, 12, .78) 75%),
-        linear-gradient(180deg, rgba(5, 7, 12, .55) 0%, rgba(5, 7, 12, .25) 40%, rgba(5, 7, 12, .92) 92%, var(--night) 100%),
-        rgba(20, 50, 140, .22);
+        radial-gradient(ellipse 55% 45% at 50% 48%, rgba(5, 7, 12, .5), rgba(5, 7, 12, .12) 80%),
+        linear-gradient(180deg, rgba(5, 7, 12, .45) 0%, rgba(5, 7, 12, 0) 22%, rgba(5, 7, 12, 0) 62%, rgba(5, 7, 12, .9) 94%, var(--night) 100%),
+        linear-gradient(rgba(16, 42, 120, .28), rgba(16, 42, 120, .28));
     }
     .hero::before {
       /* grilla tenue sobre el video */
@@ -260,7 +265,7 @@
     }
     .pill:hover { background: rgba(243, 245, 249, .09); }
     .pill b { font-weight: 600; font-size: 12px; color: #fff; background: var(--accent); padding: 3px 9px; border-radius: 99px; }
-    .hero h1 { font-size: var(--display); max-width: 14ch; letter-spacing: -0.05em; }
+    .hero h1 { font-size: var(--display); max-width: 14ch; letter-spacing: -0.05em; text-shadow: 0 2px 40px rgba(5, 7, 12, .45); }
     .hero h1 .grad {
       background: linear-gradient(100deg, #fff 10%, #9DB6FF 50%, #fff 90%);
       background-size: 220% 100%;
@@ -268,7 +273,7 @@
       animation: sheen 7s ease-in-out infinite;
     }
     @keyframes sheen { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
-    .hero-copy p { font-size: var(--lead); line-height: 1.5; margin-top: 28px; max-width: 46ch; color: var(--on-night-soft); }
+    .hero-copy p { font-size: var(--lead); line-height: 1.5; margin-top: 28px; max-width: 46ch; color: #D5DBE8; text-shadow: 0 1px 24px rgba(5, 7, 12, .6); }
     .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
 
     /* Palabras que entran desenfocadas */
@@ -536,7 +541,7 @@
     </div>
     <div class="spot" aria-hidden="true"></div>
     <div class="wrap hero-copy">
-      <a class="pill rv" href="/blog/factura-electronica-arca-wsfev1/"><b>ARCA</b> Factura electrónica nativa, con CAE y QR <span aria-hidden="true">→</span></a>
+      <a class="pill rv" href="/blog/factura-electronica-arca-wsfev1/"><b>ARCA</b> Factura electrónica nativa <span aria-hidden="true">→</span></a>
       <h1 id="hero-h" class="split">Toda tu planta, <span class="grad">en un sistema.</span></h1>
       <p class="rv" style="--i:3">SIG es el sistema de gestión para empresas industriales: facturación ARCA, ventas, compras, producción, mantenimiento, contabilidad y sueldos, instalado en tu propio servidor.</p>
       <div class="hero-cta rv" style="--i:4">
@@ -830,6 +835,7 @@
       ticking = false;
       var y = window.scrollY, vh = window.innerHeight;
       top.classList.toggle('solid', y > 24);
+      top.classList.toggle('light', y > hero.offsetHeight + (document.querySelector('.ribbon').offsetHeight) - 72);
       if (!reduce && y < vh * 1.2) {
         /* el video de la planta se apaga, se aleja y sube más lento que la página */
         var k = Math.min(1, y / (hero.offsetHeight * 0.85));
