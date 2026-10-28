@@ -259,16 +259,6 @@
         linear-gradient(180deg, rgba(5, 7, 12, .45) 0%, rgba(5, 7, 12, 0) 22%, rgba(5, 7, 12, 0) 62%, rgba(5, 7, 12, .9) 94%, var(--night) 100%),
         linear-gradient(rgba(16, 42, 120, .28), rgba(16, 42, 120, .28));
     }
-    .hero::before {
-      /* grilla tenue sobre el video */
-      content: ''; position: absolute; inset: 0; z-index: -2; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(243, 245, 249, .05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(243, 245, 249, .05) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
-    }
     .hero-copy { opacity: var(--copy, 1); transform: translate3d(0, var(--lift, 0px), 0); }
     .scroll-cue {
       position: absolute; left: 50%; bottom: 28px; translate: -50% 0;
@@ -319,13 +309,8 @@
 
     /* ---------- Cinta de módulos ---------- */
     .ribbon { background: var(--night); color: var(--on-night-soft); padding: 48px 0 64px; }
-    .marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
-    .marquee ul { display: flex; gap: 56px; width: max-content; list-style: none; animation: slide 48s linear infinite; }
-    .marquee:hover ul { animation-play-state: paused; }
-    .marquee li { font-size: clamp(20px, 2vw, 28px); font-weight: 600; letter-spacing: -0.03em; white-space: nowrap; color: rgba(243, 245, 249, .5); transition: color .3s; }
-    .marquee li:hover { color: var(--on-night); }
-    .marquee li::before { content: '✦'; color: var(--accent-glow); font-size: .55em; margin-right: 56px; vertical-align: .3em; opacity: .7; }
-    @keyframes slide { to { transform: translateX(-50%); } }
+    .modules { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 40px; max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); list-style: none; }
+    .modules li { font-size: clamp(18px, 1.7vw, 24px); font-weight: 600; letter-spacing: -0.03em; white-space: nowrap; color: rgba(243, 245, 249, .62); }
 
     /* ---------- Encabezado de sección ---------- */
     .head { max-width: 760px; }
@@ -340,10 +325,10 @@
     .tour-item { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; padding-left: 28px; position: relative; opacity: .32; transition: opacity .5s var(--ease); }
     .tour-item:first-child { min-height: 46vh; justify-content: flex-start; padding-top: 8vh; }
     .tour-item::before { content: ''; position: absolute; left: 0; top: 18%; bottom: 18%; width: 2px; background: var(--line); }
-    .tour-item::after { content: ''; position: absolute; left: 0; top: 18%; width: 2px; height: 0; background: var(--accent); transition: height .8s var(--ease); }
+    .tour-item::after { content: ''; position: absolute; left: 0; top: 18%; width: 2px; height: 64%; background: var(--accent); transform: scaleY(0); transform-origin: top; transition: transform .8s var(--ease); }
     .tour-item:first-child::before, .tour-item:first-child::after { top: 8vh; }
     .tour-item.on { opacity: 1; }
-    .tour-item.on::after { height: 64%; }
+    .tour-item.on::after { transform: scaleY(1); }
     .tour-item .n { font-size: 14px; font-weight: 600; color: var(--accent); }
     .tour-item h3 { font-size: clamp(26px, 2.4vw, 36px); margin-top: 10px; }
     .tour-item p { margin-top: 14px; color: var(--soft); max-width: 40ch; }
@@ -377,7 +362,7 @@
     .flow::after {
       /* punto de luz que recorre el circuito */
       content: ''; position: absolute; left: 4px; top: 4px; width: 8px; height: 8px; border-radius: 50%;
-      background: #fff; box-shadow: 0 0 0 4px rgba(79, 123, 255, .35), 0 0 18px 4px rgba(79, 123, 255, .8);
+      background: var(--accent-glow);
       animation: travel 3.6s var(--ease) infinite;
     }
     @keyframes travel { 0% { top: 4px; opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { top: calc(100% - 12px); opacity: 0; } }
@@ -597,12 +582,9 @@
   </section>
 
   <section class="ribbon" aria-label="Módulos de SIG">
-    <div class="marquee">
-      <ul>
-        <li>Facturación ARCA</li><li>Ventas y expedición</li><li>Compras e importaciones</li><li>Producción y MRP</li><li>Calidad y lotes</li><li>Mantenimiento</li><li>Laboratorio</li><li>Contabilidad</li><li>Tesorería y banco</li><li>Sueldos y F.931</li><li>Portal del empleado</li><li>Higiene y Seguridad</li>
-        <li aria-hidden="true">Facturación ARCA</li><li aria-hidden="true">Ventas y expedición</li><li aria-hidden="true">Compras e importaciones</li><li aria-hidden="true">Producción y MRP</li><li aria-hidden="true">Calidad y lotes</li><li aria-hidden="true">Mantenimiento</li><li aria-hidden="true">Laboratorio</li><li aria-hidden="true">Contabilidad</li><li aria-hidden="true">Tesorería y banco</li><li aria-hidden="true">Sueldos y F.931</li><li aria-hidden="true">Portal del empleado</li><li aria-hidden="true">Higiene y Seguridad</li>
-      </ul>
-    </div>
+    <ul class="modules">
+      <li>Facturación ARCA</li><li>Ventas y expedición</li><li>Compras e importaciones</li><li>Producción y MRP</li><li>Calidad y lotes</li><li>Mantenimiento</li><li>Laboratorio</li><li>Contabilidad</li><li>Tesorería y banco</li><li>Sueldos y F.931</li><li>Portal del empleado</li><li>Higiene y Seguridad</li>
+    </ul>
   </section>
 
   <main>
@@ -748,7 +730,6 @@
           </ul>
         </article>
         <article class="plan feat rv" style="--i:1">
-          <span class="tag">Para industria</span>
           <h3>Industrial</h3>
           <p class="for">Todo lo comercial, más la planta.</p>
           <ul>
