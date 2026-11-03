@@ -328,8 +328,7 @@
     .tour-item:first-child::before, .tour-item:first-child::after { top: 8vh; }
     .tour-item.on { opacity: 1; }
     .tour-item.on::after { transform: scaleY(1); }
-    .tour-item .n { font-size: 14px; font-weight: 600; color: var(--accent); }
-    .tour-item h3 { font-size: clamp(26px, 2.4vw, 36px); margin-top: 10px; }
+    .tour-item h3 { font-size: clamp(26px, 2.4vw, 36px); }
     .tour-item p { margin-top: 14px; color: var(--soft); max-width: 40ch; }
     .tour-item .mob { display: none; }
     .chips { flex-wrap: wrap; gap: 8px; margin-top: 18px; list-style: none; font-size: 14px; font-weight: 500; }
@@ -349,12 +348,6 @@
     }
     .tour-stage .glow { width: 700px; height: 700px; top: -380px; left: 85%; }
     .panel { position: absolute; inset: 0; padding: clamp(32px, 3.4vw, 52px); display: flex; flex-direction: column; justify-content: flex-end; }
-    .panel .num {
-      position: absolute; top: clamp(8px, 1.5vw, 20px); right: clamp(24px, 3vw, 44px);
-      font-size: clamp(120px, 15vw, 220px); font-weight: 800; letter-spacing: -0.07em; line-height: 1;
-      color: transparent; -webkit-text-stroke: 1.5px rgba(126, 166, 255, .35);
-      transition: transform 1s var(--ease), opacity .8s;
-    }
     .panel h4 { font-size: clamp(30px, 3vw, 44px); font-weight: 700; letter-spacing: -0.045em; line-height: 1; transition: transform .9s var(--ease), opacity .7s; }
     .flow { list-style: none; margin-top: 28px; position: relative; display: grid; gap: 14px; }
     .flow::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: rgba(243, 245, 249, .12); }
@@ -370,7 +363,6 @@
     .flow li:last-child { color: var(--on-night); font-weight: 600; }
     .flow li:last-child::before { background: var(--accent-glow); }
     .panel:not(.on) { pointer-events: none; }
-    .panel:not(.on) .num { opacity: 0; transform: translateY(30px); }
     .panel:not(.on) h4, .panel:not(.on) .flow li { opacity: 0; transform: translateY(18px); transition-delay: 0s; }
     .panel:not(.on) .flow::after { display: none; }
 
@@ -436,11 +428,9 @@
     /* ---------- Implementación: línea que se dibuja ---------- */
     .steps { padding-top: var(--gap); }
     .road { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 72px; list-style: none; }
-    .road::before, .road::after { content: ''; position: absolute; left: 0; right: 0; top: 19px; height: 2px; background: var(--line); }
+    .road::before, .road::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--line); }
     .road::after { background: var(--accent); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); transition: transform .2s linear; }
     .road li { position: relative; z-index: 1; padding-right: 12px; }
-    .road .dot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); font-size: 15px; font-weight: 700; transition: background .4s, color .4s, box-shadow .4s; }
-    .road li.on .dot { background: var(--accent); color: #fff; box-shadow: 0 0 0 6px rgba(36, 87, 230, .14); }
     .road h3 { font-size: 22px; letter-spacing: -0.03em; margin-top: 24px; }
     .road p { margin-top: 10px; color: var(--soft); font-size: 16px; }
 
@@ -510,6 +500,7 @@
       .plan .for { min-height: 0; }
       .road { grid-template-columns: 1fr 1fr; row-gap: 48px; }
       .road::before, .road::after { display: none; }
+      .road h3 { margin-top: 0; }
       .faq { grid-template-columns: 1fr; gap: 32px; }
     }
     @media (max-width: 640px) {
@@ -597,37 +588,31 @@
       <div class="tour-grid">
         <ol class="tour-list">
           <li class="tour-item on" data-v="0">
-            <span class="n">01</span>
             <h3>Dashboard</h3>
             <p>Ventas, gastos, margen y caja del mes en una sola pantalla, con los vencimientos de ARCA y las alertas de cada área.</p>
             <ul class="chips mob"><li>Ventas del mes</li><li>Gastos</li><li>Margen</li><li>Caja disponible</li></ul>
           </li>
           <li class="tour-item" data-v="1">
-            <span class="n">02</span>
             <h3>Ventas</h3>
             <p>Del pedido a la factura electrónica, el remito y la cobranza, con la cuenta corriente de cada cliente al día.</p>
             <ul class="chips mob"><li>Pedido</li><li>Factura ARCA</li><li>Remito</li><li>Cobranza</li></ul>
           </li>
           <li class="tour-item" data-v="2">
-            <span class="n">03</span>
             <h3>Producción</h3>
             <p>Órdenes de producción con listas de materiales, MRP, eficiencia por línea y trazabilidad de lotes.</p>
             <ul class="chips mob"><li>Lista de materiales</li><li>MRP</li><li>Orden de producción</li><li>Lote trazable</li></ul>
           </li>
           <li class="tour-item" data-v="3">
-            <span class="n">04</span>
             <h3>Compras e importaciones</h3>
             <p>Solicitudes, órdenes de compra, recepción en depósito y facturas de proveedor, también para lo que llega de afuera.</p>
             <ul class="chips mob"><li>Solicitud</li><li>Orden de compra</li><li>Recepción en depósito</li><li>Factura de proveedor</li></ul>
           </li>
           <li class="tour-item" data-v="4">
-            <span class="n">05</span>
             <h3>Contabilidad</h3>
             <p>Los asientos se generan solos desde cada operación. Tesorería y conciliación bancaria en el mismo lugar.</p>
             <ul class="chips mob"><li>Operación</li><li>Asiento automático</li><li>Tesorería</li><li>Conciliación bancaria</li></ul>
           </li>
           <li class="tour-item" data-v="5">
-            <span class="n">06</span>
             <h3>Sueldos</h3>
             <p>Liquidación por convenio, F.931 y recibos que cada empleado firma desde el celular.</p>
             <ul class="chips mob"><li>Convenio</li><li>Liquidación</li><li>F.931</li><li>Recibo firmado</li></ul>
@@ -635,12 +620,12 @@
         </ol>
         <div class="tour-stage" aria-hidden="true">
           <div class="glow"></div>
-          <div class="panel on"><span class="num">01</span><h4>Dashboard</h4><ol class="flow"><li style="--k:0">Ventas del mes</li><li style="--k:1">Gastos</li><li style="--k:2">Margen</li><li style="--k:3">Caja disponible</li></ol></div>
-          <div class="panel"><span class="num">02</span><h4>Ventas</h4><ol class="flow"><li style="--k:0">Pedido</li><li style="--k:1">Factura ARCA</li><li style="--k:2">Remito</li><li style="--k:3">Cobranza</li></ol></div>
-          <div class="panel"><span class="num">03</span><h4>Producción</h4><ol class="flow"><li style="--k:0">Lista de materiales</li><li style="--k:1">MRP</li><li style="--k:2">Orden de producción</li><li style="--k:3">Lote trazable</li></ol></div>
-          <div class="panel"><span class="num">04</span><h4>Compras e importaciones</h4><ol class="flow"><li style="--k:0">Solicitud</li><li style="--k:1">Orden de compra</li><li style="--k:2">Recepción en depósito</li><li style="--k:3">Factura de proveedor</li></ol></div>
-          <div class="panel"><span class="num">05</span><h4>Contabilidad</h4><ol class="flow"><li style="--k:0">Operación</li><li style="--k:1">Asiento automático</li><li style="--k:2">Tesorería</li><li style="--k:3">Conciliación bancaria</li></ol></div>
-          <div class="panel"><span class="num">06</span><h4>Sueldos</h4><ol class="flow"><li style="--k:0">Convenio</li><li style="--k:1">Liquidación</li><li style="--k:2">F.931</li><li style="--k:3">Recibo firmado</li></ol></div>
+          <div class="panel on"><h4>Dashboard</h4><ol class="flow"><li style="--k:0">Ventas del mes</li><li style="--k:1">Gastos</li><li style="--k:2">Margen</li><li style="--k:3">Caja disponible</li></ol></div>
+          <div class="panel"><h4>Ventas</h4><ol class="flow"><li style="--k:0">Pedido</li><li style="--k:1">Factura ARCA</li><li style="--k:2">Remito</li><li style="--k:3">Cobranza</li></ol></div>
+          <div class="panel"><h4>Producción</h4><ol class="flow"><li style="--k:0">Lista de materiales</li><li style="--k:1">MRP</li><li style="--k:2">Orden de producción</li><li style="--k:3">Lote trazable</li></ol></div>
+          <div class="panel"><h4>Compras e importaciones</h4><ol class="flow"><li style="--k:0">Solicitud</li><li style="--k:1">Orden de compra</li><li style="--k:2">Recepción en depósito</li><li style="--k:3">Factura de proveedor</li></ol></div>
+          <div class="panel"><h4>Contabilidad</h4><ol class="flow"><li style="--k:0">Operación</li><li style="--k:1">Asiento automático</li><li style="--k:2">Tesorería</li><li style="--k:3">Conciliación bancaria</li></ol></div>
+          <div class="panel"><h4>Sueldos</h4><ol class="flow"><li style="--k:0">Convenio</li><li style="--k:1">Liquidación</li><li style="--k:2">F.931</li><li style="--k:3">Recibo firmado</li></ol></div>
         </div>
       </div>
     </section>
@@ -763,10 +748,10 @@
         <h2 id="impl-h" class="rv" style="--i:1">De tu sistema actual a SIG, en cuatro pasos.</h2>
       </div>
       <ol class="road" id="road">
-        <li class="rv"><span class="dot">1</span><h3>Primero, tu operación.</h3><p>Una reunión para entender qué fabricás, cómo vendés y cómo facturás. Con eso elegimos el paquete y armamos la propuesta.</p></li>
-        <li class="rv" style="--i:1"><span class="dot">2</span><h3>Después, tus datos.</h3><p>La migración guiada trae lo que tenés hoy y no confirma nada hasta que los totales cuadran con tu sistema anterior.</p></li>
-        <li class="rv" style="--i:2"><span class="dot">3</span><h3>Luego, la instalación.</h3><p>El instalador deja SIG corriendo como servicio en tu servidor, con tus puntos de venta ARCA y tus usuarios.</p></li>
-        <li class="rv" style="--i:3"><span class="dot">4</span><h3>Por último, a operar.</h3><p>Capacitamos a tu equipo y seguimos del otro lado, en español, con personas que conocen tu instalación.</p></li>
+        <li class="rv"><h3>Primero, tu operación.</h3><p>Una reunión para entender qué fabricás, cómo vendés y cómo facturás. Con eso elegimos el paquete y armamos la propuesta.</p></li>
+        <li class="rv" style="--i:1"><h3>Después, tus datos.</h3><p>La migración guiada trae lo que tenés hoy y no confirma nada hasta que los totales cuadran con tu sistema anterior.</p></li>
+        <li class="rv" style="--i:2"><h3>Luego, la instalación.</h3><p>El instalador deja SIG corriendo como servicio en tu servidor, con tus puntos de venta ARCA y tus usuarios.</p></li>
+        <li class="rv" style="--i:3"><h3>Por último, a operar.</h3><p>Capacitamos a tu equipo y seguimos del otro lado, en español, con personas que conocen tu instalación.</p></li>
       </ol>
     </section>
 
