@@ -97,13 +97,11 @@
 
   <link rel="preload" as="image" href="/assets/hero/planta-poster.jpg" fetchpriority="high">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin-opsz.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/instrument-sans-latin-700.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-latin-var.woff2" crossorigin>
   <style>
     /* Fuentes propias (subset latino): sin pedidos a Google */
+    @font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url(/assets/fonts/archivo-latin-var.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
     @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/assets/fonts/inter-latin-opsz.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
-    @font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/instrument-sans-latin-500.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
-    @font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/instrument-sans-latin-600.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
-    @font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/instrument-sans-latin-700.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -152,8 +150,8 @@
     a { color: inherit; }
     ::selection { background: var(--accent); color: #fff; }
     :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-    h1, h2, h3 { font-weight: 700; letter-spacing: -0.04em; line-height: 1.02; text-wrap: balance; }
-    h1, h2, h3, h4 { font-family: 'Instrument Sans', 'Inter', system-ui, sans-serif; }
+    h1, h2, h3 { font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; text-wrap: balance; }
+    h1, h2, h3, h4 { font-family: 'Archivo', 'Inter', system-ui, sans-serif; font-stretch: 115%; }
     p { max-width: 62ch; }
     .wrap { width: min(100% - 2 * var(--pad), var(--max)); margin-inline: auto; }
     .tab { font-variant-numeric: tabular-nums; }
@@ -273,20 +271,6 @@
     }
     .scroll-cue::after { content: ''; position: absolute; left: 50%; top: 9px; width: 3px; height: 8px; margin-left: -1.5px; border-radius: 2px; background: #fff; animation: cue 2s var(--ease) infinite; }
     @keyframes cue { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
-    .glow {
-      position: absolute; z-index: -1; pointer-events: none;
-      width: 900px; height: 900px; left: 50%; top: -420px; translate: -50% 0;
-      background: radial-gradient(circle, rgba(36, 87, 230, .45), rgba(36, 87, 230, 0) 62%);
-      filter: blur(20px);
-      animation: breathe 9s ease-in-out infinite;
-    }
-    @keyframes breathe { 50% { opacity: .65; scale: 1.08; } }
-    .spot {
-      /* luz que sigue al mouse */
-      position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .6s;
-      background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 30%), rgba(79, 123, 255, .12), transparent 60%);
-    }
-    .hero:hover .spot { opacity: 1; }
     .hero-copy { text-align: center; display: grid; justify-items: center; }
     .pill {
       display: inline-flex; align-items: center; gap: 10px;
@@ -297,7 +281,7 @@
     }
     .pill:hover { background: rgba(243, 245, 249, .09); }
     .pill b { font-weight: 600; font-size: 12px; color: #fff; background: var(--accent); padding: 3px 9px; border-radius: 99px; }
-    .hero h1 { font-size: var(--display); max-width: 14ch; letter-spacing: -0.05em; text-shadow: 0 2px 40px rgba(5, 7, 12, .45); }
+    .hero h1 { font-size: var(--display); max-width: 14ch; letter-spacing: -0.03em; text-shadow: 0 2px 40px rgba(5, 7, 12, .45); }
     .hero-copy p { font-size: var(--lead); line-height: 1.5; margin-top: 28px; max-width: 46ch; color: #D5DBE8; text-shadow: 0 1px 24px rgba(5, 7, 12, .6); }
     .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
 
@@ -321,14 +305,11 @@
     .tour { padding-top: var(--gap); }
     .tour-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 6vw, 96px); margin-top: 72px; }
     .tour-list { list-style: none; }
-    .tour-item { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; padding-left: 28px; position: relative; opacity: .32; transition: opacity .5s var(--ease); }
+    .tour-item { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; opacity: .32; transition: opacity .5s var(--ease); }
     .tour-item:first-child { min-height: 46vh; justify-content: flex-start; padding-top: 8vh; }
-    .tour-item::before { content: ''; position: absolute; left: 0; top: 18%; bottom: 18%; width: 2px; background: var(--line); }
-    .tour-item::after { content: ''; position: absolute; left: 0; top: 18%; width: 2px; height: 64%; background: var(--accent); transform: scaleY(0); transform-origin: top; transition: transform .8s var(--ease); }
-    .tour-item:first-child::before, .tour-item:first-child::after { top: 8vh; }
     .tour-item.on { opacity: 1; }
-    .tour-item.on::after { transform: scaleY(1); }
-    .tour-item h3 { font-size: clamp(26px, 2.4vw, 36px); }
+    .tour-item h3 { font-size: clamp(26px, 2.4vw, 36px); transform-origin: left bottom; transition: transform .6s var(--ease); }
+    .tour-item.on h3 { transform: scale(1.18); }
     .tour-item p { margin-top: 14px; color: var(--soft); max-width: 40ch; }
     .tour-item .mob { display: none; }
     .chips { flex-wrap: wrap; gap: 8px; margin-top: 18px; list-style: none; font-size: 14px; font-weight: 500; }
@@ -346,9 +327,8 @@
       mask-image: radial-gradient(ellipse 80% 80% at 80% 0%, #000, transparent 70%);
       -webkit-mask-image: radial-gradient(ellipse 80% 80% at 80% 0%, #000, transparent 70%);
     }
-    .tour-stage .glow { width: 700px; height: 700px; top: -380px; left: 85%; }
     .panel { position: absolute; inset: 0; padding: clamp(32px, 3.4vw, 52px); display: flex; flex-direction: column; justify-content: flex-end; }
-    .panel h4 { font-size: clamp(30px, 3vw, 44px); font-weight: 700; letter-spacing: -0.045em; line-height: 1; transition: transform .9s var(--ease), opacity .7s; }
+    .panel h4 { font-size: clamp(30px, 3vw, 44px); font-weight: 700; letter-spacing: -0.025em; line-height: 1; transition: transform .9s var(--ease), opacity .7s; }
     .flow { list-style: none; margin-top: 28px; position: relative; display: grid; gap: 14px; }
     .flow::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: rgba(243, 245, 249, .12); }
     .flow::after {
@@ -365,6 +345,12 @@
     .panel:not(.on) { pointer-events: none; }
     .panel:not(.on) h4, .panel:not(.on) .flow li { opacity: 0; transform: translateY(18px); transition-delay: 0s; }
     .panel:not(.on) .flow::after { display: none; }
+
+    /* ---------- Dos pantallas reales de SIG ---------- */
+    .shots { padding-top: var(--gap); display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .shot img { width: 100%; height: auto; border-radius: 18px; background: var(--night); box-shadow: 0 0 0 1px var(--line); }
+    .shot figcaption { margin-top: 14px; font-size: var(--small); color: var(--soft); max-width: 52ch; }
+    .shot figcaption b { color: var(--ink); font-weight: 600; }
 
     /* ---------- Por qué SIG: grilla con luz al pasar ---------- */
     .why { padding-top: var(--gap); }
@@ -466,7 +452,6 @@
       mask-image: radial-gradient(ellipse 60% 70% at 50% 100%, #000, transparent 70%);
       -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 100%, #000, transparent 70%);
     }
-    .cta-box .glow { top: auto; bottom: -560px; }
     .cta-box h2 { font-size: var(--heading); max-width: 18ch; }
     .cta-box p { font-size: var(--lead); color: var(--on-night-soft); margin-top: 20px; max-width: 44ch; }
     .cta-box .hero-cta { margin-top: 36px; }
@@ -491,7 +476,7 @@
       .tour-grid { grid-template-columns: 1fr; margin-top: 40px; }
       .tour-stage { display: none; }
       .tour-item, .tour-item:first-child { min-height: 0; opacity: 1; padding: 0; margin-bottom: 72px; }
-      .tour-item::before, .tour-item::after { display: none; }
+      .tour-item.on h3 { transform: none; }
       .tour-item .mob { display: flex; }
       .bento { grid-template-columns: 1fr 1fr; }
       .c2, .c3, .c4 { grid-column: span 1; }
@@ -502,6 +487,7 @@
       .road::before, .road::after { display: none; }
       .road h3 { margin-top: 0; }
       .faq { grid-template-columns: 1fr; gap: 32px; }
+      .shots { grid-template-columns: 1fr; gap: 40px; }
     }
     @media (max-width: 640px) {
       :root { --display: clamp(40px, 11vw, 56px); --heading: clamp(30px, 8vw, 40px); --body: 16px; }
@@ -562,7 +548,6 @@
         <source src="/assets/hero/planta-1080.mp4" type="video/mp4">
       </video>
     </div>
-    <div class="spot" aria-hidden="true"></div>
     <div class="wrap hero-copy">
       <h1 id="hero-h" class="split">Toda tu planta, en un sistema.</h1>
       <p class="rv" style="--i:3">SIG es el sistema de gestión para empresas industriales: facturación ARCA, ventas, compras, producción, mantenimiento, contabilidad y sueldos, instalado en tu propio servidor.</p>
@@ -619,7 +604,6 @@
           </li>
         </ol>
         <div class="tour-stage" aria-hidden="true">
-          <div class="glow"></div>
           <div class="panel on"><h4>Dashboard</h4><ol class="flow"><li style="--k:0">Ventas del mes</li><li style="--k:1">Gastos</li><li style="--k:2">Margen</li><li style="--k:3">Caja disponible</li></ol></div>
           <div class="panel"><h4>Ventas</h4><ol class="flow"><li style="--k:0">Pedido</li><li style="--k:1">Factura ARCA</li><li style="--k:2">Remito</li><li style="--k:3">Cobranza</li></ol></div>
           <div class="panel"><h4>Producción</h4><ol class="flow"><li style="--k:0">Lista de materiales</li><li style="--k:1">MRP</li><li style="--k:2">Orden de producción</li><li style="--k:3">Lote trazable</li></ol></div>
@@ -628,6 +612,18 @@
           <div class="panel"><h4>Sueldos</h4><ol class="flow"><li style="--k:0">Convenio</li><li style="--k:1">Liquidación</li><li style="--k:2">F.931</li><li style="--k:3">Recibo firmado</li></ol></div>
         </div>
       </div>
+    </section>
+
+    <!-- Dos pantallas reales de SIG (demo con datos de prueba) -->
+    <section class="shots wrap" aria-label="Pantallas de SIG">
+      <figure class="shot rv">
+        <img src="/assets/sig/dashboard-1600.webp" srcset="/assets/sig/dashboard-900.webp 900w, /assets/sig/dashboard-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 620px" width="1600" height="900" loading="lazy" decoding="async" alt="Dashboard de SIG con ventas, gastos, margen y caja del mes, el balance de 30 días y los vencimientos de ARCA">
+        <figcaption><b>Dashboard.</b> Ventas, gastos, margen y caja del mes, con los vencimientos de ARCA.</figcaption>
+      </figure>
+      <figure class="shot rv" style="--i:1">
+        <img src="/assets/sig/produccion-1600.webp" srcset="/assets/sig/produccion-900.webp 900w, /assets/sig/produccion-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 620px" width="1600" height="900" loading="lazy" decoding="async" alt="Pantalla de Producción de SIG con las órdenes del período, la eficiencia por línea y los sectores en producción">
+        <figcaption><b>Producción.</b> Órdenes, eficiencia por línea y sectores en marcha.</figcaption>
+      </figure>
     </section>
 
     <!-- Por qué SIG -->
@@ -776,7 +772,6 @@
     <!-- Cierre -->
     <section class="cta wrap" id="contacto" aria-labelledby="cta-h">
       <div class="cta-box">
-        <div class="glow" aria-hidden="true"></div>
         <h2 id="cta-h" class="rv">Mirá SIG resolviendo tus propios casos.</h2>
         <p class="rv" style="--i:1">Contanos cómo trabaja tu planta y armamos una demo con tu operación real.</p>
         <div class="hero-cta rv" style="--i:2">
@@ -868,14 +863,8 @@
     document.addEventListener('click', function (e) { if (!helpPop.contains(e.target)) helpSet(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && helpPop.classList.contains('open')) { helpSet(false); helpBtn.focus(); } });
 
-    /* Luz que sigue al mouse en el hero y en las tarjetas */
-    var spot = document.querySelector('.spot');
+    /* Luz que sigue al mouse en las tarjetas */
     if (!reduce && window.matchMedia('(hover: hover)').matches) {
-      hero.addEventListener('pointermove', function (e) {
-        var b = hero.getBoundingClientRect();
-        spot.style.setProperty('--mx', (e.clientX - b.left) + 'px');
-        spot.style.setProperty('--my', (e.clientY - b.top) + 'px');
-      });
       document.querySelectorAll('.card').forEach(function (c) {
         c.addEventListener('pointermove', function (e) {
           var b = c.getBoundingClientRect();
