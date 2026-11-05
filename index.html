@@ -358,6 +358,11 @@
     .shot:nth-child(2) { --lado: 1; }
     .shot figcaption { opacity: calc((var(--k) - .7) * 3.4); transform: translateY(calc(12px * var(--q))); transition: opacity .25s ease-out, transform .25s ease-out; }
 
+    /* ---------- Títulos y tarjetas que siguen al scroll (--k de 0 a 1) ---------- */
+    /* usan translate y scale sueltos para no pisar el transform del hover */
+    .sk { --k: 1; --q: calc(1 - var(--k)); transition: translate .25s ease-out, scale .25s ease-out, opacity .25s ease-out; }
+    h2.sk { translate: 0 calc(64px * var(--q)); opacity: calc(.08 + .92 * var(--k)); }
+
     /* ---------- Por qué SIG: grilla con luz al pasar ---------- */
     .why { padding-top: var(--gap); }
     .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 64px; }
@@ -373,6 +378,7 @@
       content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .4s;
       background: radial-gradient(420px circle at var(--x) var(--y), rgba(36, 87, 230, .10), transparent 55%);
     }
+    .card.sk { translate: 0 calc(110px * var(--q)); scale: calc(1 - .07 * var(--q)); opacity: calc(.15 + .85 * var(--k)); transition: transform .5s var(--ease), box-shadow .5s, translate .25s ease-out, scale .25s ease-out, opacity .25s ease-out; }
     .card:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px rgba(36, 87, 230, .35), 0 24px 60px -30px rgba(36, 87, 230, .35); }
     .card:hover::before { opacity: 1; }
     .card h3 { font-size: clamp(22px, 1.9vw, 28px); letter-spacing: -0.03em; line-height: 1.15; }
@@ -574,7 +580,7 @@
     <section class="tour wrap" id="recorrido" aria-labelledby="tour-h">
       <div class="head">
         <span class="kicker rv">El sistema por dentro</span>
-        <h2 id="tour-h" class="rv" style="--i:1">Cada área, conectada con las demás.</h2>
+        <h2 id="tour-h" class="sk" style="--i:1">Cada área, conectada con las demás.</h2>
         <p class="rv" style="--i:2">Lo que pasa en ventas mueve el stock, el stock alimenta producción y todo termina en la contabilidad. Así circula la información dentro de SIG.</p>
       </div>
       <div class="tour-grid">
@@ -637,46 +643,46 @@
     <section class="why wrap" id="datos" aria-labelledby="why-h">
       <div class="head">
         <span class="kicker rv">Por qué SIG</span>
-        <h2 id="why-h" class="rv" style="--i:1">Tus datos, en tu servidor.</h2>
+        <h2 id="why-h" class="sk" style="--i:1">Tus datos, en tu servidor.</h2>
         <p class="rv" style="--i:2">SIG no es un servicio en la nube compartido con otras empresas. Cada cliente tiene su propia instalación, en su propio equipo.</p>
       </div>
       <div class="bento">
-        <article class="card dark c4 rv">
+        <article class="card dark c4 sk">
           <div class="pulse" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
           <div>
             <h3>Una instalación dedicada por empresa.</h3>
             <p>El instalador para Windows trae la base de datos PostgreSQL incluida y deja SIG corriendo como servicio. La información comercial, fiscal y de sueldos no sale de tu empresa, y se exporta completa el día que quieras.</p>
           </div>
         </article>
-        <article class="card blue c2 rv" style="--i:1">
+        <article class="card blue c2 sk" style="--i:1">
           <div class="big"><span data-count="256">256</span><small>bits</small></div>
           <div>
             <h3>Datos sensibles cifrados.</h3>
             <p>CUIT, documentos y sueldos se guardan cifrados con AES-256.</p>
           </div>
         </article>
-        <article class="card c2 rv">
+        <article class="card c2 sk">
           <div class="big"><span data-count="11">11</span><small>pasos</small></div>
           <div>
             <h3>Migración guiada.</h3>
             <p>Del plan de cuentas al asiento de apertura. No confirma nada si los totales no cuadran con tu sistema anterior.</p>
           </div>
         </article>
-        <article class="card c2 rv" style="--i:1">
+        <article class="card c2 sk" style="--i:1">
           <div class="big">A·B·C</div>
           <div>
             <h3>ARCA de forma nativa.</h3>
             <p>Facturas, notas de crédito y débito por WSFEv1, con CAE y PDF con código QR.</p>
           </div>
         </article>
-        <article class="card c2 rv" style="--i:2">
+        <article class="card c2 sk" style="--i:2">
           <div class="big"><span data-count="16">16</span><small>extensiones</small></div>
           <div>
             <h3>Crece con vos.</h3>
             <p>Excel, Google Sheets, Power BI, WhatsApp y más, sobre la misma instalación.</p>
           </div>
         </article>
-        <article class="card c3 rv">
+        <article class="card c3 sk">
           <h3>Seguridad que no se puede apagar.</h3>
           <ul class="ticks">
             <li>Doble factor de ingreso e ingreso con huella</li>
@@ -685,7 +691,7 @@
             <li>Respaldo cifrado diario y antes de cada actualización</li>
           </ul>
         </article>
-        <article class="card dark c3 rv" style="--i:1">
+        <article class="card dark c3 sk" style="--i:1">
           <h3>Personas del otro lado.</h3>
           <p>Soporte en español desde Buenos Aires, con gente que conoce tu instalación: errores, consultas de uso y los cambios normativos de ARCA.</p>
           <ul class="ticks">
@@ -700,7 +706,7 @@
     <section class="plans wrap" id="paquetes" aria-labelledby="paq-h">
       <div class="head">
         <span class="kicker rv">Paquetes</span>
-        <h2 id="paq-h" class="rv" style="--i:1">Tres paquetes, según tu operación.</h2>
+        <h2 id="paq-h" class="sk" style="--i:1">Tres paquetes, según tu operación.</h2>
         <p class="rv" style="--i:2">Se cotiza por empresa, con el paquete, los usuarios y las extensiones a la vista. Pasar de uno a otro es una licencia nueva: no se reinstala nada.</p>
       </div>
       <div class="plan-grid">
@@ -748,7 +754,7 @@
     <section class="steps wrap" id="implementacion" aria-labelledby="impl-h">
       <div class="head">
         <span class="kicker rv">Implementación</span>
-        <h2 id="impl-h" class="rv" style="--i:1">De tu sistema actual a SIG, en cuatro pasos.</h2>
+        <h2 id="impl-h" class="sk" style="--i:1">De tu sistema actual a SIG, en cuatro pasos.</h2>
       </div>
       <ol class="road" id="road">
         <li class="rv"><h3>Primero, tu operación.</h3><p>Una reunión para entender qué fabricás, cómo vendés y cómo facturás. Con eso elegimos el paquete y armamos la propuesta.</p></li>
@@ -761,7 +767,7 @@
     <!-- Preguntas -->
     <section class="faq wrap" id="preguntas" aria-labelledby="faq-h">
       <div class="head">
-        <h2 id="faq-h" class="rv">Preguntas frecuentes</h2>
+        <h2 id="faq-h" class="sk">Preguntas frecuentes</h2>
       </div>
       <div class="faq-list rv" style="--i:1">
         <details><summary>¿Dónde se instala SIG?<i aria-hidden="true"></i></summary><div class="ans"><p>En un servidor de tu empresa. El instalador para Windows trae la base de datos PostgreSQL incluida y deja SIG corriendo como servicio. Cada empresa tiene su propia instalación: tus datos no pasan por la nube de nadie.</p></div></details>
@@ -779,7 +785,7 @@
     <!-- Cierre -->
     <section class="cta wrap" id="contacto" aria-labelledby="cta-h">
       <div class="cta-box">
-        <h2 id="cta-h" class="rv">Mirá SIG resolviendo tus propios casos.</h2>
+        <h2 id="cta-h" class="sk">Mirá SIG resolviendo tus propios casos.</h2>
         <p class="rv" style="--i:1">Contanos cómo trabaja tu planta y armamos una demo con tu operación real.</p>
         <div class="hero-cta rv" style="--i:2">
           <a class="btn" href="/demo/">Pedir una demo
@@ -836,7 +842,8 @@
     var hero = document.querySelector('.hero'), bg = document.getElementById('bg');
     var road = document.getElementById('road');
     var steps = road ? [].slice.call(road.children) : [];
-    var shots = [].slice.call(document.querySelectorAll('.shot'));
+    var sks = [].slice.call(document.querySelectorAll('.shot, .sk'));
+    function pos(el) { var t = 0, l = 0; while (el) { t += el.offsetTop; l += el.offsetLeft; el = el.offsetParent; } return [t, l]; }
     var ticking = false;
     function onScroll() {
       ticking = false;
@@ -860,12 +867,15 @@
         steps.forEach(function (li, i) { li.classList.toggle('on', q >= i / steps.length + 0.02); });
       } else steps.forEach(function (li) { li.classList.add('on'); });
       if (!reduce) {
-        /* las pantallas de SIG se arman y se desarman con el scroll; en compu la segunda va un poco detrás */
-        var wide = window.innerWidth > 1000;
-        shots.forEach(function (f, i) {
-          var t = (vh - f.getBoundingClientRect().top) / (vh * 0.6) - (wide ? i * 0.12 : 0);
+        /* pantallas, títulos y tarjetas se arman y se desarman con el scroll: terminan
+           al llegar al 40 % de la ventana (o al final de la página, si no llegan) y,
+           en compu, lo que está más a la derecha va un poco detrás */
+        var wide = window.innerWidth > 1000, maxY = document.documentElement.scrollHeight - vh;
+        sks.forEach(function (el) {
+          var p = pos(el), end = Math.max(vh * 0.4, p[0] - maxY);
+          var t = (vh - (p[0] - y)) / Math.max(1, vh - end) - (wide ? p[1] / window.innerWidth * 0.2 : 0);
           var k = Math.min(1, Math.max(0, t));
-          f.style.setProperty('--k', (1 - Math.pow(1 - k, 3)).toFixed(3));
+          el.style.setProperty('--k', (1 - Math.pow(1 - k, 3)).toFixed(3));
         });
       }
     }
@@ -935,7 +945,7 @@
     }
 
     /* Entradas al llegar a cada bloque (sin JS todo queda visible) */
-    var els = document.querySelectorAll('.rv');
+    var els = document.querySelectorAll('.rv, .sk');
     if (reduce) { els.forEach(function (e) { e.classList.add('in'); }); return; }
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
