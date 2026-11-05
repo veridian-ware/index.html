@@ -351,12 +351,12 @@
     .shot img { width: 100%; height: auto; border-radius: 18px; background: var(--night); box-shadow: 0 0 0 1px var(--line); }
     .shot figcaption { margin-top: 14px; font-size: var(--small); color: var(--soft); max-width: 52ch; }
     .shot figcaption b { color: var(--ink); font-weight: 600; }
-    /* Entran desde los costados, inclinadas hacia afuera, y se acomodan de frente */
+    /* Siguen al scroll (--k va de 0 a 1): entran desde los costados, inclinadas
+       hacia afuera, y se acomodan de frente; al subir, vuelven a abrirse */
     .shots { perspective: 1600px; }
+    .shot { --k: 1; --q: calc(1 - var(--k)); transform: translateX(calc(var(--lado, -1) * 96px * var(--q))) rotateY(calc(var(--lado, -1) * -18deg * var(--q))) scale(calc(1 - .08 * var(--q))); transform-origin: calc(50% + var(--lado, -1) * 50%) 50%; opacity: calc(.15 + .85 * var(--k)); transition: transform .25s ease-out, opacity .25s ease-out; }
     .shot:nth-child(2) { --lado: 1; }
-    .anim .shot.rv { transform: translateX(calc(var(--lado, -1) * 72px)) rotateY(calc(var(--lado, -1) * -14deg)) scale(.94); transform-origin: calc(50% + var(--lado, -1) * 50%) 50%; transition-duration: 1.2s; }
-    .anim .shot.rv figcaption { opacity: 0; transform: translateY(10px); transition: opacity .7s var(--ease) .5s, transform .7s var(--ease) .5s; }
-    .anim .shot.rv.in, .anim .shot.rv.in figcaption { opacity: 1; transform: none; }
+    .shot figcaption { opacity: calc((var(--k) - .7) * 3.4); transform: translateY(calc(12px * var(--q))); transition: opacity .25s ease-out, transform .25s ease-out; }
 
     /* ---------- Por qué SIG: grilla con luz al pasar ---------- */
     .why { padding-top: var(--gap); }
@@ -494,7 +494,7 @@
       .road h3 { margin-top: 0; }
       .faq { grid-template-columns: 1fr; gap: 32px; }
       .shots { grid-template-columns: 1fr; gap: 40px; }
-      .anim .shot.rv { transform: translateY(40px) rotateX(10deg) scale(.96); transform-origin: 50% 100%; }
+      .shot { transform: translateY(calc(56px * var(--q))) rotateX(calc(14deg * var(--q))) scale(calc(1 - .06 * var(--q))); transform-origin: 50% 100%; }
     }
     @media (max-width: 640px) {
       :root { --display: clamp(40px, 11vw, 56px); --heading: clamp(30px, 8vw, 40px); --body: 16px; }
@@ -513,7 +513,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; }
-      .js .split .w, .anim .rv, .anim .shot.rv, .anim .shot.rv figcaption { opacity: 1; filter: none; transform: none; transition: none; }
+      .js .split .w, .anim .rv { opacity: 1; filter: none; transform: none; transition: none; }
       .card, .plan, .btn::after, .panel *, .bg { transition: none; }
     }
   </style>
@@ -623,11 +623,11 @@
 
     <!-- Dos pantallas reales de SIG (demo con datos de prueba) -->
     <section class="shots wrap" aria-label="Pantallas de SIG">
-      <figure class="shot rv">
+      <figure class="shot">
         <img src="/assets/sig/dashboard-1600.webp" srcset="/assets/sig/dashboard-900.webp 900w, /assets/sig/dashboard-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 620px" width="1600" height="900" loading="lazy" decoding="async" alt="Dashboard de SIG con ventas, gastos, margen y caja del mes, el balance de 30 días y los vencimientos de ARCA">
         <figcaption><b>Dashboard.</b> Ventas, gastos, margen y caja del mes, con los vencimientos de ARCA.</figcaption>
       </figure>
-      <figure class="shot rv" style="--i:1">
+      <figure class="shot">
         <img src="/assets/sig/produccion-1600.webp" srcset="/assets/sig/produccion-900.webp 900w, /assets/sig/produccion-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 620px" width="1600" height="900" loading="lazy" decoding="async" alt="Pantalla de Producción de SIG con las órdenes del período, la eficiencia por línea y los sectores en producción">
         <figcaption><b>Producción.</b> Órdenes, eficiencia por línea y sectores en marcha.</figcaption>
       </figure>
@@ -836,6 +836,7 @@
     var hero = document.querySelector('.hero'), bg = document.getElementById('bg');
     var road = document.getElementById('road');
     var steps = road ? [].slice.call(road.children) : [];
+    var shots = [].slice.call(document.querySelectorAll('.shot'));
     var ticking = false;
     function onScroll() {
       ticking = false;
@@ -858,6 +859,15 @@
         road.style.setProperty('--p', q.toFixed(3));
         steps.forEach(function (li, i) { li.classList.toggle('on', q >= i / steps.length + 0.02); });
       } else steps.forEach(function (li) { li.classList.add('on'); });
+      if (!reduce) {
+        /* las pantallas de SIG se arman y se desarman con el scroll; en compu la segunda va un poco detrás */
+        var wide = window.innerWidth > 1000;
+        shots.forEach(function (f, i) {
+          var t = (vh - f.getBoundingClientRect().top) / (vh * 0.6) - (wide ? i * 0.12 : 0);
+          var k = Math.min(1, Math.max(0, t));
+          f.style.setProperty('--k', (1 - Math.pow(1 - k, 3)).toFixed(3));
+        });
+      }
     }
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
     window.addEventListener('resize', onScroll);
