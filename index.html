@@ -351,6 +351,12 @@
     .shot img { width: 100%; height: auto; border-radius: 18px; background: var(--night); box-shadow: 0 0 0 1px var(--line); }
     .shot figcaption { margin-top: 14px; font-size: var(--small); color: var(--soft); max-width: 52ch; }
     .shot figcaption b { color: var(--ink); font-weight: 600; }
+    /* Entran desde los costados, inclinadas hacia afuera, y se acomodan de frente */
+    .shots { perspective: 1600px; }
+    .shot:nth-child(2) { --lado: 1; }
+    .anim .shot.rv { transform: translateX(calc(var(--lado, -1) * 72px)) rotateY(calc(var(--lado, -1) * -14deg)) scale(.94); transform-origin: calc(50% + var(--lado, -1) * 50%) 50%; transition-duration: 1.2s; }
+    .anim .shot.rv figcaption { opacity: 0; transform: translateY(10px); transition: opacity .7s var(--ease) .5s, transform .7s var(--ease) .5s; }
+    .anim .shot.rv.in, .anim .shot.rv.in figcaption { opacity: 1; transform: none; }
 
     /* ---------- Por qué SIG: grilla con luz al pasar ---------- */
     .why { padding-top: var(--gap); }
@@ -488,6 +494,7 @@
       .road h3 { margin-top: 0; }
       .faq { grid-template-columns: 1fr; gap: 32px; }
       .shots { grid-template-columns: 1fr; gap: 40px; }
+      .anim .shot.rv { transform: translateY(40px) rotateX(10deg) scale(.96); transform-origin: 50% 100%; }
     }
     @media (max-width: 640px) {
       :root { --display: clamp(40px, 11vw, 56px); --heading: clamp(30px, 8vw, 40px); --body: 16px; }
@@ -506,7 +513,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; }
-      .js .split .w, .anim .rv { opacity: 1; filter: none; transform: none; transition: none; }
+      .js .split .w, .anim .rv, .anim .shot.rv, .anim .shot.rv figcaption { opacity: 1; filter: none; transform: none; transition: none; }
       .card, .plan, .btn::after, .panel *, .bg { transition: none; }
     }
   </style>
