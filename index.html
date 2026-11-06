@@ -194,7 +194,7 @@
       position: fixed; inset: 0 0 auto 0; z-index: 50;
       transition: background .35s, backdrop-filter .35s, box-shadow .35s;
     }
-    .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .top .wrap { width: calc(100% - 2 * var(--pad)); display: flex; align-items: center; justify-content: space-between; height: 72px; }
     .top.solid { background: rgba(5, 7, 12, .6); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); box-shadow: 0 1px 0 var(--line-night); }
     .top.light { background: rgba(243, 245, 249, .82); box-shadow: 0 1px 0 var(--line); }
     .top.light .word { color: var(--ink); }
