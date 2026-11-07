@@ -335,7 +335,6 @@
     .panel { position: absolute; inset: 0; padding: clamp(32px, 3.4vw, 52px); display: flex; flex-direction: column; justify-content: flex-end; }
     .panel h4 { font-size: clamp(30px, 3vw, 44px); font-weight: 700; letter-spacing: -0.025em; line-height: 1; transition: transform .9s var(--ease), opacity .7s; }
     .flow { list-style: none; margin-top: 28px; position: relative; display: grid; gap: 14px; }
-    .flow::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: rgba(243, 245, 249, .12); }
     .flow::after {
       /* punto de luz que recorre el circuito */
       content: ''; position: absolute; left: 4px; top: 4px; width: 8px; height: 8px; border-radius: 50%;
@@ -345,6 +344,8 @@
     @keyframes travel { 0% { top: 4px; opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { top: calc(100% - 12px); opacity: 0; } }
     .flow li { position: relative; padding-left: 32px; font-size: 17px; color: var(--on-night-soft); transition: transform .8s var(--ease), opacity .6s; transition-delay: calc(var(--k) * 70ms + 150ms); }
     .flow li::before { content: ''; position: absolute; left: 2px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: var(--night); box-shadow: inset 0 0 0 2px var(--accent-glow); }
+    /* tramos de línea entre círculos: arrancan en el borde de uno y terminan en el borde del siguiente */
+    .flow li:not(:last-child)::after { content: ''; position: absolute; left: 7px; top: calc(50% + 6px); height: calc(100% + 2px); width: 2px; background: rgba(243, 245, 249, .12); }
     .flow li:last-child { color: var(--on-night); font-weight: 600; }
     .flow li:last-child::before { background: var(--accent-glow); }
     .panel:not(.on) { pointer-events: none; }
@@ -592,38 +593,38 @@
         <ol class="tour-list">
           <li class="tour-item on" data-v="0">
             <h3>Dashboard</h3>
-            <img class="pantalla" src="/assets/sig/dashboard-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <p>Ventas, gastos, margen y caja del mes en una sola pantalla, con los vencimientos de ARCA y las alertas de cada área.</p>
+            <img class="pantalla" src="/assets/sig/dashboard-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <ul class="chips mob"><li>Ventas del mes</li><li>Gastos</li><li>Margen</li><li>Caja disponible</li></ul>
           </li>
           <li class="tour-item" data-v="1">
             <h3>Ventas</h3>
-            <img class="pantalla" src="/assets/sig/ventas-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <p>Del pedido a la factura electrónica, el remito y la cobranza, con la cuenta corriente de cada cliente al día.</p>
+            <img class="pantalla" src="/assets/sig/ventas-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <ul class="chips mob"><li>Pedido</li><li>Factura ARCA</li><li>Remito</li><li>Cobranza</li></ul>
           </li>
           <li class="tour-item" data-v="2">
             <h3>Producción</h3>
-            <img class="pantalla" src="/assets/sig/produccion-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <p>Órdenes de producción con listas de materiales, MRP, eficiencia por línea y trazabilidad de lotes.</p>
+            <img class="pantalla" src="/assets/sig/produccion-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <ul class="chips mob"><li>Lista de materiales</li><li>MRP</li><li>Orden de producción</li><li>Lote trazable</li></ul>
           </li>
           <li class="tour-item" data-v="3">
             <h3>Compras e importaciones</h3>
-            <img class="pantalla" src="/assets/sig/compras-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <p>Solicitudes, órdenes de compra, recepción en depósito y facturas de proveedor, también para lo que llega de afuera.</p>
+            <img class="pantalla" src="/assets/sig/compras-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <ul class="chips mob"><li>Solicitud</li><li>Orden de compra</li><li>Recepción en depósito</li><li>Factura de proveedor</li></ul>
           </li>
           <li class="tour-item" data-v="4">
             <h3>Contabilidad</h3>
-            <img class="pantalla" src="/assets/sig/contabilidad-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <p>Los asientos se generan solos desde cada operación. Tesorería y conciliación bancaria en el mismo lugar.</p>
+            <img class="pantalla" src="/assets/sig/contabilidad-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <ul class="chips mob"><li>Operación</li><li>Asiento automático</li><li>Tesorería</li><li>Conciliación bancaria</li></ul>
           </li>
           <li class="tour-item" data-v="5">
             <h3>Sueldos</h3>
-            <img class="pantalla" src="/assets/sig/rrhh-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <p>Liquidación por convenio, F.931 y recibos que cada empleado firma desde el celular.</p>
+            <img class="pantalla" src="/assets/sig/rrhh-area.webp" width="1400" height="792" alt="" loading="lazy" decoding="async">
             <ul class="chips mob"><li>Convenio</li><li>Liquidación</li><li>F.931</li><li>Recibo firmado</li></ul>
           </li>
         </ol>
